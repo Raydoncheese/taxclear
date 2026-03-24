@@ -214,6 +214,26 @@ select.fi{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='
   .main{padding:28px 4% 72px}
 }
 
+.news-card{background:var(--c0);border:1px solid var(--c3);border-radius:var(--r-lg);padding:20px 22px;margin-bottom:10px;box-shadow:var(--shadow);transition:border-color .2s}
+.news-card:hover{border-color:var(--c4)}
+.news-meta{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.news-source-badge{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:var(--c2);color:var(--c7);border:1px solid var(--c4);border-radius:6px;padding:3px 9px;line-height:1.4}
+.news-date{font-size:12px;color:var(--light)}
+.news-headline{font-size:16px;font-weight:700;color:var(--ink);letter-spacing:-.01em;line-height:1.35;margin-bottom:8px}
+.news-summary{font-size:14px;color:var(--sub);line-height:1.75;margin-bottom:10px}
+.news-why{font-size:13px;color:var(--c7);background:var(--c2);border-radius:8px;padding:9px 12px;line-height:1.6;margin-bottom:10px;border:1px solid var(--c4)}
+.news-why strong{font-weight:600}
+.news-loading{display:flex;flex-direction:column;gap:12px;padding:8px 0}
+.news-skeleton{background:linear-gradient(90deg,var(--c2) 25%,var(--c1) 50%,var(--c2) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:10px}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.news-error{background:var(--red-bg);border:1px solid var(--red-bd);border-radius:var(--r-lg);padding:20px 22px;text-align:center}
+.news-error-icon{font-size:28px;margin-bottom:10px}
+.news-error-msg{font-size:14px;color:var(--red);line-height:1.65}
+.news-refresh{display:inline-flex;align-items:center;gap:6px;margin-top:14px;background:var(--ink);color:#fff;border:none;border-radius:9px;padding:9px 18px;font-size:13.5px;font-weight:600;cursor:pointer;font-family:var(--font);transition:opacity .15s}
+.news-refresh:hover{opacity:.85}
+.news-footer{background:var(--c1);border:1px solid var(--c3);border-radius:var(--r-lg);padding:14px 18px;margin-top:6px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.news-footer-note{font-size:13px;color:var(--sub);line-height:1.6}
+.news-footer-note a{color:var(--c7);text-decoration:none}
 footer{background:var(--c9);padding:32px 5%}
 .footer-inner{max-width:960px;margin:0 auto}
 .footer-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;margin-bottom:20px}
@@ -252,6 +272,7 @@ footer{background:var(--c9);padding:32px 5%}
     <button class="mob-nav-btn" id="mn-guides" onclick="goTab('guides')"><span>📋</span><span>Guides</span></button>
     <button class="mob-nav-btn" id="mn-deadlines" onclick="goTab('deadlines')"><span>📅</span><span>Deadlines</span></button>
     <button class="mob-nav-btn" id="mn-pensions" onclick="goTab('pensions')"><span>🏦</span><span>Pensions</span></button>
+    <button class="mob-nav-btn" id="mn-news" onclick="goTab('news')"><span>📰</span><span>News</span></button>
     <div class="mob-sep"></div>
     <div class="mob-section-head">Switch type</div>
     <a href="sole-trader.html" class="mob-nav-link"><span>🧾</span>Sole Trader</a>
@@ -276,6 +297,7 @@ footer{background:var(--c9);padding:32px 5%}
     <button class="tab-btn" data-tab="guides" onclick="switchTab('guides',this)"><span class="tab-btn-icon">📋</span><span>Guides</span></button>
     <button class="tab-btn" data-tab="deadlines" onclick="switchTab('deadlines',this)"><span class="tab-btn-icon">📅</span><span>Deadlines</span></button>
     <button class="tab-btn" data-tab="pensions" onclick="switchTab('pensions',this)"><span class="tab-btn-icon">🏦</span><span>Pensions</span></button>
+    <button class="tab-btn" data-tab="news" onclick="switchTab('news',this)"><span class="tab-btn-icon">📰</span><span>News</span></button>
   </div>
 </div>
 
@@ -455,6 +477,16 @@ footer{background:var(--c9);padding:32px 5%}
   <div class="pension-step"><div class="pension-step-head" onclick="togglePension(this)"><div class="pension-step-num">4</div><div style="flex:1"><div class="pension-step-title">State Pension — check your record</div><div class="pension-step-sub">35 qualifying NI years needed for the full £221.20/week</div></div><div class="pension-step-chev">▼</div></div><div class="pension-step-body"><p>As a director taking a salary above the Lower Earnings Limit (£6,396/year in 2024/25), you qualify for NI credits toward your State Pension. Check your NI record and forecast at gov.uk/check-state-pension.</p><a href="https://www.gov.uk/check-state-pension" target="_blank" class="gov-link">🔗 Check your State Pension →</a></div></div>
 </div>
 
+<!-- NEWS -->
+<div id="tab-news" class="tab-content">
+  <div class="sh">
+    <div class="sh-label">Latest Updates</div>
+    <h2 class="sh-title">Tax news for limited companies</h2>
+    <p class="sh-sub">AI-summarised from HMRC gov.uk, the OBR and GOV.UK — updated live each time you visit.</p>
+  </div>
+  <div id="news-content"><div class="news-loading" id="news-skeleton"></div></div>
+</div>
+
 </main>
 
 <footer>
@@ -472,8 +504,8 @@ footer{background:var(--c9);padding:32px 5%}
 </footer>
 
 <script>
-const TABS=['rates','calc','guides','deadlines','pensions'];
-function switchTab(id,btn){TABS.forEach(t=>{document.getElementById('tab-'+t).classList.toggle('active',t===id);});document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));document.querySelector('.tab-wrap').scrollIntoView({behavior:'smooth',block:'start'});}
+const TABS=['rates','calc','guides','deadlines','pensions','news'];
+function switchTab(id,btn){TABS.forEach(t=>{document.getElementById('tab-'+t).classList.toggle('active',t===id);});document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));if(id==='news')loadNews();document.querySelector('.tab-wrap').scrollIntoView({behavior:'smooth',block:'start'});}
 function goTab(id){switchTab(id);closeMenu();document.querySelectorAll('.mob-nav-btn').forEach(b=>b.classList.toggle('active',b.id==='mn-'+id));}
 function openMenu(){document.getElementById('mob-menu').classList.add('open');document.body.style.overflow='hidden';}
 function closeMenu(){document.getElementById('mob-menu').classList.remove('open');document.body.style.overflow='';}
@@ -539,6 +571,30 @@ function buildDeadlines(){
 calc();
 buildDeadlines();
 window.switchTab=switchTab;window.goTab=goTab;window.openMenu=openMenu;window.closeMenu=closeMenu;
+// ── NEWS ──────────────────────────────────────────────────────────────────
+let newsLoaded=false;
+function showNewsSkeleton(){document.getElementById('news-skeleton').innerHTML=[1,2,3,4].map(()=>`<div style="margin-bottom:16px"><div class="news-skeleton" style="height:14px;width:30%;margin-bottom:10px"></div><div class="news-skeleton" style="height:20px;width:85%;margin-bottom:8px"></div><div class="news-skeleton" style="height:14px;width:100%;margin-bottom:5px"></div><div class="news-skeleton" style="height:14px;width:90%;margin-bottom:5px"></div><div class="news-skeleton" style="height:14px;width:75%"></div></div>`).join('');}
+async function loadNews(){
+  if(newsLoaded)return;
+  const el=document.getElementById('news-content');
+  showNewsSkeleton();
+  const PERSONA='limited company director';
+  const TOPICS='Corporation Tax rates, dividend tax, Making Tax Digital, Companies House filings, R&D tax credits, employer NI, HMRC digital services, VAT, confirmation statement';
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,tools:[{type:'web_search_20250305',name:'web_search'}],system:`You are a UK tax news researcher for TaxClear. Find the 4 most recent and relevant UK tax news items for ${PERSONA}s. Search only: gov.uk, hmrc.gov.uk, obr.uk, companieshouse.gov.uk. Topics: ${TOPICS}. Respond ONLY with a valid JSON array, no markdown, no backticks. Structure: [{"headline":"...","summary":"2-3 plain English sentences","source_name":"HMRC gov.uk","url":"https://...","why_matters":"One sentence on why this matters to a ${PERSONA}","recency":"e.g. March 2025"}]`,messages:[{role:'user',content:`Find the latest UK tax and Companies House news relevant to ${PERSONA}s. Return JSON array only.`}]})});
+    const data=await res.json();
+    const text=(data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('');
+    const clean=text.replace(/```json|```/g,'').trim();
+    const start=clean.indexOf('['),end=clean.lastIndexOf(']');
+    const items=JSON.parse(start>=0?clean.slice(start,end+1):clean);
+    el.innerHTML=items.map(item=>`<div class="news-card"><div class="news-meta"><span class="news-source-badge">${item.source_name||'gov.uk'}</span>${item.recency?`<span class="news-date">📅 ${item.recency}</span>`:''}</div><div class="news-headline">${item.headline}</div><div class="news-summary">${item.summary}</div><div class="news-why"><strong>Why it matters:</strong> ${item.why_matters}</div>${item.url?`<a href="${item.url}" target="_blank" rel="noopener" class="gov-link">🔗 Read on ${item.source_name||'gov.uk'} →</a>`:''}</div>`).join('')+`<div class="news-footer"><div class="news-footer-note">Sourced from <a href="https://www.gov.uk/government/organisations/hm-revenue-customs" target="_blank">HMRC gov.uk</a> and official sources only. Summarised by AI — always verify at source.</div><button class="news-refresh" onclick="newsLoaded=false;loadNews()">↺ Refresh</button></div>`;
+    newsLoaded=true;
+  }catch(e){
+    el.innerHTML=`<div class="news-error"><div class="news-error-icon">📡</div><div class="news-error-msg">Couldn't load news right now. Check the latest directly at HMRC gov.uk.</div><a href="https://www.gov.uk/government/organisations/hm-revenue-customs/about/news" target="_blank" class="gov-link" style="margin-top:12px;justify-content:center">🔗 HMRC news on gov.uk →</a><br><button class="news-refresh" onclick="newsLoaded=false;loadNews()" style="margin-top:10px">↺ Try again</button></div>`;
+  }
+}
+
+window.loadNews=loadNews;
 window.calc=calc;window.toggleAccord=toggleAccord;window.togglePension=togglePension;
 </script>
 </body>
