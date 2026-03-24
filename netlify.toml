@@ -1,0 +1,6 @@
+[[redirects]]
+  from = "/api/hmrc-news"
+  to = "https://www.gov.uk/search/news-and-communications.atom?organisations[]=hm-revenue-customs&count=40"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
