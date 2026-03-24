@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaxClear — Sole Trader Tax Guide</title>
+<meta name="description" content="UK sole trader tax guide. Income Tax rates, Self Assessment, allowable expenses, NI Classes 2 & 4, VAT registration. Sourced from HMRC gov.uk.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;1,9..144,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --c0:#fff;--c1:#f8faf9;--c2:#f0f4f2;--c3:#e4ebe6;--c4:#c8d8cc;--c5:#8aab92;
+  --c6:#4a7a58;--c7:#1e5c32;--c8:#0f3320;--c9:#081a10;
+  --ink:#111714;--mid:#3c5044;--sub:#6b8572;--light:#9db8a4;
+  --amber:#c87820;--amber-bg:#fef8ed;--amber-bd:#f0d898;
+  --red:#b83030;--red-bg:#fef2f2;--red-bd:#f0c8c8;
+  --blue:#2850a0;--blue-bg:#f0f4ff;--blue-bd:#c0ccf0;
+  --r:12px;--r-lg:18px;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.04);
+  --shadow-md:0 2px 8px rgba(0,0,0,.08),0 8px 32px rgba(0,0,0,.06);
+  --font:'Plus Jakarta Sans',system-ui,sans-serif;
+  --font-head:'Fraunces',Georgia,serif;
+}
+html{scroll-behavior:smooth;font-size:17px}
+body{font-family:var(--font);color:var(--ink);background:var(--c0);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.hidden{display:none!important}
+
+/* DISC BAR */
+.disc-bar{background:var(--ink);padding:9px 5%;text-align:center}
+.disc-bar p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.6}
+.disc-bar a{color:#68d48a;text-decoration:none}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--c3)}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 5%;height:58px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.nav-logo{font-family:var(--font-head);font-size:18px;font-weight:800;color:var(--ink);letter-spacing:-.02em;text-decoration:none;white-space:nowrap}
+.nav-home{font-size:13px;color:var(--sub);text-decoration:none;display:flex;align-items:center;gap:4px;white-space:nowrap;transition:color .15s}
+.nav-home:hover{color:var(--ink)}
+.nav-persona{display:flex;gap:3px;align-items:center;overflow-x:auto;scrollbar-width:none;padding:4px 0}
+.nav-persona::-webkit-scrollbar{display:none}
+.nav-p-btn{font-size:13px;font-weight:500;color:var(--sub);text-decoration:none;padding:6px 12px;border-radius:8px;white-space:nowrap;transition:all .15s}
+.nav-p-btn:hover{color:var(--ink);background:var(--c2)}
+.nav-p-btn.active{color:var(--c7);background:var(--c2);font-weight:700}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
+.hamburger span{width:20px;height:2px;background:var(--ink);border-radius:2px;display:block}
+
+/* HERO */
+.hero{background:var(--c9);padding:52px 5% 60px;position:relative;overflow:hidden}
+.hero-glow{position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:600px;height:280px;background:radial-gradient(ellipse,rgba(30,92,50,.4) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:700px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.hero-breadcrumb{display:inline-flex;align-items:center;gap:6px;margin-bottom:20px;font-size:13px;color:rgba(255,255,255,.35)}
+.hero-breadcrumb a{color:rgba(255,255,255,.4);text-decoration:none}
+.hero-breadcrumb a:hover{color:#68d48a}
+.hero h1{font-family:var(--font-head);font-size:clamp(30px,5vw,52px);font-weight:800;color:#fff;letter-spacing:-.02em;line-height:1.08;margin-bottom:14px}
+.hero h1 em{font-style:italic;color:#68d48a}
+.hero p{font-size:clamp(14px,2vw,16px);color:rgba(255,255,255,.4);line-height:1.7;max-width:480px;margin:0 auto}
+
+/* TAB NAV */
+.tab-wrap{background:var(--c0);border-bottom:1px solid var(--c3);position:sticky;top:58px;z-index:100}
+.tab-nav{max-width:960px;margin:0 auto;padding:0 5%;display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+.tab-nav::-webkit-scrollbar{display:none}
+.tab-btn{display:flex;align-items:center;gap:6px;padding:14px 16px;font-size:13.5px;font-weight:500;color:var(--sub);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;font-family:var(--font);white-space:nowrap;transition:all .15s;margin-bottom:-1px}
+.tab-btn:hover{color:var(--ink)}
+.tab-btn.active{color:var(--c7);border-bottom-color:var(--c7);font-weight:700}
+.tab-btn-icon{font-size:15px}
+
+/* MAIN */
+.main{max-width:960px;margin:0 auto;padding:40px 5% 88px}
+.tab-content{display:none}
+.tab-content.active{display:block;animation:fadeUp .25s ease}
+
+/* SECTION HEADS */
+.sh{margin-bottom:28px}
+.sh-label{font-size:12px;font-weight:700;color:var(--c7);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.sh-title{font-family:var(--font-head);font-size:clamp(22px,3vw,30px);font-weight:800;color:var(--ink);letter-spacing:-.02em;margin-bottom:10px;line-height:1.1}
+.sh-sub{font-size:15px;color:var(--sub);line-height:1.75;max-width:560px}
+
+/* DISCLAIMER INLINE */
+.disc-inline{background:var(--c2);border:1px solid var(--c3);border-left:3px solid var(--c7);border-radius:0 var(--r) var(--r) 0;padding:12px 16px;margin-bottom:24px;font-size:14px;color:var(--mid);line-height:1.65}
+.disc-inline strong{font-weight:600;color:var(--ink)}
+.disc-inline a{color:var(--c7)}
+
+/* CARDS */
+.card{background:var(--c0);border:1px solid var(--c3);border-radius:var(--r-lg);padding:22px;box-shadow:var(--shadow);transition:border-color .2s}
+.card:hover{border-color:var(--c4)}
+.card-sm{padding:16px 18px}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:24px}
+.divider{height:1px;background:var(--c3);margin:28px 0}
+
+/* CALLOUTS */
+.callout{display:flex;gap:10px;border-radius:var(--r);padding:13px 15px;margin:12px 0;font-size:14px;line-height:1.65}
+.callout-icon{font-size:15px;flex-shrink:0;margin-top:1px}
+.callout-body{color:var(--mid)}
+.callout-body strong{font-weight:600;color:var(--ink)}
+.callout-tip{background:var(--c2);border:1px solid var(--c4)}
+.callout-tip .callout-body{color:var(--c7)}
+.callout-warn{background:var(--amber-bg);border:1px solid var(--amber-bd)}
+.callout-warn .callout-body{color:#7a4800}
+.callout-trap{background:var(--red-bg);border:1px solid var(--red-bd)}
+.callout-trap .callout-body{color:var(--red)}
+.callout-info{background:var(--blue-bg);border:1px solid var(--blue-bd)}
+.callout-info .callout-body{color:var(--blue)}
+
+/* GOV LINK */
+.gov-link{display:inline-flex;align-items:center;gap:5px;color:var(--c7);text-decoration:none;font-size:13px;font-weight:600;margin-top:10px;transition:gap .15s}
+.gov-link:hover{gap:8px}
+
+/* RATE ROWS */
+.rate-row{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-radius:9px;font-size:14px;margin-bottom:6px}
+.rate-row span:first-child{color:var(--sub)}
+.rate-row span:last-child{font-weight:700}
+
+/* NI BARS */
+.ni-bar-wrap{margin:14px 0}
+.ni-bar-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.ni-bar-label{font-size:13px;color:var(--sub);min-width:155px;font-weight:400;line-height:1.4}
+.ni-bar-track{flex:1;height:10px;background:var(--c2);border-radius:5px;overflow:hidden}
+.ni-bar-fill{height:100%;border-radius:5px;background:var(--c6)}
+.ni-bar-val{font-size:13px;font-weight:600;color:var(--ink);min-width:56px;text-align:right;font-variant-numeric:tabular-nums}
+
+/* BAND DIAGRAM */
+.band-diagram{background:var(--c0);border:1px solid var(--c3);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow);margin-bottom:20px}
+.band-diagram-head{padding:18px 22px 14px;border-bottom:1px solid var(--c3)}
+.band-diagram-head h3{font-family:var(--font-head);font-size:17px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.25}
+.band-diagram-head p{font-size:14px;color:var(--sub);line-height:1.65}
+.band-diagram-body{padding:20px 22px 24px}
+.tax-stack{height:44px;display:flex;border-radius:8px;overflow:visible;margin-bottom:28px}
+.tax-seg{height:100%;display:flex;align-items:center;justify-content:center;position:relative;overflow:visible}
+.tax-seg-label{font-size:11px;font-weight:700;color:#fff;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 7px}
+.band-legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.legend-item{display:flex;align-items:flex-start;gap:10px;padding:12px;border-radius:10px;border:1px solid var(--c3)}
+.legend-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0;margin-top:4px}
+.legend-rate{font-size:20px;font-weight:700;font-family:var(--font-head);letter-spacing:-.02em;line-height:1.1}
+.legend-range{font-size:13px;color:var(--sub);margin-top:3px;line-height:1.4}
+.legend-label{font-size:12px;color:var(--light);margin-top:3px}
+
+/* REGION TOGGLE */
+.region-toggle{display:flex;background:var(--c2);border:1px solid var(--c3);border-radius:10px;padding:4px;margin-bottom:24px;width:fit-content}
+.region-btn{padding:7px 18px;border-radius:7px;font-size:14px;font-weight:500;color:var(--sub);cursor:pointer;transition:all .15s;background:none;border:none;font-family:var(--font);line-height:1}
+.region-btn.active{background:var(--c0);color:var(--ink);font-weight:600;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+
+/* ALLOWANCES */
+.allowance-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:24px}
+.allowance-card{background:var(--c1);border:1px solid var(--c3);border-radius:var(--r);padding:16px;text-align:center}
+.allowance-tag{display:inline-block;background:var(--c2);color:var(--c7);font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:3px 8px;margin-bottom:8px;line-height:1.4}
+.allowance-n{font-family:var(--font-head);font-size:22px;font-weight:800;color:var(--ink);letter-spacing:-.02em;margin-bottom:4px;line-height:1.1}
+.allowance-l{font-size:13px;color:var(--sub);line-height:1.5}
+
+/* EXPENSES */
+.filter-bar{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.filter-btn{background:var(--c0);border:1.5px solid var(--c3);border-radius:100px;padding:7px 16px;font-size:13.5px;font-weight:500;color:var(--sub);cursor:pointer;font-family:var(--font);transition:all .15s;line-height:1}
+.filter-btn:hover{border-color:var(--c5);color:var(--ink)}
+.filter-btn.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.exp-group{margin-bottom:24px}
+.exp-group-label{font-size:12px;font-weight:700;color:var(--sub);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--c3)}
+.exp-item{background:var(--c0);border:1px solid var(--c3);border-radius:var(--r);margin-bottom:6px;cursor:pointer;transition:all .15s}
+.exp-item:hover,.exp-item.exp-open{border-color:var(--c4);background:var(--c1)}
+.exp-head{padding:13px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.exp-name{font-size:14.5px;font-weight:500;color:var(--ink);flex:1;line-height:1.4}
+.exp-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.badge-ok{width:22px;height:22px;border-radius:50%;background:var(--c2);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--c7);font-weight:700}
+.badge-no{width:22px;height:22px;border-radius:50%;background:var(--red-bg);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--red);font-weight:700}
+.exp-chevron{color:var(--light);font-size:10px;transition:transform .2s}
+.exp-chevron.open{transform:rotate(180deg)}
+.exp-body{border-top:1px solid var(--c3);padding:13px 16px;display:none;font-size:14px;color:var(--sub);line-height:1.75}
+.exp-body.open{display:block}
+.exp-body strong{color:var(--ink);font-weight:600}
+
+/* GUIDES */
+.guide-list-grid{display:flex;flex-direction:column;gap:8px}
+.guide-list-item{background:var(--c0);border:1px solid var(--c3);border-radius:var(--r-lg);padding:16px 20px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:14px;box-shadow:var(--shadow)}
+.guide-list-item:hover{border-color:var(--c5);transform:translateX(2px)}
+.guide-list-icon{width:44px;height:44px;border-radius:12px;background:var(--c2);border:1px solid var(--c3);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.guide-list-title{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:3px;line-height:1.3}
+.guide-list-sub{font-size:13px;color:var(--sub);line-height:1.5}
+.guide-list-meta{display:flex;gap:14px;margin-top:6px}
+.guide-list-tag{font-size:12px;color:var(--sub)}
+.guide-list-arrow{color:var(--light);font-size:18px;flex-shrink:0}
+.guide-detail{display:none}
+.guide-detail.open{display:block;animation:fadeUp .25s ease}
+.back-btn{display:inline-flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;font-size:14px;font-weight:600;color:var(--sub);font-family:var(--font);padding:0 0 20px;transition:color .15s;line-height:1}
+.back-btn:hover{color:var(--ink)}
+.progress-track{height:5px;background:var(--c3);border-radius:3px;margin:12px 0 6px;overflow:hidden}
+.progress-fill{height:100%;background:var(--c7);border-radius:3px;transition:width .3s}
+.progress-label{font-size:13px;color:var(--sub);margin-bottom:24px}
+.guide-section-head{display:flex;justify-content:space-between;align-items:center;border-radius:10px;padding:8px 14px;margin:22px 0 8px;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.step-card{background:var(--c0);border:1px solid var(--c3);border-radius:var(--r);margin-bottom:7px;overflow:hidden;transition:border-color .15s}
+.step-card.done{border-color:var(--c4);background:var(--c1)}
+.step-head{padding:13px 16px;display:flex;align-items:flex-start;gap:10px;cursor:pointer}
+.step-cb{width:24px;height:24px;border-radius:50%;flex-shrink:0;border:2px solid var(--c3);background:var(--c0);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;margin-top:1px;font-size:11px;color:#fff;font-weight:700;line-height:1}
+.step-cb.done{background:var(--ink);border-color:var(--ink)}
+.step-title{font-size:14.5px;font-weight:600;color:var(--ink);flex:1;line-height:1.4}
+.step-title.done{color:var(--light);text-decoration:line-through;font-weight:400}
+.step-sub{font-size:13px;color:var(--light);margin-top:3px;line-height:1.5}
+.step-chev{font-size:10px;color:var(--light);transition:transform .2s;flex-shrink:0;margin-top:4px}
+.step-chev.open{transform:rotate(180deg)}
+.step-body{border-top:1px solid var(--c3);padding:14px 16px;display:none}
+.step-body.open{display:block}
+.step-body p{font-size:14px;color:var(--sub);line-height:1.8;margin-bottom:10px}
+.step-body p:last-child{margin-bottom:0}
+.step-body strong{color:var(--ink);font-weight:600}
+.eg-box{background:var(--c1);border:1px solid var(--c3);border-radius:10px;overflow:hidden;margin:10px 0}
+.eg-head{background:var(--c3);padding:5px 12px;font-size:10px;font-weight:700;color:var(--sub);letter-spacing:.05em;text-transform:uppercase}
+.eg-row{display:flex;justify-content:space-between;padding:8px 12px;border-bottom:1px solid var(--c3);font-size:13.5px}
+.eg-row:last-child{border-bottom:none}
+.eg-row span:first-child{color:var(--sub)}
+.eg-row span:last-child{font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink)}
+.eg-row.total span:last-child{color:var(--c7);font-size:15px}
+.eg-row.red span:last-child{color:var(--red)}
+.penalty-wrap{background:var(--c1);border:1px solid var(--c3);border-radius:10px;overflow:hidden;margin:10px 0}
+.penalty-row{display:flex;justify-content:space-between;padding:9px 14px;border-bottom:1px solid var(--c3);font-size:13.5px}
+.penalty-row:last-child{border-bottom:none}
+.penalty-time{color:var(--sub)}
+.penalty-amount{color:var(--red);font-weight:600}
+.allowable-2col{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.al-col{border-radius:9px;padding:11px 13px}
+.al-col-yes{background:var(--c2);border:1px solid var(--c4)}
+.al-col-no{background:var(--red-bg);border:1px solid var(--red-bd)}
+.al-col-head{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:7px;line-height:1.3}
+.al-col-yes .al-col-head{color:var(--c7)}
+.al-col-no .al-col-head{color:var(--red)}
+.al-item{font-size:12.5px;color:var(--ink);margin-bottom:4px;line-height:1.4}
+
+/* DEADLINES */
+.dl-card{background:var(--c0);border:1px solid var(--c3);border-radius:var(--r-lg);padding:14px 18px;margin-bottom:8px;text-decoration:none;display:block;transition:all .15s;box-shadow:var(--shadow)}
+.dl-card:hover{border-color:var(--c5);transform:translateX(2px)}
+.dl-card.urgent{background:var(--amber-bg);border-color:var(--amber-bd)}
+.dl-card.overdue{background:var(--red-bg);border-color:var(--red-bd)}
+.dl-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:5px}
+.dl-title{font-size:14.5px;font-weight:600;color:var(--ink);flex:1;line-height:1.4}
+.dl-title.overdue{color:var(--red)}
+.dl-badge{font-size:11px;font-weight:700;border-radius:8px;padding:4px 10px;flex-shrink:0;line-height:1}
+.dl-badge-ok{background:var(--c2);color:var(--c7);border:1px solid var(--c4)}
+.dl-badge-urgent{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bd)}
+.dl-badge-overdue{background:var(--red-bg);color:var(--red);border:1px solid var(--red-bd)}
+.dl-badge-rec{background:var(--c2);color:var(--c7);border:1px solid var(--c4)}
+.dl-desc{font-size:13.5px;color:var(--sub);line-height:1.6}
+.dl-date{font-size:12px;color:var(--light);margin-top:5px}
+
+/* PENSIONS */
+.pension-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:24px}
+.pstat{background:var(--c1);border:1px solid var(--c3);border-radius:var(--r);padding:14px;text-align:center}
+.pstat-n{font-family:var(--font-head);font-size:22px;font-weight:800;color:var(--c7);letter-spacing:-.02em;line-height:1.1}
+.pstat-l{font-size:13px;color:var(--sub);margin-top:4px;line-height:1.5}
+.pension-step{background:var(--c0);border:1px solid var(--c3);border-radius:var(--r-lg);margin-bottom:8px;overflow:hidden;box-shadow:var(--shadow)}
+.pension-step-head{padding:16px 20px;display:flex;align-items:flex-start;gap:14px;cursor:pointer;transition:background .15s}
+.pension-step-head:hover{background:var(--c1)}
+.pension-step-num{width:32px;height:32px;border-radius:50%;background:var(--ink);color:#fff;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--font-head);line-height:1}
+.pension-step-title{font-size:14.5px;font-weight:600;color:var(--ink);margin-bottom:3px;letter-spacing:-.01em;line-height:1.35}
+.pension-step-sub{font-size:13.5px;color:var(--sub);line-height:1.5}
+.pension-step-chev{color:var(--light);font-size:10px;margin-left:auto;margin-top:5px;flex-shrink:0;transition:transform .2s}
+.pension-step-chev.open{transform:rotate(180deg)}
+.pension-step-body{border-top:1px solid var(--c3);padding:18px 20px;display:none}
+.pension-step-body.open{display:block}
+.pension-step-body p{font-size:14.5px;color:var(--sub);line-height:1.8;margin-bottom:12px}
+.pension-step-body p:last-child{margin-bottom:0}
+.pension-step-body strong{color:var(--ink);font-weight:600}
+.pension-checks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.pcheck{border-radius:10px;padding:13px 14px;border:1px solid}
+.pcheck-warn{background:var(--amber-bg);border-color:var(--amber-bd)}
+.pcheck-ok{background:var(--c2);border-color:var(--c4)}
+.pcheck-title{font-size:12.5px;font-weight:700;margin-bottom:5px;line-height:1.3}
+.pcheck-warn .pcheck-title{color:var(--red)}
+.pcheck-ok .pcheck-title{color:var(--c7)}
+.pcheck-body{font-size:13px;color:var(--sub);line-height:1.55}
+
+/* CALC */
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field-label{font-size:12px;font-weight:600;color:var(--sub);letter-spacing:.05em;text-transform:uppercase;line-height:1}
+.field-wrap{position:relative}
+.field-pre{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--light);font-weight:600;pointer-events:none;z-index:1}
+.field-suf{position:absolute;right:13px;top:50%;transform:translateY(-50%);font-size:13px;color:var(--light);pointer-events:none}
+.fi{width:100%;border:1.5px solid var(--c3);border-radius:10px;padding:11px 13px;font-size:16px;font-family:var(--font);background:var(--c1);color:var(--ink);outline:none;transition:border-color .2s;-moz-appearance:textfield;appearance:textfield;line-height:1.4}
+.fi::-webkit-outer-spin-button,.fi::-webkit-inner-spin-button{-webkit-appearance:none}
+.fi:focus{border-color:var(--c7);background:var(--c0)}
+.fi.has-pre{padding-left:30px}
+.fi.has-suf{padding-right:36px}
+select.fi{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%239db8a4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;appearance:none}
+.calc-result-card{background:var(--c9);border-radius:var(--r-lg);padding:28px;margin-top:20px;position:relative;overflow:hidden}
+.calc-result-card::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(104,212,138,.12) 0%,transparent 70%)}
+.calc-result-label{font-size:12px;font-weight:600;color:rgba(255,255,255,.35);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;line-height:1}
+.calc-result-amount{font-family:var(--font-head);font-size:clamp(36px,5vw,52px);font-weight:800;color:#fff;letter-spacing:-.03em;line-height:1}
+.calc-result-period{font-size:14px;color:rgba(255,255,255,.4);margin-top:7px;margin-bottom:24px}
+.period-switch{display:flex;gap:5px;margin-bottom:24px}
+.period-btn{background:rgba(255,255,255,.08);border:none;border-radius:8px;padding:7px 15px;font-size:13px;font-weight:500;color:rgba(255,255,255,.5);cursor:pointer;font-family:var(--font);transition:all .15s;line-height:1}
+.period-btn.active{background:rgba(255,255,255,.18);color:#fff}
+.breakdown-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.breakdown-row:last-child{border-bottom:none}
+.breakdown-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+.breakdown-label{font-size:13.5px;color:rgba(255,255,255,.5);flex:1;line-height:1.4}
+.breakdown-bar-wrap{flex:2;height:6px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden}
+.breakdown-bar{height:100%;border-radius:3px;transition:width .5s ease}
+.breakdown-amount{font-size:13.5px;font-weight:600;color:rgba(255,255,255,.85);min-width:68px;text-align:right;font-variant-numeric:tabular-nums}
+.rate-chips{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
+.rate-chip{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:10px 12px;flex:1;min-width:90px}
+.rate-chip-n{font-family:var(--font-head);font-size:19px;font-weight:700;color:#fff;letter-spacing:-.02em}
+.rate-chip-l{font-size:12px;color:rgba(255,255,255,.35);margin-top:3px;line-height:1.3}
+.calc-note{font-size:13px;color:var(--sub);line-height:1.65;margin-top:14px;padding:12px 14px;background:var(--c1);border-radius:var(--r);border:1px solid var(--c3)}
+.calc-note a{color:var(--c7)}
+
+/* MOBILE MENU */
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300}
+.mobile-menu.open{display:block}
+.mobile-menu-panel{position:absolute;top:0;right:0;width:260px;height:100%;background:var(--c0);padding:20px 0;overflow-y:auto;box-shadow:-4px 0 24px rgba(0,0,0,.15)}
+.mobile-menu-header{display:flex;justify-content:space-between;align-items:center;padding:0 20px 16px;border-bottom:1px solid var(--c3);margin-bottom:8px}
+.mobile-menu-logo{font-family:var(--font-head);font-size:16px;font-weight:800;color:var(--ink)}
+.mobile-close{background:none;border:none;font-size:20px;cursor:pointer;color:var(--sub);padding:4px}
+.mob-section-head{font-size:11px;font-weight:700;color:var(--light);letter-spacing:.06em;text-transform:uppercase;padding:14px 20px 6px}
+.mob-nav-btn{display:flex;align-items:center;gap:12px;width:100%;padding:12px 20px;background:none;border:none;font-size:14.5px;font-weight:500;color:var(--sub);cursor:pointer;font-family:var(--font);text-align:left;transition:background .15s}
+.mob-nav-btn:hover,.mob-nav-btn.active{background:var(--c2);color:var(--ink);font-weight:600}
+.mob-nav-btn span:first-child{font-size:17px;width:22px;text-align:center}
+.mob-sep{height:1px;background:var(--c3);margin:8px 0}
+.mob-nav-link{display:flex;align-items:center;gap:8px;padding:11px 20px;font-size:14px;color:var(--sub);text-decoration:none;transition:background .15s}
+.mob-nav-link:hover{background:var(--c1);color:var(--ink)}
+@media(max-width:640px){
+  .hamburger{display:flex}
+  .nav-persona{display:none}
+  .nav-home{display:none}
+  .calc-grid{grid-template-columns:1fr}
+  .allowable-2col,.pension-checks{grid-template-columns:1fr}
+  .band-legend{grid-template-columns:1fr 1fr}
+  .pension-stats{grid-template-columns:1fr 1fr}
+  .sh-title{font-size:22px}
+  .main{padding:28px 4% 72px}
+}
+@media(max-width:420px){
+  .band-legend{grid-template-columns:1fr}
+  .pension-checks{grid-template-columns:1fr}
+}
+
+/* FOOTER */
+footer{background:var(--c9);padding:32px 5%}
+.footer-inner{max-width:960px;margin:0 auto}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;margin-bottom:20px}
+.footer-logo{font-family:var(--font-head);font-size:16px;font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:5px}
+.footer-tag{font-size:13px;color:rgba(255,255,255,.25);line-height:1.55;max-width:220px}
+.footer-links{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.footer-link{font-size:13px;color:rgba(255,255,255,.25);text-decoration:none;transition:color .15s}
+.footer-link:hover{color:rgba(255,255,255,.6)}
+.footer-disc{border-top:1px solid rgba(255,255,255,.06);padding-top:18px;font-size:12.5px;color:rgba(255,255,255,.18);line-height:1.8}
+.footer-disc strong{color:rgba(255,255,255,.3)}
+.footer-disc a{color:#68d48a;text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="disc-bar">
+  <p>Not tax advice. Sourced from <a href="https://www.gov.uk" target="_blank">HMRC gov.uk</a>. Always verify with a qualified adviser or <a href="https://www.gov.uk/contact-hmrc" target="_blank">contact HMRC</a>.</p>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">TaxClear</a>
+    <div class="nav-persona">
+      <a href="sole-trader.html" class="nav-p-btn active">🧾 Sole Trader</a>
+      <a href="employee.html" class="nav-p-btn">💼 Employee</a>
+      <a href="company.html" class="nav-p-btn">🏢 Limited Company</a>
+    </div>
+    <a href="index.html" class="nav-home">← All guides</a>
+    <button class="hamburger" onclick="openMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mob-menu" onclick="if(event.target===this)closeMenu()">
+  <div class="mobile-menu-panel">
+    <div class="mobile-menu-header"><div class="mobile-menu-logo">TaxClear</div><button class="mobile-close" onclick="closeMenu()">✕</button></div>
+    <div class="mob-section-head">Sole Trader</div>
+    <button class="mob-nav-btn active" id="mn-rates" onclick="goTab('rates')"><span>📊</span><span>Tax Rates</span></button>
+    <button class="mob-nav-btn" id="mn-calc" onclick="goTab('calc')"><span>💰</span><span>Calculator</span></button>
+    <button class="mob-nav-btn" id="mn-expenses" onclick="goTab('expenses')"><span>🧾</span><span>Expenses</span></button>
+    <button class="mob-nav-btn" id="mn-guides" onclick="goTab('guides')"><span>📋</span><span>Filing Guides</span></button>
+    <button class="mob-nav-btn" id="mn-deadlines" onclick="goTab('deadlines')"><span>📅</span><span>Deadlines</span></button>
+    <button class="mob-nav-btn" id="mn-pensions" onclick="goTab('pensions')"><span>🏦</span><span>Pensions</span></button>
+    <div class="mob-sep"></div>
+    <div class="mob-section-head">Switch type</div>
+    <a href="employee.html" class="mob-nav-link"><span>💼</span>Employee</a>
+    <a href="company.html" class="mob-nav-link"><span>🏢</span>Limited Company</a>
+    <a href="index.html" class="mob-nav-link"><span>🏠</span>Home</a>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-breadcrumb"><a href="index.html">TaxClear</a> <span>›</span> <span>Sole Trader</span></div>
+    <h1>Sole Trader<br><em>tax guide.</em></h1>
+    <p>Income Tax, NI, expenses, VAT and Self Assessment — all in plain English. Sourced directly from HMRC gov.uk.</p>
+  </div>
+</header>
+
+<div class="tab-wrap">
+  <div class="tab-nav">
+    <button class="tab-btn active" data-tab="rates" onclick="switchTab('rates',this)"><span class="tab-btn-icon">📊</span><span>Tax Rates</span></button>
+    <button class="tab-btn" data-tab="calc" onclick="switchTab('calc',this)"><span class="tab-btn-icon">💰</span><span>Calculator</span></button>
+    <button class="tab-btn" data-tab="expenses" onclick="switchTab('expenses',this)"><span class="tab-btn-icon">🧾</span><span>Expenses</span></button>
+    <button class="tab-btn" data-tab="guides" onclick="switchTab('guides',this)"><span class="tab-btn-icon">📋</span><span>Guides</span></button>
+    <button class="tab-btn" data-tab="deadlines" onclick="switchTab('deadlines',this)"><span class="tab-btn-icon">📅</span><span>Deadlines</span></button>
+    <button class="tab-btn" data-tab="pensions" onclick="switchTab('pensions',this)"><span class="tab-btn-icon">🏦</span><span>Pensions</span></button>
+  </div>
+</div>
+
+<main class="main">
+
+<!-- ═══════ TAX RATES ═══════ -->
+<div id="tab-rates" class="tab-content active">
+  <div class="sh">
+    <div class="sh-label">2024/25 Tax Year</div>
+    <h2 class="sh-title">Tax rates for sole traders</h2>
+    <p class="sh-sub">As a sole trader you pay Income Tax on your profits plus National Insurance Classes 2 and 4 — all through your Self Assessment return.</p>
+  </div>
+  <div class="disc-inline">⚠️ <strong>General information only.</strong> All figures are 2024/25 HMRC rates. <a href="https://www.gov.uk/income-tax-rates" target="_blank">Verify on gov.uk →</a></div>
+
+  <div class="region-toggle">
+    <button class="region-btn active" id="reg-eng" onclick="setRegion('england')">England / Wales / N. Ireland</button>
+    <button class="region-btn" id="reg-sco" onclick="setRegion('scotland')">Scotland</button>
+  </div>
+
+  <!-- Income Tax bands -->
+  <div class="band-diagram">
+    <div class="band-diagram-head">
+      <h3 id="band-title">Income Tax Bands — England, Wales &amp; N. Ireland 2024/25</h3>
+      <p>Applied to your profits after allowable expenses and the personal allowance.</p>
+    </div>
+    <div class="band-diagram-body">
+      <div class="tax-stack" id="band-stack"></div>
+      <div class="band-legend" id="band-legend"></div>
+    </div>
+  </div>
+
+  <!-- NI -->
+  <h3 style="font-size:12px;font-weight:700;color:var(--c7);letter-spacing:.08em;text-transform:uppercase;margin:28px 0 16px">National Insurance</h3>
+  <div class="card-grid">
+    <div class="card card-sm">
+      <h4 style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:5px;letter-spacing:-.01em">Class 2 NI — flat rate</h4>
+      <p style="font-size:14px;color:var(--sub);margin-bottom:14px;line-height:1.65">Paid if profits exceed £12,570. Protects your State Pension entitlement.</p>
+      <div class="rate-row" style="background:var(--c2)"><span>Profits above £12,570</span><span style="color:var(--ink)">£3.45 / week</span></div>
+      <div class="rate-row" style="background:var(--c1)"><span>Profits under £12,570</span><span style="color:var(--sub)">Voluntary only</span></div>
+      <a href="https://www.gov.uk/self-employed-national-insurance-rates" target="_blank" class="gov-link">🔗 Class 2 NI on gov.uk →</a>
+    </div>
+    <div class="card card-sm">
+      <h4 style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:5px;letter-spacing:-.01em">Class 4 NI — on profits</h4>
+      <p style="font-size:14px;color:var(--sub);margin-bottom:14px;line-height:1.65">Calculated automatically in your Self Assessment return.</p>
+      <div class="ni-bar-wrap">
+        <div class="ni-bar-row"><div class="ni-bar-label">Below £12,570</div><div class="ni-bar-track"><div class="ni-bar-fill" style="width:0%;background:var(--c3)"></div></div><div class="ni-bar-val">0%</div></div>
+        <div class="ni-bar-row"><div class="ni-bar-label">£12,570 – £50,270</div><div class="ni-bar-track"><div class="ni-bar-fill" style="width:60%"></div></div><div class="ni-bar-val">6%</div></div>
+        <div class="ni-bar-row"><div class="ni-bar-label">Above £50,270</div><div class="ni-bar-track"><div class="ni-bar-fill" style="width:20%;background:var(--c5)"></div></div><div class="ni-bar-val">2%</div></div>
+      </div>
+      <a href="https://www.gov.uk/self-employed-national-insurance-rates" target="_blank" class="gov-link">🔗 Class 4 NI on gov.uk →</a>
+    </div>
+  </div>
+
+  <!-- Total tax diagram -->
+  <h3 style="font-size:12px;font-weight:700;color:var(--c7);letter-spacing:.08em;text-transform:uppercase;margin:28px 0 16px">Total tax at different profit levels</h3>
+  <div class="card">
+    <p style="font-size:14px;color:var(--sub);line-height:1.7;margin-bottom:18px">Combined Income Tax + Class 2 + Class 4 NI. <em>Assumes no pension contributions or other deductions.</em></p>
+    <div id="st-tax-chart"></div>
+    <a href="https://www.gov.uk/self-assessment-tax-returns" target="_blank" class="gov-link" style="margin-top:14px">🔗 Self Assessment on gov.uk →</a>
+  </div>
+
+  <!-- Allowances -->
+  <h3 style="font-size:12px;font-weight:700;color:var(--c7);letter-spacing:.08em;text-transform:uppercase;margin:28px 0 16px">Key allowances</h3>
+  <div class="allowance-grid" id="allowance-grid"></div>
+
+  <!-- VAT -->
+  <div class="divider"></div>
+  <h3 style="font-size:12px;font-weight:700;color:var(--c7);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px">VAT</h3>
+  <div class="card card-sm" style="margin-bottom:14px">
+    <h4 style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;letter-spacing:-.01em">Registration threshold: £90,000</h4>
+    <p style="font-size:14px;color:var(--sub);margin-bottom:14px;line-height:1.65">You must register within 30 days of your taxable turnover exceeding £90,000 in any rolling 12-month period.</p>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div class="rate-row" style="background:#90303008;border-left:4px solid #903030"><span>Standard rate — most goods &amp; services</span><span style="color:#903030">20%</span></div>
+      <div class="rate-row" style="background:#a0502008;border-left:4px solid #a05020"><span>Reduced rate — e.g. home energy</span><span style="color:#a05020">5%</span></div>
+      <div class="rate-row" style="background:var(--c2);border-left:4px solid #3d8a52"><span>Zero rate — e.g. food, children's clothing</span><span style="color:#3d8a52">0%</span></div>
+    </div>
+    <a href="https://www.gov.uk/vat-rates" target="_blank" class="gov-link">🔗 VAT rates on gov.uk →</a>
+  </div>
+  <div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-body"><strong>Trading Allowance:</strong> If your self-employment income is £1,000 or less in the tax year, you don't need to register for Self Assessment — the Trading Allowance covers it entirely.</div></div>
+</div>
+
+<!-- ═══════ CALCULATOR ═══════ -->
+<div id="tab-calc" class="tab-content">
+  <div class="sh">
+    <div class="sh-label">Estimate · 2024/25</div>
+    <h2 class="sh-title">Take-home pay calculator</h2>
+    <p class="sh-sub">Estimate your net pay after Income Tax, National Insurance, pension, and student loan.</p>
+  </div>
+  <div class="disc-inline">⚠️ <strong>Estimate only.</strong> Uses standard 2024/25 HMRC rates. <a href="https://www.gov.uk/estimate-income-tax" target="_blank">Use HMRC's official tool for a precise figure →</a></div>
+  <div class="card">
+    <div class="calc-grid">
+      <div class="field"><label class="field-label">Annual Gross Salary</label><div class="field-wrap"><span class="field-pre">£</span><input type="number" class="fi has-pre" id="c-salary" value="35000" oninput="calc()"></div></div>
+      <div class="field"><label class="field-label">Tax Region</label><select class="fi" id="c-region" onchange="calc()"><option value="england">England / Wales / N. Ireland</option><option value="scotland">Scotland</option></select></div>
+    </div>
+    <div class="calc-grid">
+      <div class="field"><label class="field-label">Pension Contribution</label><div class="field-wrap"><input type="number" class="fi has-suf" id="c-pension" value="5" oninput="calc()"><span class="field-suf">%</span></div></div>
+      <div class="field"><label class="field-label">Pension Type</label><select class="fi" id="c-pension-type" onchange="calc()"><option value="sacrifice">Salary Sacrifice</option><option value="relief">Relief at Source</option></select></div>
+    </div>
+    <div class="calc-grid">
+      <div class="field"><label class="field-label">Student Loan</label><select class="fi" id="c-sl" onchange="calc()"><option value="none">None</option><option value="plan1">Plan 1 (£22,015)</option><option value="plan2">Plan 2 (£27,295)</option><option value="plan4">Plan 4 Scotland (£27,660)</option><option value="plan5">Plan 5 (£25,000)</option></select></div>
+      <div class="field"><label class="field-label">Tax Code</label><input type="text" class="fi" id="c-code" value="1257L" oninput="calc()" style="text-transform:uppercase"></div>
+    </div>
+  </div>
+  <div class="calc-result-card">
+    <div class="period-switch">
+      <button class="period-btn active" onclick="setPeriod('year',this)">Annual</button>
+      <button class="period-btn" onclick="setPeriod('month',this)">Monthly</button>
+      <button class="period-btn" onclick="setPeriod('week',this)">Weekly</button>
+    </div>
+    <div class="calc-result-label">Estimated take-home pay</div>
+    <div class="calc-result-amount" id="r-takehome">£0</div>
+    <div class="calc-result-period" id="r-period">per year</div>
+    <div id="r-breakdown"></div>
+    <div class="rate-chips" id="r-chips"></div>
+  </div>
+  <div class="calc-note">⚠️ Estimate only — standard 2024/25 rates, no benefits in kind or non-standard adjustments. <a href="https://www.gov.uk/estimate-income-tax" target="_blank">HMRC official calculator →</a></div>
+</div>
+
+<!-- ═══════ EXPENSES ═══════ -->
+<div id="tab-expenses" class="tab-content">
+  <div class="sh">
+    <div class="sh-label">Sole Traders</div>
+    <h2 class="sh-title">What you can and can't claim</h2>
+    <p class="sh-sub">HMRC says expenses must be wholly and exclusively for business purposes. Tap any item for the detail.</p>
+  </div>
+  <div class="disc-inline">⚠️ <strong>General information from HMRC gov.uk.</strong> Whether an expense is allowable depends on your circumstances. <a href="https://www.gov.uk/expenses-if-youre-self-employed" target="_blank">Verify on gov.uk →</a></div>
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterExp('all',this)">All</button>
+    <button class="filter-btn" onclick="filterExp('ok',this)">✓ Allowable</button>
+    <button class="filter-btn" onclick="filterExp('no',this)">✗ Not Allowable</button>
+  </div>
+  <div id="exp-list">
+    <div class="exp-group"><div class="exp-group-label">🏠 Office &amp; Home</div>
+      <div class="exp-item" data-ok="yes" onclick="toggleExp(this)"><div class="exp-head"><div class="exp-name">Home office (simplified flat rates)</div><div class="exp-right"><div class="badge-ok">✓</div><div class="exp-chevron">▼</div></div></div><div class="exp-body"><p>HMRC flat rates: <strong>£10/month</strong> (25–50 hrs), <strong>£18/month</strong> (51–100 hrs), <strong>£26/month</strong> (101+ hrs). No receipts needed.</p><a href="https://www.gov.uk/expenses-if-youre-self-employed/working-from-home" target="_blank" class="gov-link">🔗 gov.uk →</a></div></div>
+      <div class="exp-item" data-ok="yes" onclick="toggleExp(this)"><div class="exp-head"><div class="exp-name">Office rent &amp; bills (separate workspace)</div><div class="exp-right"><div class="badge-ok">✓</div><div class="exp-chevron">▼</div></div></div><div class="exp-body"><p>100% of rent and utility bills for a separate business workspace are allowable.</p><a href="https://www.gov.uk/expenses-if-youre-self-employed/office-costs" target="_blank" class="gov-link">🔗 gov.uk →</a></div></div>
+      <div class="exp-item" data-ok="no" onclick="toggleExp(this)"><div class="exp-head"><div class="exp-name">Personal mortgage or rent (full amount)</div><div class="exp-right"><div class="badge-no">✗</div><div class="exp-chevron">▼</div></div></div><div class="exp-body"><p>Cannot claim full home costs — only the business proportion via HMRC's simplified flat rates.</p><a href="https://www.gov.uk/expenses-if-youre-self-employed/working-from-home" target="_blank" class="gov-link">🔗 gov.uk →</a></div></div>
+    </div>
+    <div class="exp-group"><div class="exp-group-label">🚗 Travel</div>
+      <div class="exp-item" data-ok="yes" onclick="toggleExp(this)"><div class="exp-head"><div class="exp-name">Business mileage (car)</div><div class="exp-right"><div class="badge-ok">✓</div><div class="exp-chevron">▼</div></div></div><div class="exp-body"><p>HMRC flat rate: <strong>45p/mile</strong> for first 10,000 business miles, then <strong>25p/mile</strong>. Keep a mileage log.</p><a href="https://www.gov.uk/expenses-if-youre-self-employed/travel" target="_blank" class="gov-link">🔗 gov.uk →</a></div></div>
+      <div class="exp-item" data-ok="yes" onclick="toggleExp(this)"><div class="exp-head"><div class="exp-name">Public transport (business journeys)</div><div class="exp-right"><div class="badge-ok">✓</div><div class="exp-chevron">▼</div></div></div><div class="exp-body"><p>Train, bus, taxi fares for genuine business journeys. Keep receipts.</p><a href="https://www.gov.uk/expenses-if-youre-self-employed/travel" target="_blank" class="gov-link">🔗 gov.uk →</a></div></div>
+      <div class="exp-item" data-ok="no" onclick="toggleExp(this)"><div class="exp-head"><div class="exp-name">Commuting to a regular workplace</div><div class="exp-right"><div class="badge-no">✗</div><div class="exp-chevron">▼</div></div></div><div class="exp-body"><p>HMRC considers travel between home and a permanent workplace as personal — not deductible.</p><a href="https://www.gov.uk/expenses-if-youre-self-employed/travel" target="_blank" class="gov-link">🔗 gov.uk →</a></div></div>
+    </div>
+    <div class="exp-group"><div class="exp-group-label">💻 Equipment &amp; Tech</div>
+      <div class="exp-item" data-ok="yes" onclick="toggleExp(this)"><div class="exp-head"><div class="exp-name">Laptop or computer</div><div class="exp-right"><div class="badge-ok">✓</div><div class="exp-chevron">▼</div></div></div><div class="exp-body"><p>100% allowable if wholly for business. Mixed use — only the business proportion. Can use Annual Investment Allowance for full cost in year of purchase.</p><a href="https://www.gov.uk/expenses-if-youre-self-employed/equipment" target="_blank" class="gov-link">🔗 gov.uk →</a></div></div>
+      <div class="exp-item" data-ok="yes" onclick="toggleExp(this)"><div class="exp-head"><div class="exp-name">Software subscriptions (business use)</div><div class="exp-right"><div class="badge-ok">✓</div><div class="exp-chevron">▼</div></div></div><div class="exp-body"><p>Accounting software, design tools, cloud storage used for business — all allowable.</p><a href="https://www.gov.uk/expenses-if-youre-self-employed/equipment" target="_blank" class="gov-link">🔗 gov.uk →</a></div></div>
+      <div class="exp-item" data-ok="no" onclick="toggleExp(this)"><div class="exp-head"><div class="exp-name">Personal phone (full bill)</div><div class="exp-right"><div class="badge-no">✗</div><div class="exp-chevron">▼</div></div></div><div class="exp-body"><p>Only the business proportion is deductible — not the full bill.</p><a href="https://www.gov.uk/expenses-if-youre-self-employed/equipment" target="_blank" class="gov-link">🔗 gov.uk →</a></div></div>
+    </div>
+    <div class="exp-group"><div class="exp-group-label">📄 Professional</div>
+      <div class="exp-item" data-ok="yes" onclick="toggleExp(this)"><div class="exp-head"><div class="exp-name">Accountant fees</div><div class="exp-right"><div class="badge-ok">✓</div><div class="exp-chevron">▼</div></div></div><div class="exp-body"><p>Fees for tax return preparation or bookkeeping — fully allowable.</p><a href="https://www.gov.uk/expenses-if-youre-self-employed/professional-fees" target="_blank" class="gov-link">🔗 gov.uk →</a></div></div>
+      <div class="exp-item" data-ok="yes" onclick="toggleExp(this)"><div class="exp-head"><div class="exp-name">Training in your current trade</div><div class="exp-right"><div class="badge-ok">✓</div><div class="exp-chevron">▼</div></div></div><div class="exp-body"><p>Training that improves existing trade skills is allowable. Learning a new trade — not allowable.</p><a href="https://www.gov.uk/expenses-if-youre-self-employed/training" target="_blank" class="gov-link">🔗 gov.uk →</a></div></div>
+      <div class="exp-item" data-ok="no" onclick="toggleExp(this)"><div class="exp-head"><div class="exp-name">Fines &amp; penalties</div><div class="exp-right"><div class="badge-no">✗</div><div class="exp-chevron">▼</div></div></div><div class="exp-body"><p>HMRC fines, parking fines, and legal penalties are never allowable.</p><a href="https://www.gov.uk/expenses-if-youre-self-employed" target="_blank" class="gov-link">🔗 gov.uk →</a></div></div>
+      <div class="exp-item" data-ok="no" onclick="toggleExp(this)"><div class="exp-head"><div class="exp-name">Client entertaining</div><div class="exp-right"><div class="badge-no">✗</div><div class="exp-chevron">▼</div></div></div><div class="exp-body"><p>HMRC explicitly says client entertaining is not an allowable business expense.</p><a href="https://www.gov.uk/expenses-if-youre-self-employed/advertising-or-marketing" target="_blank" class="gov-link">🔗 gov.uk →</a></div></div>
+    </div>
+    <div class="exp-group"><div class="exp-group-label">📢 Marketing</div>
+      <div class="exp-item" data-ok="yes" onclick="toggleExp(this)"><div class="exp-head"><div class="exp-name">Website &amp; hosting costs</div><div class="exp-right"><div class="badge-ok">✓</div><div class="exp-chevron">▼</div></div></div><div class="exp-body"><p>Domain, hosting, web design and maintenance for your business website — fully allowable.</p><a href="https://www.gov.uk/expenses-if-youre-self-employed/advertising-or-marketing" target="_blank" class="gov-link">🔗 gov.uk →</a></div></div>
+      <div class="exp-item" data-ok="yes" onclick="toggleExp(this)"><div class="exp-head"><div class="exp-name">Advertising costs</div><div class="exp-right"><div class="badge-ok">✓</div><div class="exp-chevron">▼</div></div></div><div class="exp-body"><p>Online ads, print advertising, business cards — all allowable.</p><a href="https://www.gov.uk/expenses-if-youre-self-employed/advertising-or-marketing" target="_blank" class="gov-link">🔗 gov.uk →</a></div></div>
+    </div>
+  </div>
+  <div style="text-align:center;padding:8px 0"><a href="https://www.gov.uk/expenses-if-youre-self-employed" target="_blank" class="gov-link">Full HMRC expenses guide →</a></div>
+</div>
+
+<!-- ═══════ GUIDES ═══════ -->
+<div id="tab-guides" class="tab-content">
+  <div id="guides-list">
+    <div class="sh">
+      <div class="sh-label">Filing Guides</div>
+      <h2 class="sh-title">Step-by-step walkthroughs</h2>
+      <p class="sh-sub">Tick steps as you complete them. Every step links to the original HMRC source.</p>
+    </div>
+    <div class="disc-inline">⚠️ <strong>General information from HMRC gov.uk.</strong> Not personal tax advice.</div>
+    <div class="guide-list-grid">
+      <div class="guide-list-item" onclick="openGuide('sa')"><div class="guide-list-icon">📋</div><div style="flex:1"><div class="guide-list-title">Self Assessment Tax Return</div><div class="guide-list-sub">File your annual return — income, expenses, and payment</div><div class="guide-list-meta"><div class="guide-list-tag">⏱ 2–3 hours</div><div class="guide-list-tag">📅 31 January deadline</div></div></div><div class="guide-list-arrow">›</div></div>
+      <div class="guide-list-item" onclick="openGuide('vat')"><div class="guide-list-icon">🧾</div><div style="flex:1"><div class="guide-list-title">VAT Return</div><div class="guide-list-sub">File your quarterly VAT return via Making Tax Digital</div><div class="guide-list-meta"><div class="guide-list-tag">⏱ 30–60 mins</div><div class="guide-list-tag">📅 1 month + 7 days</div></div></div><div class="guide-list-arrow">›</div></div>
+      <div class="guide-list-item" onclick="openGuide('reg-se')"><div class="guide-list-icon">📝</div><div style="flex:1"><div class="guide-list-title">Register as Self-Employed</div><div class="guide-list-sub">Tell HMRC you've started trading — deadline 5 October</div><div class="guide-list-meta"><div class="guide-list-tag">⏱ 15 mins</div><div class="guide-list-tag">📅 5 October</div></div></div><div class="guide-list-arrow">›</div></div>
+      <div class="guide-list-item" onclick="openGuide('reg-vat')"><div class="guide-list-icon">🏷</div><div style="flex:1"><div class="guide-list-title">Register for VAT</div><div class="guide-list-sub">When you must register and how to do it</div><div class="guide-list-meta"><div class="guide-list-tag">⏱ 20 mins</div><div class="guide-list-tag">📅 Within 30 days</div></div></div><div class="guide-list-arrow">›</div></div>
+    </div>
+  </div>
+
+  <!-- SA Guide -->
+  <div id="guide-sa" class="guide-detail">
+    <button class="back-btn" onclick="closeGuide()">← Back to guides</button>
+    <div class="sh" style="margin-bottom:14px"><h2 class="sh-title" style="font-size:22px">Self Assessment Tax Return</h2><p class="sh-sub">Annual tax return · Deadline 31 January</p></div>
+    <div class="disc-inline">General information from HMRC gov.uk. Not personal tax advice.</div>
+    <div class="progress-track"><div class="progress-fill" id="sa-pfill" style="width:0%"></div></div>
+    <div class="progress-label" id="sa-plabel">0 of 11 steps complete</div>
+    <div class="guide-section-head" style="background:var(--c2);border:1px solid var(--c4);color:var(--mid)"><span>Before you start</span><span id="sa-s1c">0/3</span></div>
+    <div class="step-card" id="sa-sc-1"><div class="step-head" onclick="toggleStep('sa',1)"><div class="step-cb" id="sa-cb-1" onclick="event.stopPropagation();checkStep('sa',1)"></div><div style="flex:1"><div class="step-title" id="sa-t-1">Check if you need to file</div><div class="step-sub">Must file if self-employed with income over £1,000.</div></div><div class="step-chev" id="sa-ch-1">▼</div></div><div class="step-body" id="sa-b-1"><p>HMRC says you must file if you were self-employed and earned more than £1,000, or if HMRC has sent you a notice to file.</p><div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-body"><strong>Also applies if</strong> you had untaxed income over £2,500, earned over £100,000, or claimed Child Benefit while earning over £50,000.</div></div><a href="https://www.gov.uk/check-if-you-need-tax-return" target="_blank" class="gov-link">🔗 Check if you need to file →</a></div></div>
+    <div class="step-card" id="sa-sc-2"><div class="step-head" onclick="toggleStep('sa',2)"><div class="step-cb" id="sa-cb-2" onclick="event.stopPropagation();checkStep('sa',2)"></div><div style="flex:1"><div class="step-title" id="sa-t-2">Register with HMRC</div><div class="step-sub">First time? Register by 5 October in your second year.</div></div><div class="step-chev" id="sa-ch-2">▼</div></div><div class="step-body" id="sa-b-2"><p>Go to gov.uk/register-for-self-assessment. HMRC posts your UTR (10-digit number) within 10 working days — it cannot be emailed.</p><div class="callout callout-trap"><div class="callout-icon">🚨</div><div class="callout-body"><strong>Deadline: 5 October.</strong> Missing this can trigger a penalty even if you owe no tax.</div></div><a href="https://www.gov.uk/register-for-self-assessment" target="_blank" class="gov-link">🔗 Register →</a></div></div>
+    <div class="step-card" id="sa-sc-3"><div class="step-head" onclick="toggleStep('sa',3)"><div class="step-cb" id="sa-cb-3" onclick="event.stopPropagation();checkStep('sa',3)"></div><div style="flex:1"><div class="step-title" id="sa-t-3">Gather your records</div><div class="step-sub">Total income, all expense receipts, P60 if also employed.</div></div><div class="step-chev" id="sa-ch-3">▼</div></div><div class="step-body" id="sa-b-3"><p>You'll need: all invoices paid, expense receipts, P60/P45 if also employed, bank statements, UTR, NI number, Government Gateway login.</p><div class="callout callout-info"><div class="callout-icon">ℹ️</div><div class="callout-body"><strong>Keep records 5 years</strong> after the 31 January filing deadline.</div></div><a href="https://www.gov.uk/self-employed-records" target="_blank" class="gov-link">🔗 Record keeping →</a></div></div>
+    <div class="guide-section-head" style="background:var(--blue-bg);border:1px solid var(--blue-bd);color:var(--blue);margin-top:20px"><span>Completing the return</span><span id="sa-s2c">0/4</span></div>
+    <div class="step-card" id="sa-sc-4"><div class="step-head" onclick="toggleStep('sa',4)"><div class="step-cb" id="sa-cb-4" onclick="event.stopPropagation();checkStep('sa',4)"></div><div style="flex:1"><div class="step-title" id="sa-t-4">Simplified vs full expenses</div><div class="step-sub">Under £85k turnover? Use the simple 3-box version.</div></div><div class="step-chev" id="sa-ch-4">▼</div></div><div class="step-body" id="sa-b-4"><div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-body"><strong>Under £85,000:</strong> Fill in just three boxes — total income, total expenses, profit.</div></div><div class="eg-box"><div class="eg-head">Simplified example</div><div class="eg-row"><span>Total turnover</span><span>£42,000</span></div><div class="eg-row"><span>Allowable expenses</span><span>£8,500</span></div><div class="eg-row total"><span>Net profit</span><span>£33,500</span></div></div><a href="https://www.gov.uk/self-assessment-tax-returns/self-employment-income" target="_blank" class="gov-link">🔗 Self-employment income →</a></div></div>
+    <div class="step-card" id="sa-sc-5"><div class="step-head" onclick="toggleStep('sa',5)"><div class="step-cb" id="sa-cb-5" onclick="event.stopPropagation();checkStep('sa',5)"></div><div style="flex:1"><div class="step-title" id="sa-t-5">Enter allowable expenses only</div><div class="step-sub">No personal costs, no client entertaining.</div></div><div class="step-chev" id="sa-ch-5">▼</div></div><div class="step-body" id="sa-b-5"><div class="allowable-2col"><div class="al-col al-col-yes"><div class="al-col-head">✓ Allowable</div><div class="al-item">· Office costs</div><div class="al-item">· Mileage (45p/mile)</div><div class="al-item">· Equipment</div><div class="al-item">· Accountant fees</div></div><div class="al-col al-col-no"><div class="al-col-head">✗ Not allowable</div><div class="al-item">· Personal clothing</div><div class="al-item">· Client entertaining</div><div class="al-item">· Home mortgage</div><div class="al-item">· Fines &amp; penalties</div></div></div><a href="https://www.gov.uk/expenses-if-youre-self-employed" target="_blank" class="gov-link">🔗 Expenses guidance →</a></div></div>
+    <div class="step-card" id="sa-sc-6"><div class="step-head" onclick="toggleStep('sa',6)"><div class="step-cb" id="sa-cb-6" onclick="event.stopPropagation();checkStep('sa',6)"></div><div style="flex:1"><div class="step-title" id="sa-t-6">Class 4 NI — why your bill is bigger than expected</div><div class="step-sub">NI is calculated through Self Assessment. Surprises most first-time filers.</div></div><div class="step-chev" id="sa-ch-6">▼</div></div><div class="step-body" id="sa-b-6"><div class="callout callout-trap"><div class="callout-icon">🚨</div><div class="callout-body"><strong>Your bill includes National Insurance.</strong> Both Income Tax AND NI appear together.</div></div><div class="eg-box"><div class="eg-head">Example — £28,000 profit</div><div class="eg-row"><span>Income Tax (20%)</span><span>£3,086</span></div><div class="eg-row"><span>Class 2 NI</span><span>£179</span></div><div class="eg-row"><span>Class 4 NI (6%)</span><span>£926</span></div><div class="eg-row red"><span>Total bill</span><span>£4,191</span></div></div><a href="https://www.gov.uk/self-employed-national-insurance-rates" target="_blank" class="gov-link">🔗 NI rates →</a></div></div>
+    <div class="step-card" id="sa-sc-7"><div class="step-head" onclick="toggleStep('sa',7)"><div class="step-cb" id="sa-cb-7" onclick="event.stopPropagation();checkStep('sa',7)"></div><div style="flex:1"><div class="step-title" id="sa-t-7">Other income sections</div><div class="step-sub">Leave blank anything that doesn't apply.</div></div><div class="step-chev" id="sa-ch-7">▼</div></div><div class="step-body" id="sa-b-7"><p>· <strong>Employment:</strong> Complete if also employed (use your P60)<br>· <strong>UK interest:</strong> Savings interest over £500<br>· <strong>Capital gains:</strong> If you sold assets or property</p><a href="https://www.gov.uk/self-assessment-tax-returns" target="_blank" class="gov-link">🔗 Self Assessment →</a></div></div>
+    <div class="guide-section-head" style="background:var(--amber-bg);border:1px solid var(--amber-bd);color:var(--amber);margin-top:20px"><span>Submitting and paying</span><span id="sa-s3c">0/4</span></div>
+    <div class="step-card" id="sa-sc-8"><div class="step-head" onclick="toggleStep('sa',8)"><div class="step-cb" id="sa-cb-8" onclick="event.stopPropagation();checkStep('sa',8)"></div><div style="flex:1"><div class="step-title" id="sa-t-8">Review before submitting</div><div class="step-sub">HMRC shows a full summary — check your figures carefully.</div></div><div class="step-chev" id="sa-ch-8">▼</div></div><div class="step-body" id="sa-b-8"><p>Check your profit figure, turnover, and expenses. HMRC allows amendments up to 12 months after the original deadline.</p><a href="https://www.gov.uk/self-assessment-tax-returns" target="_blank" class="gov-link">🔗 Self Assessment →</a></div></div>
+    <div class="step-card" id="sa-sc-9"><div class="step-head" onclick="toggleStep('sa',9)"><div class="step-cb" id="sa-cb-9" onclick="event.stopPropagation();checkStep('sa',9)"></div><div style="flex:1"><div class="step-title" id="sa-t-9">Submit by 31 January</div><div class="step-sub">Late = automatic £100 penalty, even if you owe nothing.</div></div><div class="step-chev" id="sa-ch-9">▼</div></div><div class="step-body" id="sa-b-9"><div class="callout callout-trap"><div class="callout-icon">🚨</div><div class="callout-body"><strong>£100 automatic penalty</strong> for missing 31 January — even if you owe no tax.</div></div><div class="penalty-wrap"><div class="penalty-row"><span class="penalty-time">1 day late</span><span class="penalty-amount">£100 automatic</span></div><div class="penalty-row"><span class="penalty-time">3 months late</span><span class="penalty-amount">£10/day (up to £900)</span></div><div class="penalty-row"><span class="penalty-time">6 months late</span><span class="penalty-amount">£300 or 5% of tax</span></div></div><a href="https://www.gov.uk/self-assessment-tax-returns/deadlines" target="_blank" class="gov-link">🔗 Deadlines →</a></div></div>
+    <div class="step-card" id="sa-sc-10"><div class="step-head" onclick="toggleStep('sa',10)"><div class="step-cb" id="sa-cb-10" onclick="event.stopPropagation();checkStep('sa',10)"></div><div style="flex:1"><div class="step-title" id="sa-t-10">Pay your tax bill</div><div class="step-sub">Also due 31 January. Faster Payments is instant and free.</div></div><div class="step-chev" id="sa-ch-10">▼</div></div><div class="step-body" id="sa-b-10"><p>Pay via gov.uk/pay-self-assessment-tax-bill. Use your UTR as reference. Interest accrues at 7.25%/year from 1 February.</p><a href="https://www.gov.uk/pay-self-assessment-tax-bill" target="_blank" class="gov-link">🔗 Pay your bill →</a></div></div>
+    <div class="step-card" id="sa-sc-11"><div class="step-head" onclick="toggleStep('sa',11)"><div class="step-cb" id="sa-cb-11" onclick="event.stopPropagation();checkStep('sa',11)"></div><div style="flex:1"><div class="step-title" id="sa-t-11">Payments on account — the one that catches everyone out</div><div class="step-sub">Bill over £1,000? HMRC also charges for NEXT year.</div></div><div class="step-chev" id="sa-ch-11">▼</div></div><div class="step-body" id="sa-b-11"><div class="callout callout-trap"><div class="callout-icon">🚨</div><div class="callout-body"><strong>The biggest shock for first-time filers.</strong> If your bill exceeds £1,000, HMRC charges two advance payments for next year — 50% each — on top of your current bill.</div></div><div class="eg-box"><div class="eg-head">Example — £4,000 tax bill</div><div class="eg-row"><span>Your 2023/24 tax bill</span><span>£4,000</span></div><div class="eg-row"><span>1st payment on account</span><span>£2,000</span></div><div class="eg-row red"><span>Total due 31 January</span><span>£6,000</span></div><div class="eg-row"><span>2nd payment on account</span><span>£2,000 — 31 July</span></div></div><div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-body"><strong>Set aside 25–30% of every invoice</strong> into a separate savings account from day one.</div></div><a href="https://www.gov.uk/understand-self-assessment-bill/payments-on-account" target="_blank" class="gov-link">🔗 Payments on account →</a></div></div>
+    <div id="sa-complete" style="background:var(--c2);border:1px solid var(--c4);border-radius:var(--r-lg);padding:24px;text-align:center;margin-top:10px;display:none">
+      <div style="font-size:36px;margin-bottom:10px">✅</div>
+      <div style="font-family:var(--font-head);font-size:17px;font-weight:700;color:var(--c7);margin-bottom:6px">All steps complete</div>
+      <div style="font-size:13.5px;color:var(--sub);line-height:1.65">Keep your records for at least 5 years after the filing deadline.</div>
+    </div>
+  </div>
+
+  <!-- VAT Guide -->
+  <div id="guide-vat" class="guide-detail">
+    <button class="back-btn" onclick="closeGuide()">← Back to guides</button>
+    <div class="sh" style="margin-bottom:14px"><h2 class="sh-title" style="font-size:22px">VAT Return</h2><p class="sh-sub">File quarterly · 1 month + 7 days after period end</p></div>
+    <div class="disc-inline">General information from HMRC gov.uk. Not personal tax advice.</div>
+    <div class="step-card"><div class="step-head" onclick="toggleSS(this)"><div style="flex:1"><div class="step-title">You must use MTD-compatible software</div></div><div class="step-chev">▼</div></div><div class="step-body"><p>All VAT returns must be submitted via Making Tax Digital. Use FreeAgent, QuickBooks, Xero, Sage, or another MTD-compatible tool.</p><a href="https://www.gov.uk/guidance/use-making-tax-digital-for-vat" target="_blank" class="gov-link">🔗 MTD for VAT →</a></div></div>
+    <div class="step-card"><div class="step-head" onclick="toggleSS(this)"><div style="flex:1"><div class="step-title">Box 1 — VAT charged on sales (output tax)</div></div><div class="step-chev">▼</div></div><div class="step-body"><p>Total VAT on all your sales invoices for the period.</p><a href="https://www.gov.uk/vat-returns/fill-in-your-return" target="_blank" class="gov-link">🔗 Completing your return →</a></div></div>
+    <div class="step-card"><div class="step-head" onclick="toggleSS(this)"><div style="flex:1"><div class="step-title">Box 4 — VAT reclaimed on purchases (input tax)</div></div><div class="step-chev">▼</div></div><div class="step-body"><p>Total VAT on your business purchase receipts that you're reclaiming.</p><a href="https://www.gov.uk/vat-returns/fill-in-your-return" target="_blank" class="gov-link">🔗 Completing your return →</a></div></div>
+    <div class="step-card"><div class="step-head" onclick="toggleSS(this)"><div style="flex:1"><div class="step-title">Submit and pay — same deadline</div></div><div class="step-chev">▼</div></div><div class="step-body"><p>File via your MTD software. Payment due same date. Points-based penalty system since Jan 2023 — 4 points earns a £200 penalty.</p><div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-body">Set up a Direct Debit to HMRC for VAT to avoid forgetting.</div></div><a href="https://www.gov.uk/pay-vat" target="_blank" class="gov-link">🔗 Pay your VAT bill →</a></div></div>
+  </div>
+
+  <!-- Register SE Guide -->
+  <div id="guide-reg-se" class="guide-detail">
+    <button class="back-btn" onclick="closeGuide()">← Back to guides</button>
+    <div class="sh" style="margin-bottom:14px"><h2 class="sh-title" style="font-size:22px">Register as Self-Employed</h2><p class="sh-sub">Deadline: 5 October in second year of trading</p></div>
+    <div class="disc-inline">General information from HMRC gov.uk. Not personal tax advice.</div>
+    <div class="step-card"><div class="step-head" onclick="toggleSS(this)"><div style="flex:1"><div class="step-title">When you must register</div></div><div class="step-chev">▼</div></div><div class="step-body"><p>Register if you earned more than £1,000 from self-employment in a tax year.</p><div class="callout callout-trap"><div class="callout-icon">🚨</div><div class="callout-body"><strong>Deadline: 5 October</strong> in the second tax year. Missing this can mean a penalty even if you owe no tax.</div></div><a href="https://www.gov.uk/register-for-self-assessment/self-employed" target="_blank" class="gov-link">🔗 Register →</a></div></div>
+    <div class="step-card"><div class="step-head" onclick="toggleSS(this)"><div style="flex:1"><div class="step-title">Register online at gov.uk</div></div><div class="step-chev">▼</div></div><div class="step-body"><p>Go to gov.uk/register-for-self-assessment. You'll need your NI number, contact details, business start date, and description of your trade.</p><a href="https://www.gov.uk/register-for-self-assessment/self-employed" target="_blank" class="gov-link">🔗 Register online →</a></div></div>
+    <div class="step-card"><div class="step-head" onclick="toggleSS(this)"><div style="flex:1"><div class="step-title">Wait for your UTR by post (10 working days)</div></div><div class="step-chev">▼</div></div><div class="step-body"><p>HMRC posts your UTR — a 10-digit number — within 10 working days. It cannot be emailed. Register early.</p><a href="https://www.gov.uk/find-utr-number" target="_blank" class="gov-link">🔗 Find your UTR →</a></div></div>
+    <div class="step-card"><div class="step-head" onclick="toggleSS(this)"><div style="flex:1"><div class="step-title">NI — nothing separate to set up</div></div><div class="step-chev">▼</div></div><div class="step-body"><p>Class 2 and Class 4 NI are both calculated and paid through your Self Assessment return.</p><a href="https://www.gov.uk/self-employed-national-insurance-rates" target="_blank" class="gov-link">🔗 NI for self-employed →</a></div></div>
+  </div>
+
+  <!-- Register VAT Guide -->
+  <div id="guide-reg-vat" class="guide-detail">
+    <button class="back-btn" onclick="closeGuide()">← Back to guides</button>
+    <div class="sh" style="margin-bottom:14px"><h2 class="sh-title" style="font-size:22px">Register for VAT</h2><p class="sh-sub">Compulsory above £90,000 taxable turnover</p></div>
+    <div class="disc-inline">General information from HMRC gov.uk. Not personal tax advice.</div>
+    <div class="step-card"><div class="step-head" onclick="toggleSS(this)"><div style="flex:1"><div class="step-title">The £90,000 threshold</div></div><div class="step-chev">▼</div></div><div class="step-body"><p>HMRC requires registration when taxable turnover exceeds £90,000 in any rolling 12-month period, or if you expect to exceed £90,000 in the next 30 days.</p><div class="callout callout-trap"><div class="callout-icon">🚨</div><div class="callout-body"><strong>Register within 30 days</strong> of breaching the threshold. HMRC backdates registration and late registration can mean a penalty.</div></div><a href="https://www.gov.uk/vat-registration/when-to-register" target="_blank" class="gov-link">🔗 When to register →</a></div></div>
+    <div class="step-card"><div class="step-head" onclick="toggleSS(this)"><div style="flex:1"><div class="step-title">Register and sign up for MTD</div></div><div class="step-chev">▼</div></div><div class="step-body"><p>Register at gov.uk/vat-registration via Government Gateway. Then sign up for Making Tax Digital for VAT before your first return.</p><a href="https://www.gov.uk/vat-registration/how-to-register" target="_blank" class="gov-link">🔗 How to register →</a></div></div>
+  </div>
+</div>
+
+<!-- ═══════ DEADLINES ═══════ -->
+<div id="tab-deadlines" class="tab-content">
+  <div class="sh">
+    <div class="sh-label">Key HMRC Dates</div>
+    <h2 class="sh-title">Deadlines for sole traders</h2>
+    <p class="sh-sub">All dates sourced from HMRC gov.uk. Tap any deadline to view the original guidance.</p>
+  </div>
+  <div id="dl-list"></div>
+  <div style="background:var(--c2);border:1px solid var(--c4);border-radius:var(--r-lg);padding:16px 18px;margin-top:6px">
+    <div style="font-size:12px;font-weight:700;color:var(--c7);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">⚡ Making Tax Digital for Income Tax</div>
+    <p style="font-size:14px;color:var(--sub);line-height:1.7;margin-bottom:8px">MTD for Income Tax starts <strong style="color:var(--ink)">April 2026</strong> for sole traders earning over £50,000, and <strong style="color:var(--ink)">April 2027</strong> for those over £30,000.</p>
+    <a href="https://www.gov.uk/guidance/find-software-thats-compatible-with-making-tax-digital-for-income-tax" target="_blank" class="gov-link" style="margin-top:0">🔗 MTD for Income Tax →</a>
+  </div>
+</div>
+
+<!-- ═══════ PENSIONS ═══════ -->
+<div id="tab-pensions" class="tab-content">
+  <div class="sh">
+    <div class="sh-label">Pensions</div>
+    <h2 class="sh-title">Find &amp; consolidate old pension pots</h2>
+    <p class="sh-sub">The average UK worker has 11 jobs — meaning potentially 11 different pension pots. Here's how to find them.</p>
+  </div>
+  <div class="disc-inline">⚠️ <strong>General information only</strong> — sourced from <a href="https://www.moneyhelper.org.uk" target="_blank">MoneyHelper</a> and <a href="https://www.gov.uk/pension-tracing" target="_blank">gov.uk</a>. For defined benefit pensions over £30,000, the FCA requires regulated financial advice before transferring.</div>
+  <div class="pension-stats">
+    <div class="pstat"><div class="pstat-n">2.8M</div><div class="pstat-l">Lost pension pots in the UK</div></div>
+    <div class="pstat"><div class="pstat-n">£26.6bn</div><div class="pstat-l">Estimated combined value</div></div>
+    <div class="pstat"><div class="pstat-n">11</div><div class="pstat-l">Average jobs in a lifetime</div></div>
+    <div class="pstat"><div class="pstat-n">£9,470</div><div class="pstat-l">Average lost pot value</div></div>
+  </div>
+  <div class="pension-step"><div class="pension-step-head" onclick="togglePension(this)"><div class="pension-step-num">1</div><div style="flex:1"><div class="pension-step-title">List every employer you've had</div><div class="pension-step-sub">Each employer may have enrolled you in a different scheme</div></div><div class="pension-step-chev">▼</div></div><div class="pension-step-body"><p>Go through your employment history and note every employer with approximate dates. Check old payslips, P60s, or P45s. Your Personal Tax Account at gov.uk shows employment history going back several years.</p><a href="https://www.gov.uk/personal-tax-account" target="_blank" class="gov-link">🔗 Personal Tax Account →</a></div></div>
+  <div class="pension-step"><div class="pension-step-head" onclick="togglePension(this)"><div class="pension-step-num">2</div><div style="flex:1"><div class="pension-step-title">Use the Pension Tracing Service</div><div class="pension-step-sub">Free — finds contact details for any UK workplace pension</div></div><div class="pension-step-chev">▼</div></div><div class="pension-step-body"><p>The Pension Tracing Service searches over 200,000 pension schemes. Enter an employer's name — it tells you who to contact.</p><a href="https://www.gov.uk/find-pension-contact-details" target="_blank" class="gov-link">🔗 Pension Tracing Service →</a></div></div>
+  <div class="pension-step"><div class="pension-step-head" onclick="togglePension(this)"><div class="pension-step-num">3</div><div style="flex:1"><div class="pension-step-title">Contact each provider — request a transfer value</div><div class="pension-step-sub">Check type, value, and any exit charges</div></div><div class="pension-step-chev">▼</div></div><div class="pension-step-body"><p>Ask for: current transfer value, pension type, any transfer penalties, any protected benefits (guaranteed annuity rates), and fund performance.</p><div class="callout callout-warn"><div class="callout-icon">⚠️</div><div class="callout-body"><strong>Don't transfer without this information.</strong> Some older pensions have valuable guarantees lost on transfer.</div></div><a href="https://www.moneyhelper.org.uk/en/pensions-and-retirement/pension-problems/tracing-lost-pension" target="_blank" class="gov-link">🔗 MoneyHelper pension tracing →</a></div></div>
+  <div class="pension-step"><div class="pension-step-head" onclick="togglePension(this)"><div class="pension-step-num">4</div><div style="flex:1"><div class="pension-step-title">Check before transferring</div><div class="pension-step-sub">Some protections are lost forever</div></div><div class="pension-step-chev">▼</div></div><div class="pension-step-body"><div class="pension-checks"><div class="pcheck pcheck-warn"><div class="pcheck-title">⚠️ Defined Benefit pensions</div><div class="pcheck-body">Final salary or career average. FCA requires advice for transfers over £30,000.</div></div><div class="pcheck pcheck-warn"><div class="pcheck-title">⚠️ Guaranteed Annuity Rates</div><div class="pcheck-body">Permanently lost on transfer.</div></div><div class="pcheck pcheck-ok"><div class="pcheck-title">✓ High charges</div><div class="pcheck-body">Old pensions can charge 1.5%+ per year. Modern ones typically 0.1–0.5%.</div></div><div class="pcheck pcheck-warn"><div class="pcheck-title">⚠️ Pension scams</div><div class="pcheck-body">Only transfer to FCA-authorised providers. Check at register.fca.org.uk.</div></div></div><a href="https://www.moneyhelper.org.uk/en/pensions-and-retirement/building-your-retirement-pot/should-i-transfer-my-pension" target="_blank" class="gov-link">🔗 Should I transfer — MoneyHelper →</a></div></div>
+  <div class="pension-step"><div class="pension-step-head" onclick="togglePension(this)"><div class="pension-step-num">5</div><div style="flex:1"><div class="pension-step-title">Check your State Pension forecast</div><div class="pension-step-sub">You need 35 qualifying NI years for the full amount</div></div><div class="pension-step-chev">▼</div></div><div class="pension-step-body"><p>The full New State Pension is <strong>£221.20/week</strong> (2024/25). Check your forecast at gov.uk/check-state-pension. Filling NI gaps costs ~£824/year and adds ~£303/year for life.</p><a href="https://www.gov.uk/check-state-pension" target="_blank" class="gov-link">🔗 Check your State Pension →</a></div></div>
+  <div style="background:var(--c2);border:1px solid var(--c4);border-radius:var(--r-lg);padding:18px 20px;margin-top:8px">
+    <div style="font-size:12px;font-weight:700;color:var(--c7);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">Free help available</div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <a href="https://www.moneyhelper.org.uk/en/pensions-and-retirement" target="_blank" class="gov-link" style="margin-top:0;font-size:14px">🔗 MoneyHelper — free pension guidance →</a>
+      <a href="https://www.gov.uk/find-pension-contact-details" target="_blank" class="gov-link" style="margin-top:0;font-size:14px">🔗 Pension Tracing Service →</a>
+      <a href="https://www.pensionwise.gov.uk" target="_blank" class="gov-link" style="margin-top:0;font-size:14px">🔗 Pension Wise — free appointments (over 50s) →</a>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div><div class="footer-logo">TaxClear</div><div class="footer-tag">Plain-English UK tax guidance sourced from HMRC gov.uk.</div></div>
+      <div class="footer-links">
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="employee.html" class="footer-link">Employee</a>
+        <a href="company.html" class="footer-link">Limited Company</a>
+      </div>
+    </div>
+    <div class="footer-disc"><strong>Disclaimer:</strong> TaxClear provides general information sourced from <a href="https://www.gov.uk" target="_blank">gov.uk</a> and MoneyHelper. This is not personal tax advice. For advice tailored to your circumstances, consult a qualified tax adviser or <a href="https://www.gov.uk/contact-hmrc" target="_blank">contact HMRC</a>. All rates are 2024/25.</div>
+  </div>
+</footer>
+
+<script>
+// ── TABS ──────────────────────────────────────────────────────────────────
+const TABS=['rates','calc','expenses','guides','deadlines','pensions'];
+function switchTab(id,btn){
+  TABS.forEach(t=>{document.getElementById('tab-'+t).classList.toggle('active',t===id);});
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));
+  if(id==='guides')closeGuide();
+  document.querySelector('.tab-wrap').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function goTab(id){switchTab(id);closeMenu();document.querySelectorAll('.mob-nav-btn').forEach(b=>b.classList.toggle('active',b.id==='mn-'+id));}
+
+// ── MOBILE MENU ───────────────────────────────────────────────────────────
+function openMenu(){document.getElementById('mob-menu').classList.add('open');document.body.style.overflow='hidden';}
+function closeMenu(){document.getElementById('mob-menu').classList.remove('open');document.body.style.overflow='';}
+
+// ── REGION / BANDS ────────────────────────────────────────────────────────
+let region='england';
+function setRegion(r){
+  region=r;
+  document.getElementById('reg-eng').classList.toggle('active',r==='england');
+  document.getElementById('reg-sco').classList.toggle('active',r==='scotland');
+  buildBands();
+}
+const BANDS_ENG=[
+  {label:'Personal Allowance',rate:0, from:0,     to:12570, color:'#3d8a52'},
+  {label:'Basic Rate',       rate:20,from:12570,  to:50270, color:'#2060a8'},
+  {label:'Higher Rate',      rate:40,from:50270,  to:125140,color:'#a05020'},
+  {label:'Additional Rate',  rate:45,from:125140, to:null,  color:'#903030'},
+];
+const BANDS_SCO=[
+  {label:'Personal Allowance',rate:0, from:0,     to:12570, color:'#3d8a52'},
+  {label:'Starter Rate',     rate:19,from:12570,  to:14876, color:'#2070c0'},
+  {label:'Basic Rate',       rate:20,from:14876,  to:26561, color:'#2060a8'},
+  {label:'Intermediate',     rate:21,from:26561,  to:43662, color:'#4070a0'},
+  {label:'Higher Rate',      rate:42,from:43662,  to:75000, color:'#a05020'},
+  {label:'Top Rate',         rate:48,from:75000,  to:null,  color:'#903030'},
+];
+function buildBands(){
+  const bands=region==='scotland'?BANDS_SCO:BANDS_ENG;
+  document.getElementById('band-title').textContent=region==='scotland'?'Scottish Income Tax Bands 2024/25':'Income Tax Bands — England, Wales & N. Ireland 2024/25';
+  const total=150000;
+  document.getElementById('band-stack').innerHTML=bands.map((b,i)=>{
+    const to=b.to||150000;
+    const pct=((to-b.from)/total*100);
+    const w=Math.max(pct,3).toFixed(1);
+    const narrow=pct<5;
+    const isLast=i===bands.length-1;
+    return `<div class="tax-seg" style="width:${w}%;background:${b.color};position:relative;overflow:visible${isLast?';border-radius:0 8px 8px 0':''}">
+      ${narrow?`<div style="position:absolute;bottom:calc(100% + 4px);left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;color:${b.color};white-space:nowrap;background:#fff;padding:1px 4px;border-radius:4px;border:1px solid ${b.color}">${b.rate}%</div>`:`<span class="tax-seg-label">${b.rate}%</span>`}
+    </div>`;
+  }).join('');
+  document.getElementById('band-legend').innerHTML=bands.map(b=>`
+    <div class="legend-item" style="background:${b.color}0d;border-color:${b.color}22">
+      <div class="legend-dot" style="background:${b.color}"></div>
+      <div>
+        <div class="legend-rate" style="color:${b.color}">${b.rate}%</div>
+        <div class="legend-range">${b.to?'£'+b.from.toLocaleString()+' – £'+b.to.toLocaleString():'Over £'+b.from.toLocaleString()}</div>
+        <div class="legend-label">${b.label}</div>
+      </div>
+    </div>`).join('');
+  // Allowances
+  const ALLOW=[
+    {tag:'Income Tax',n:'£12,570',l:'Personal Allowance'},
+    {tag:'Trading',n:'£1,000',l:'Trading Allowance'},
+    {tag:'Capital Gains',n:'£3,000',l:'Annual Exempt Amount'},
+    {tag:'Savings',n:'£1,000',l:'Personal Savings Allowance'},
+    {tag:'ISA',n:'£20,000',l:'Annual ISA allowance'},
+    {tag:'Pension',n:'£60,000',l:'Annual pension allowance'},
+  ];
+  document.getElementById('allowance-grid').innerHTML=ALLOW.map(a=>`
+    <div class="allowance-card"><div class="allowance-tag">${a.tag}</div><div class="allowance-n">${a.n}</div><div class="allowance-l">${a.l}</div></div>`).join('');
+  buildSTChart();
+}
+function buildSTChart(){
+  const levels=[15000,20000,30000,40000,50000,60000,80000,100000];
+  const max=50000;
+  const el=document.getElementById('st-tax-chart');
+  if(!el)return;
+  el.innerHTML=`<div style="display:flex;flex-direction:column;gap:9px">
+    ${levels.map(p=>{
+      const tax=calcSoleTax(p),ni=calcSoleNI(p),total=tax+ni,rate=(total/p*100).toFixed(0);
+      return `<div style="display:flex;align-items:center;gap:12px">
+        <div style="width:90px;font-size:13px;color:var(--sub);text-align:right;font-variant-numeric:tabular-nums">£${p.toLocaleString()}</div>
+        <div style="flex:1;height:24px;border-radius:6px;overflow:hidden;background:var(--c2)">
+          <div style="height:100%;display:flex">
+            <div style="width:${(tax/max*100).toFixed(1)}%;background:#2060a8;border-radius:5px 0 0 5px"></div>
+            <div style="width:${(ni/max*100).toFixed(1)}%;background:#3d8a52"></div>
+          </div>
+        </div>
+        <div style="font-size:13px;font-weight:600;color:var(--ink);min-width:90px;font-variant-numeric:tabular-nums">£${total.toLocaleString()} <span style="color:var(--sub);font-weight:400">(${rate}%)</span></div>
+      </div>`;
+    }).join('')}
+    <div style="display:flex;gap:14px;margin-top:6px;padding-left:102px">
+      <div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:2px;background:#2060a8"></div><span style="font-size:12.5px;color:var(--sub)">Income Tax</span></div>
+      <div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:2px;background:#3d8a52"></div><span style="font-size:12.5px;color:var(--sub)">NI (Class 2+4)</span></div>
+    </div>
+  </div>`;
+}
+function calcSoleTax(p){const t=Math.max(0,p-12570);return Math.round(Math.min(t,37700)*.2+Math.max(t-37700,0)*.4);}
+function calcSoleNI(p){let n=0;if(p>12570){n+=179;n+=Math.min(p-12570,37700)*.06;}if(p>50270)n+=(p-50270)*.02;return Math.round(n);}
+
+// ── CALCULATOR ────────────────────────────────────────────────────────────
+let period='year';
+function setPeriod(p,btn){period=p;document.querySelectorAll('.period-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');calc();}
+function parseTaxCode(c){const m=((c||'1257L').toUpperCase().trim()).match(/^(\d+)/);if(m)return parseInt(m[1])*10;return c==='NT'?999999:0;}
+function calcTax(taxable,reg){
+  if(reg==='scotland'){let t=0;[[0,2306,.19],[2306,13991,.20],[13991,31092,.21],[31092,62430,.42],[62430,125140,.45],[125140,Infinity,.48]].forEach(([f,to,r])=>{if(taxable>f)t+=(Math.min(taxable,to)-f)*r;});return t;}
+  return Math.min(taxable,37700)*.2+Math.min(Math.max(taxable-37700,0),87440)*.4+Math.max(taxable-125140,0)*.45;
+}
+function calcNI(sal){let n=0;if(sal>12570)n+=Math.min(sal-12570,37700)*.08;if(sal>50270)n+=(sal-50270)*.02;return n;}
+function slCalc(sal,plan){const th={plan1:22015,plan2:27295,plan4:27660,plan5:25000};if(!th[plan]||sal<=th[plan])return 0;return(sal-th[plan])*.09;}
+function fmt(n){return'£'+Math.abs(n).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function calc(){
+  const sal=parseFloat(document.getElementById('c-salary').value)||0;
+  const reg=document.getElementById('c-region').value;
+  const pp=Math.min(parseFloat(document.getElementById('c-pension').value)||0,100)/100;
+  const pt=document.getElementById('c-pension-type').value;
+  const sl=document.getElementById('c-sl').value;
+  const code=document.getElementById('c-code').value;
+  let pa=parseTaxCode(code);
+  if(sal>100000)pa=Math.max(0,pa-Math.floor((sal-100000)/2));
+  const pension=sal*pp;
+  const adjSal=pt==='sacrifice'?sal-pension:sal;
+  const tax=calcTax(Math.max(0,adjSal-pa),reg);
+  const ni=calcNI(adjSal);
+  const slR=sl!=='none'?slCalc(sal,sl):0;
+  const th=sal-tax-ni-pension-slR;
+  const d={year:1,month:12,week:52}[period];
+  const pl={year:'per year',month:'per month',week:'per week'}[period];
+  document.getElementById('r-takehome').textContent=fmt(th/d);
+  document.getElementById('r-period').textContent=pl;
+  const rows=[{l:'Take-home',v:th,c:'#68d48a'},{l:'Income Tax',v:tax,c:'#e09000'},{l:'National Insurance',v:ni,c:'#b83030'},{l:`Pension (${(pp*100).toFixed(0)}%)`,v:pension,c:'#4a6ee0'},...(slR>0?[{l:'Student loan',v:slR,c:'#8b5cf6'}]:[])];
+  document.getElementById('r-breakdown').innerHTML=rows.map(r=>`<div class="breakdown-row"><div class="breakdown-dot" style="background:${r.c}"></div><div class="breakdown-label">${r.l}</div><div class="breakdown-bar-wrap"><div class="breakdown-bar" style="width:${sal>0?(r.v/sal*100).toFixed(1):0}%;background:${r.c}"></div></div><div class="breakdown-amount">${fmt(r.v/d)}</div></div>`).join('');
+  const marginal=sal>125140?'45%':sal>50270?'40%':sal>12570?'20%':'0%';
+  document.getElementById('r-chips').innerHTML=`<div class="rate-chip"><div class="rate-chip-n">${sal>0?(tax/sal*100).toFixed(1):0}%</div><div class="rate-chip-l">Effective tax rate</div></div><div class="rate-chip"><div class="rate-chip-n">${marginal}</div><div class="rate-chip-l">Marginal rate</div></div><div class="rate-chip"><div class="rate-chip-n">${sal>0?((tax+ni)/sal*100).toFixed(1):0}%</div><div class="rate-chip-l">Tax + NI</div></div><div class="rate-chip"><div class="rate-chip-n">${sal>0?(th/sal*100).toFixed(0):0}%</div><div class="rate-chip-l">Kept</div></div>`;
+}
+
+// ── EXPENSES ──────────────────────────────────────────────────────────────
+function toggleExp(el){const body=el.querySelector('.exp-body'),chev=el.querySelector('.exp-chevron'),isOpen=el.classList.contains('exp-open');document.querySelectorAll('.exp-item.exp-open').forEach(e=>{e.classList.remove('exp-open');e.querySelector('.exp-body').classList.remove('open');e.querySelector('.exp-chevron').classList.remove('open');});if(!isOpen){el.classList.add('exp-open');body.classList.add('open');chev.classList.add('open');}}
+function filterExp(type,btn){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.exp-item').forEach(i=>{i.style.display=type==='all'?'':type==='ok'?(i.dataset.ok==='yes'?'':'none'):(i.dataset.ok==='no'?'':'none');});document.querySelectorAll('.exp-group').forEach(g=>{g.style.display=[...g.querySelectorAll('.exp-item')].some(i=>i.style.display!=='none')?'':'none';});}
+
+// ── GUIDES ────────────────────────────────────────────────────────────────
+function openGuide(id){document.getElementById('guides-list').style.display='none';document.querySelectorAll('.guide-detail').forEach(d=>d.classList.remove('open'));const el=document.getElementById('guide-'+id);if(el)el.classList.add('open');document.querySelector('.tab-wrap').scrollIntoView({behavior:'smooth',block:'start'});}
+function closeGuide(){document.querySelectorAll('.guide-detail').forEach(d=>d.classList.remove('open'));document.getElementById('guides-list').style.display='';}
+function toggleSS(h){const b=h.nextElementSibling,c=h.querySelector('.step-chev'),o=b.classList.contains('open');b.classList.toggle('open',!o);if(c)c.classList.toggle('open',!o);}
+const saSet=new Set();
+const SA_TOTAL=11;
+function toggleStep(g,n){const b=document.getElementById(g+'-b-'+n),c=document.getElementById(g+'-ch-'+n),o=b.classList.contains('open');b.classList.toggle('open',!o);if(c)c.classList.toggle('open',!o);}
+function checkStep(g,n){const cb=document.getElementById(g+'-cb-'+n),ti=document.getElementById(g+'-t-'+n),sc=document.getElementById(g+'-sc-'+n),k=g+'-'+n;if(saSet.has(k)){saSet.delete(k);cb.classList.remove('done');cb.textContent='';if(ti)ti.classList.remove('done');if(sc)sc.classList.remove('done');}else{saSet.add(k);cb.classList.add('done');cb.textContent='✓';if(ti)ti.classList.add('done');if(sc)sc.classList.add('done');}updateSA();}
+function updateSA(){const d=saSet.size;const f=document.getElementById('sa-pfill');if(f)f.style.width=(d/SA_TOTAL*100)+'%';const l=document.getElementById('sa-plabel');if(l)l.textContent=d+' of '+SA_TOTAL+' steps complete';const s1=document.getElementById('sa-s1c');if(s1)s1.textContent=[1,2,3].filter(n=>saSet.has('sa-'+n)).length+'/3';const s2=document.getElementById('sa-s2c');if(s2)s2.textContent=[4,5,6,7].filter(n=>saSet.has('sa-'+n)).length+'/4';const s3=document.getElementById('sa-s3c');if(s3)s3.textContent=[8,9,10,11].filter(n=>saSet.has('sa-'+n)).length+'/4';const comp=document.getElementById('sa-complete');if(comp)comp.style.display=d===SA_TOTAL?'block':'none';}
+
+// ── DEADLINES ─────────────────────────────────────────────────────────────
+function buildDeadlines(){
+  const now=new Date(),yr=now.getFullYear();
+  const dl=[
+    {t:'Self Assessment — online filing',d:new Date(yr+1+'-01-31'),desc:'File online and pay any tax owed. File early — systems slow in January.',url:'https://www.gov.uk/self-assessment-tax-returns/deadlines'},
+    {t:'Pay your Self Assessment bill',d:new Date(yr+1+'-01-31'),desc:'Tax owed must be paid by 31 January. 7.25%/year interest from 1 February.',url:'https://www.gov.uk/pay-self-assessment-tax-bill'},
+    {t:'1st payment on account',d:new Date(yr+1+'-01-31'),desc:'First advance payment — 50% of this year\'s bill, charged on top of your balancing payment.',url:'https://www.gov.uk/understand-self-assessment-bill/payments-on-account'},
+    {t:'2nd payment on account',d:new Date(yr+'-07-31'),desc:'Second advance payment — 50% of last year\'s liability. Due 31 July.',url:'https://www.gov.uk/understand-self-assessment-bill/payments-on-account'},
+    {t:'Register as self-employed',d:new Date(yr+'-10-05'),desc:'5 October deadline in second year of trading.',url:'https://www.gov.uk/register-for-self-assessment'},
+    {t:'Self Assessment — paper filing',d:new Date(yr+'-10-31'),desc:'Paper deadline. Most people file online (31 January).',url:'https://www.gov.uk/self-assessment-tax-returns/deadlines'},
+    {t:'VAT return (quarterly)',d:null,desc:'Due 1 month and 7 days after each VAT period ends.',url:'https://www.gov.uk/vat-returns/deadlines'},
+  ].map(x=>{if(!x.d)return x;const days=Math.ceil((x.d-now)/86400000);return{...x,days,urgent:days>0&&days<=60,overdue:days<0};}).sort((a,b)=>!a.d?1:!b.d?-1:a.d-b.d);
+  document.getElementById('dl-list').innerHTML=dl.map(x=>{
+    const bc=!x.d?'dl-badge-rec':x.overdue?'dl-badge-overdue':x.urgent?'dl-badge-urgent':'dl-badge-ok';
+    const bt=!x.d?'Quarterly':x.overdue?'Overdue':x.days===0?'Today':x.days+'d';
+    const cc=x.overdue?'overdue':x.urgent?'urgent':'';
+    const ds=x.d?x.d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}):'';
+    return `<a href="${x.url}" target="_blank" rel="noopener" class="dl-card ${cc}"><div class="dl-header"><div class="dl-title ${x.overdue?'overdue':''}">${x.t}</div><div class="dl-badge ${bc}">${bt}</div></div><div class="dl-desc">${x.desc}</div>${ds?`<div class="dl-date">${ds}</div>`:''}</a>`;
+  }).join('');
+}
+
+// ── PENSIONS ──────────────────────────────────────────────────────────────
+function togglePension(h){const b=h.nextElementSibling,c=h.querySelector('.pension-step-chev'),o=b.classList.contains('open');document.querySelectorAll('.pension-step-body.open').forEach(b=>b.classList.remove('open'));document.querySelectorAll('.pension-step-chev.open').forEach(c=>c.classList.remove('open'));if(!o){b.classList.add('open');c.classList.add('open');}}
+
+// ── INIT ──────────────────────────────────────────────────────────────────
+buildBands();
+calc();
+buildDeadlines();
+
+window.switchTab=switchTab;window.goTab=goTab;window.openMenu=openMenu;window.closeMenu=closeMenu;
+window.setRegion=setRegion;window.setPeriod=setPeriod;window.calc=calc;
+window.filterExp=filterExp;window.toggleExp=toggleExp;
+window.openGuide=openGuide;window.closeGuide=closeGuide;window.toggleStep=toggleStep;window.checkStep=checkStep;window.toggleSS=toggleSS;
+window.togglePension=togglePension;
+</script>
+</body>
+</html>

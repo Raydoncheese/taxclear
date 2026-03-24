@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaxClear — Limited Company Tax Guide</title>
+<meta name="description" content="UK limited company tax guide. Corporation Tax, salary vs dividends, VAT, Making Tax Digital, and filing deadlines. Sourced from HMRC gov.uk.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;1,9..144,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --c0:#fff;--c1:#f8faf9;--c2:#f0f4f2;--c3:#e4ebe6;--c4:#c8d8cc;--c5:#8aab92;
+  --c6:#4a7a58;--c7:#1e5c32;--c8:#0f3320;--c9:#081a10;
+  --ink:#111714;--mid:#3c5044;--sub:#6b8572;--light:#9db8a4;
+  --amber:#c87820;--amber-bg:#fef8ed;--amber-bd:#f0d898;
+  --red:#b83030;--red-bg:#fef2f2;--red-bd:#f0c8c8;
+  --blue:#2850a0;--blue-bg:#f0f4ff;--blue-bd:#c0ccf0;
+  --r:12px;--r-lg:18px;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.04);
+  --font:'Plus Jakarta Sans',system-ui,sans-serif;
+  --font-head:'Fraunces',Georgia,serif;
+}
+html{scroll-behavior:smooth;font-size:17px}
+body{font-family:var(--font);color:var(--ink);background:var(--c0);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+.disc-bar{background:var(--ink);padding:9px 5%;text-align:center}
+.disc-bar p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.6}
+.disc-bar a{color:#68d48a;text-decoration:none}
+
+nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--c3)}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 5%;height:58px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.nav-logo{font-family:var(--font-head);font-size:18px;font-weight:800;color:var(--ink);letter-spacing:-.02em;text-decoration:none;white-space:nowrap}
+.nav-persona{display:flex;gap:3px;align-items:center;overflow-x:auto;scrollbar-width:none;padding:4px 0}
+.nav-persona::-webkit-scrollbar{display:none}
+.nav-p-btn{font-size:13px;font-weight:500;color:var(--sub);text-decoration:none;padding:6px 12px;border-radius:8px;white-space:nowrap;transition:all .15s}
+.nav-p-btn:hover{color:var(--ink);background:var(--c2)}
+.nav-p-btn.active{color:var(--c7);background:var(--c2);font-weight:700}
+.nav-home{font-size:13px;color:var(--sub);text-decoration:none;white-space:nowrap;transition:color .15s}
+.nav-home:hover{color:var(--ink)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
+.hamburger span{width:20px;height:2px;background:var(--ink);border-radius:2px;display:block}
+
+.hero{background:var(--c9);padding:52px 5% 60px;position:relative;overflow:hidden}
+.hero-glow{position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:600px;height:280px;background:radial-gradient(ellipse,rgba(30,92,50,.4) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:700px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.hero-breadcrumb{display:inline-flex;align-items:center;gap:6px;margin-bottom:20px;font-size:13px;color:rgba(255,255,255,.35)}
+.hero-breadcrumb a{color:rgba(255,255,255,.4);text-decoration:none}.hero-breadcrumb a:hover{color:#68d48a}
+.hero h1{font-family:var(--font-head);font-size:clamp(30px,5vw,52px);font-weight:800;color:#fff;letter-spacing:-.02em;line-height:1.08;margin-bottom:14px}
+.hero h1 em{font-style:italic;color:#68d48a}
+.hero p{font-size:clamp(14px,2vw,16px);color:rgba(255,255,255,.4);line-height:1.7;max-width:480px;margin:0 auto}
+
+.tab-wrap{background:var(--c0);border-bottom:1px solid var(--c3);position:sticky;top:58px;z-index:100}
+.tab-nav{max-width:960px;margin:0 auto;padding:0 5%;display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+.tab-nav::-webkit-scrollbar{display:none}
+.tab-btn{display:flex;align-items:center;gap:6px;padding:14px 16px;font-size:13.5px;font-weight:500;color:var(--sub);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;font-family:var(--font);white-space:nowrap;transition:all .15s;margin-bottom:-1px}
+.tab-btn:hover{color:var(--ink)}
+.tab-btn.active{color:var(--c7);border-bottom-color:var(--c7);font-weight:700}
+.tab-btn-icon{font-size:15px}
+
+.main{max-width:960px;margin:0 auto;padding:40px 5% 88px}
+.tab-content{display:none}
+.tab-content.active{display:block;animation:fadeUp .25s ease}
+
+.sh{margin-bottom:28px}
+.sh-label{font-size:12px;font-weight:700;color:var(--c7);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.sh-title{font-family:var(--font-head);font-size:clamp(22px,3vw,30px);font-weight:800;color:var(--ink);letter-spacing:-.02em;margin-bottom:10px;line-height:1.1}
+.sh-sub{font-size:15px;color:var(--sub);line-height:1.75;max-width:560px}
+
+.disc-inline{background:var(--c2);border:1px solid var(--c3);border-left:3px solid var(--c7);border-radius:0 var(--r) var(--r) 0;padding:12px 16px;margin-bottom:24px;font-size:14px;color:var(--mid);line-height:1.65}
+.disc-inline strong{font-weight:600;color:var(--ink)}.disc-inline a{color:var(--c7)}
+
+.card{background:var(--c0);border:1px solid var(--c3);border-radius:var(--r-lg);padding:22px;box-shadow:var(--shadow);transition:border-color .2s}
+.card:hover{border-color:var(--c4)}
+.card-sm{padding:16px 18px}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-bottom:24px}
+.divider{height:1px;background:var(--c3);margin:28px 0}
+
+.callout{display:flex;gap:10px;border-radius:var(--r);padding:13px 15px;margin:12px 0;font-size:14px;line-height:1.65}
+.callout-icon{font-size:15px;flex-shrink:0;margin-top:1px}
+.callout-body{color:var(--mid)}
+.callout-body strong{font-weight:600;color:var(--ink)}
+.callout-tip{background:var(--c2);border:1px solid var(--c4)}
+.callout-tip .callout-body{color:var(--c7)}
+.callout-warn{background:var(--amber-bg);border:1px solid var(--amber-bd)}
+.callout-warn .callout-body{color:#7a4800}
+.callout-trap{background:var(--red-bg);border:1px solid var(--red-bd)}
+.callout-trap .callout-body{color:var(--red)}
+.callout-info{background:var(--blue-bg);border:1px solid var(--blue-bd)}
+.callout-info .callout-body{color:var(--blue)}
+
+.gov-link{display:inline-flex;align-items:center;gap:5px;color:var(--c7);text-decoration:none;font-size:13px;font-weight:600;margin-top:10px;transition:gap .15s}
+.gov-link:hover{gap:8px}
+
+.rate-row{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-radius:9px;font-size:14px;margin-bottom:6px}
+.rate-row span:first-child{color:var(--sub)}
+.rate-row span:last-child{font-weight:700}
+
+/* CT RATE BAR */
+.ct-bar-wrap{margin:14px 0}
+.ct-bar-row{margin-bottom:14px}
+.ct-bar-label-row{display:flex;justify-content:space-between;margin-bottom:6px;font-size:14px}
+.ct-bar-label-row span:first-child{color:var(--sub)}
+.ct-bar-label-row span:last-child{font-weight:700;color:var(--ink)}
+.ct-bar-track{height:14px;background:var(--c2);border-radius:7px;overflow:hidden}
+.ct-bar-fill{height:100%;border-radius:7px}
+
+/* SALARY/DIV COMPARE */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+.compare-col{border-radius:var(--r-lg);padding:18px;border:1.5px solid var(--c3);background:var(--c1)}
+.compare-col.better{border-color:var(--c4);background:var(--c2)}
+.compare-col-head{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;color:var(--sub)}
+.compare-col.better .compare-col-head{color:var(--c7)}
+.compare-row{display:flex;justify-content:space-between;padding:7px 0;font-size:14px;border-bottom:1px solid var(--c3)}
+.compare-row:last-child{border-bottom:none;padding-top:10px;margin-top:4px}
+.compare-row span:first-child{color:var(--sub)}
+.compare-row span:last-child{font-weight:600;color:var(--ink)}
+.compare-row.highlight span:last-child{color:var(--c7);font-size:16px}
+.compare-row.red span:last-child{color:var(--red)}
+
+/* ACCORDION (guides) */
+.accord-card{background:var(--c0);border:1px solid var(--c3);border-radius:var(--r-lg);margin-bottom:8px;overflow:hidden;box-shadow:var(--shadow)}
+.accord-head{padding:16px 20px;display:flex;align-items:flex-start;gap:14px;cursor:pointer;transition:background .15s}
+.accord-head:hover{background:var(--c1)}
+.accord-icon{width:40px;height:40px;border-radius:11px;background:var(--c2);border:1px solid var(--c3);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.accord-title{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:3px;letter-spacing:-.01em;line-height:1.3}
+.accord-sub{font-size:13px;color:var(--sub);line-height:1.4}
+.accord-chev{color:var(--light);font-size:10px;margin-left:auto;margin-top:4px;flex-shrink:0;transition:transform .2s}
+.accord-chev.open{transform:rotate(180deg)}
+.accord-body{border-top:1px solid var(--c3);padding:18px 20px;display:none}
+.accord-body.open{display:block}
+.accord-body p{font-size:14.5px;color:var(--sub);line-height:1.8;margin-bottom:12px}
+.accord-body p:last-child{margin-bottom:0}
+.accord-body strong{color:var(--ink);font-weight:600}
+
+/* CALC */
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field-label{font-size:12px;font-weight:600;color:var(--sub);letter-spacing:.05em;text-transform:uppercase}
+.field-wrap{position:relative}
+.field-pre{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--light);font-weight:600;pointer-events:none;z-index:1}
+.fi{width:100%;border:1.5px solid var(--c3);border-radius:10px;padding:11px 13px;font-size:16px;font-family:var(--font);background:var(--c1);color:var(--ink);outline:none;transition:border-color .2s;-moz-appearance:textfield;appearance:textfield}
+.fi::-webkit-outer-spin-button,.fi::-webkit-inner-spin-button{-webkit-appearance:none}
+.fi:focus{border-color:var(--c7);background:var(--c0)}
+.fi.has-pre{padding-left:30px}
+select.fi{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%239db8a4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;appearance:none}
+.result-card{background:var(--c9);border-radius:var(--r-lg);padding:24px;margin-top:20px;overflow:hidden;position:relative}
+.result-card::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(104,212,138,.12) 0%,transparent 70%)}
+.result-section-head{font-size:11px;font-weight:700;color:rgba(255,255,255,.3);letter-spacing:.08em;text-transform:uppercase;margin:20px 0 8px}
+.result-section-head:first-child{margin-top:0}
+.result-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.result-row:last-of-type{border-bottom:none}
+.result-label{font-size:13.5px;color:rgba(255,255,255,.45)}
+.result-val{font-size:13.5px;font-weight:600;color:rgba(255,255,255,.8);font-variant-numeric:tabular-nums}
+.result-val.green{color:#68d48a}
+.result-val.red{color:#f87171}
+.result-big{font-family:var(--font-head);font-size:36px;font-weight:800;color:#fff;letter-spacing:-.03em;line-height:1;margin-bottom:4px}
+.result-note{font-size:12.5px;color:rgba(255,255,255,.25);margin-top:6px;line-height:1.65}
+.calc-note{font-size:13px;color:var(--sub);line-height:1.65;margin-top:14px;padding:12px 14px;background:var(--c1);border-radius:var(--r);border:1px solid var(--c3)}
+.calc-note a{color:var(--c7)}
+
+/* DEADLINES */
+.dl-card{background:var(--c0);border:1px solid var(--c3);border-radius:var(--r-lg);padding:14px 18px;margin-bottom:8px;text-decoration:none;display:block;transition:all .15s;box-shadow:var(--shadow)}
+.dl-card:hover{border-color:var(--c5);transform:translateX(2px)}
+.dl-card.urgent{background:var(--amber-bg);border-color:var(--amber-bd)}
+.dl-card.overdue{background:var(--red-bg);border-color:var(--red-bd)}
+.dl-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:5px}
+.dl-title{font-size:14.5px;font-weight:600;color:var(--ink);flex:1;line-height:1.4}
+.dl-badge{font-size:11px;font-weight:700;border-radius:8px;padding:4px 10px;flex-shrink:0}
+.dl-badge-ok{background:var(--c2);color:var(--c7);border:1px solid var(--c4)}
+.dl-badge-urgent{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bd)}
+.dl-badge-overdue{background:var(--red-bg);color:var(--red);border:1px solid var(--red-bd)}
+.dl-badge-rec{background:var(--c2);color:var(--c7);border:1px solid var(--c4)}
+.dl-desc{font-size:13.5px;color:var(--sub);line-height:1.6}
+.dl-date{font-size:12px;color:var(--light);margin-top:5px}
+
+/* PENSIONS */
+.pension-step{background:var(--c0);border:1px solid var(--c3);border-radius:var(--r-lg);margin-bottom:8px;overflow:hidden;box-shadow:var(--shadow)}
+.pension-step-head{padding:16px 20px;display:flex;align-items:flex-start;gap:14px;cursor:pointer;transition:background .15s}
+.pension-step-head:hover{background:var(--c1)}
+.pension-step-num{width:32px;height:32px;border-radius:50%;background:var(--ink);color:#fff;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--font-head)}
+.pension-step-title{font-size:14.5px;font-weight:600;color:var(--ink);margin-bottom:3px;letter-spacing:-.01em;line-height:1.35}
+.pension-step-sub{font-size:13.5px;color:var(--sub);line-height:1.5}
+.pension-step-chev{color:var(--light);font-size:10px;margin-left:auto;margin-top:5px;flex-shrink:0;transition:transform .2s}
+.pension-step-chev.open{transform:rotate(180deg)}
+.pension-step-body{border-top:1px solid var(--c3);padding:18px 20px;display:none}
+.pension-step-body.open{display:block}
+.pension-step-body p{font-size:14.5px;color:var(--sub);line-height:1.8;margin-bottom:12px}
+.pension-step-body p:last-child{margin-bottom:0}
+.pension-step-body strong{color:var(--ink);font-weight:600}
+
+/* MOBILE MENU */
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300}
+.mobile-menu.open{display:block}
+.mobile-menu-panel{position:absolute;top:0;right:0;width:260px;height:100%;background:var(--c0);padding:20px 0;overflow-y:auto;box-shadow:-4px 0 24px rgba(0,0,0,.15)}
+.mobile-menu-header{display:flex;justify-content:space-between;align-items:center;padding:0 20px 16px;border-bottom:1px solid var(--c3);margin-bottom:8px}
+.mobile-menu-logo{font-family:var(--font-head);font-size:16px;font-weight:800;color:var(--ink)}
+.mobile-close{background:none;border:none;font-size:20px;cursor:pointer;color:var(--sub);padding:4px}
+.mob-section-head{font-size:11px;font-weight:700;color:var(--light);letter-spacing:.06em;text-transform:uppercase;padding:14px 20px 6px}
+.mob-nav-btn{display:flex;align-items:center;gap:12px;width:100%;padding:12px 20px;background:none;border:none;font-size:14.5px;font-weight:500;color:var(--sub);cursor:pointer;font-family:var(--font);text-align:left;transition:background .15s}
+.mob-nav-btn:hover,.mob-nav-btn.active{background:var(--c2);color:var(--ink);font-weight:600}
+.mob-nav-btn span:first-child{font-size:17px;width:22px;text-align:center}
+.mob-sep{height:1px;background:var(--c3);margin:8px 0}
+.mob-nav-link{display:flex;align-items:center;gap:8px;padding:11px 20px;font-size:14px;color:var(--sub);text-decoration:none;transition:background .15s}
+.mob-nav-link:hover{background:var(--c1);color:var(--ink)}
+
+@media(max-width:640px){
+  .hamburger{display:flex}.nav-persona{display:none}.nav-home{display:none}
+  .calc-grid{grid-template-columns:1fr}
+  .compare-grid{grid-template-columns:1fr}
+  .sh-title{font-size:22px}
+  .main{padding:28px 4% 72px}
+}
+
+footer{background:var(--c9);padding:32px 5%}
+.footer-inner{max-width:960px;margin:0 auto}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;margin-bottom:20px}
+.footer-logo{font-family:var(--font-head);font-size:16px;font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:5px}
+.footer-tag{font-size:13px;color:rgba(255,255,255,.25);line-height:1.55;max-width:220px}
+.footer-links{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.footer-link{font-size:13px;color:rgba(255,255,255,.25);text-decoration:none;transition:color .15s}
+.footer-link:hover{color:rgba(255,255,255,.6)}
+.footer-disc{border-top:1px solid rgba(255,255,255,.06);padding-top:18px;font-size:12.5px;color:rgba(255,255,255,.18);line-height:1.8}
+.footer-disc strong{color:rgba(255,255,255,.3)}.footer-disc a{color:#68d48a;text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="disc-bar"><p>Not tax advice. Sourced from <a href="https://www.gov.uk" target="_blank">HMRC gov.uk</a>. Always verify with a qualified adviser.</p></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">TaxClear</a>
+    <div class="nav-persona">
+      <a href="sole-trader.html" class="nav-p-btn">🧾 Sole Trader</a>
+      <a href="employee.html" class="nav-p-btn">💼 Employee</a>
+      <a href="company.html" class="nav-p-btn active">🏢 Limited Company</a>
+    </div>
+    <a href="index.html" class="nav-home">← All guides</a>
+    <button class="hamburger" onclick="openMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mob-menu" onclick="if(event.target===this)closeMenu()">
+  <div class="mobile-menu-panel">
+    <div class="mobile-menu-header"><div class="mobile-menu-logo">TaxClear</div><button class="mobile-close" onclick="closeMenu()">✕</button></div>
+    <div class="mob-section-head">Limited Company</div>
+    <button class="mob-nav-btn active" id="mn-rates" onclick="goTab('rates')"><span>📊</span><span>Tax Rates</span></button>
+    <button class="mob-nav-btn" id="mn-calc" onclick="goTab('calc')"><span>💰</span><span>Calculator</span></button>
+    <button class="mob-nav-btn" id="mn-guides" onclick="goTab('guides')"><span>📋</span><span>Guides</span></button>
+    <button class="mob-nav-btn" id="mn-deadlines" onclick="goTab('deadlines')"><span>📅</span><span>Deadlines</span></button>
+    <button class="mob-nav-btn" id="mn-pensions" onclick="goTab('pensions')"><span>🏦</span><span>Pensions</span></button>
+    <div class="mob-sep"></div>
+    <div class="mob-section-head">Switch type</div>
+    <a href="sole-trader.html" class="mob-nav-link"><span>🧾</span>Sole Trader</a>
+    <a href="employee.html" class="mob-nav-link"><span>💼</span>Employee</a>
+    <a href="index.html" class="mob-nav-link"><span>🏠</span>Home</a>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-breadcrumb"><a href="index.html">TaxClear</a> <span>›</span> <span>Limited Company</span></div>
+    <h1>Limited Company<br><em>tax guide.</em></h1>
+    <p>Corporation Tax, salary vs dividends, VAT and filing deadlines — sourced directly from HMRC gov.uk.</p>
+  </div>
+</header>
+
+<div class="tab-wrap">
+  <div class="tab-nav">
+    <button class="tab-btn active" data-tab="rates" onclick="switchTab('rates',this)"><span class="tab-btn-icon">📊</span><span>Tax Rates</span></button>
+    <button class="tab-btn" data-tab="calc" onclick="switchTab('calc',this)"><span class="tab-btn-icon">💰</span><span>Calculator</span></button>
+    <button class="tab-btn" data-tab="guides" onclick="switchTab('guides',this)"><span class="tab-btn-icon">📋</span><span>Guides</span></button>
+    <button class="tab-btn" data-tab="deadlines" onclick="switchTab('deadlines',this)"><span class="tab-btn-icon">📅</span><span>Deadlines</span></button>
+    <button class="tab-btn" data-tab="pensions" onclick="switchTab('pensions',this)"><span class="tab-btn-icon">🏦</span><span>Pensions</span></button>
+  </div>
+</div>
+
+<main class="main">
+
+<!-- TAX RATES -->
+<div id="tab-rates" class="tab-content active">
+  <div class="sh">
+    <div class="sh-label">2024/25</div>
+    <h2 class="sh-title">Limited company tax rates</h2>
+    <p class="sh-sub">Corporation Tax on profits, dividend tax on distributions, Income Tax on salary — and VAT if registered.</p>
+  </div>
+  <div class="disc-inline">⚠️ <strong>General information only.</strong> 2024/25 HMRC rates. Always verify with a qualified accountant. <a href="https://www.gov.uk/corporation-tax-rates" target="_blank">gov.uk →</a></div>
+
+  <!-- Corporation Tax -->
+  <h3 style="font-size:12px;font-weight:700;color:var(--c7);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px">Corporation Tax</h3>
+  <div class="card card-sm" style="margin-bottom:14px">
+    <p style="font-size:14px;color:var(--sub);line-height:1.7;margin-bottom:16px">Corporation Tax is charged on your company's profits. The rate depends on profit level — the small profits rate, main rate, and a tapered marginal rate apply in between.</p>
+    <div class="ct-bar-wrap">
+      <div class="ct-bar-row">
+        <div class="ct-bar-label-row"><span>Profits up to £50,000 — Small profits rate</span><span style="color:#3d8a52">19%</span></div>
+        <div class="ct-bar-track"><div class="ct-bar-fill" style="width:42%;background:#3d8a52"></div></div>
+      </div>
+      <div class="ct-bar-row">
+        <div class="ct-bar-label-row"><span>£50,001 – £250,000 — Marginal (tapered)</span><span style="color:#a05020">19–25%</span></div>
+        <div class="ct-bar-track"><div class="ct-bar-fill" style="width:65%;background:linear-gradient(to right,#3d8a52,#a05020)"></div></div>
+      </div>
+      <div class="ct-bar-row">
+        <div class="ct-bar-label-row"><span>Profits over £250,000 — Main rate</span><span style="color:#903030">25%</span></div>
+        <div class="ct-bar-track"><div class="ct-bar-fill" style="width:100%;background:#903030"></div></div>
+      </div>
+    </div>
+    <div class="callout callout-info"><div class="callout-icon">ℹ️</div><div class="callout-body"><strong>Associated companies:</strong> If you or your associates control multiple companies, the thresholds are divided between them. Two equal companies share the £250,000 threshold — each gets £125,000 max before paying main rate.</div></div>
+    <a href="https://www.gov.uk/corporation-tax-rates" target="_blank" class="gov-link">🔗 Corporation Tax rates on gov.uk →</a>
+  </div>
+
+  <!-- Dividends -->
+  <h3 style="font-size:12px;font-weight:700;color:var(--c7);letter-spacing:.08em;text-transform:uppercase;margin:28px 0 16px">Dividend Tax</h3>
+  <div class="card card-sm" style="margin-bottom:14px">
+    <p style="font-size:14px;color:var(--sub);line-height:1.7;margin-bottom:16px">Dividends are paid from post-Corporation-Tax profits. Each person has a £500 dividend allowance — dividends above this are taxed at the following rates.</p>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div class="rate-row" style="background:var(--c2);border-left:4px solid #3d8a52"><span>Up to £500 — Dividend Allowance</span><span style="color:#3d8a52">0%</span></div>
+      <div class="rate-row" style="background:#2060a808;border-left:4px solid #2060a8"><span>Basic rate taxpayer (income up to £50,270)</span><span style="color:#2060a8">8.75%</span></div>
+      <div class="rate-row" style="background:#a0502008;border-left:4px solid #a05020"><span>Higher rate taxpayer (£50,271 – £125,140)</span><span style="color:#a05020">33.75%</span></div>
+      <div class="rate-row" style="background:#90303008;border-left:4px solid #903030"><span>Additional rate (over £125,140)</span><span style="color:#903030">39.35%</span></div>
+    </div>
+    <div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-body"><strong>Dividends use your Income Tax bands</strong> — they stack on top of salary when calculating which band applies.</div></div>
+    <a href="https://www.gov.uk/tax-on-dividends" target="_blank" class="gov-link">🔗 Dividend tax on gov.uk →</a>
+  </div>
+
+  <!-- VAT -->
+  <h3 style="font-size:12px;font-weight:700;color:var(--c7);letter-spacing:.08em;text-transform:uppercase;margin:28px 0 16px">VAT</h3>
+  <div class="card card-sm" style="margin-bottom:14px">
+    <p style="font-size:14px;color:var(--sub);line-height:1.7;margin-bottom:14px">Compulsory registration once taxable turnover exceeds <strong style="color:var(--ink)">£90,000</strong> in any rolling 12-month period.</p>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div class="rate-row" style="background:#90303008;border-left:4px solid #903030"><span>Standard rate — most goods &amp; services</span><span style="color:#903030">20%</span></div>
+      <div class="rate-row" style="background:#a0502008;border-left:4px solid #a05020"><span>Reduced rate — e.g. home energy</span><span style="color:#a05020">5%</span></div>
+      <div class="rate-row" style="background:var(--c2);border-left:4px solid #3d8a52"><span>Zero rate — e.g. food, children's clothing</span><span style="color:#3d8a52">0%</span></div>
+    </div>
+    <div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-body"><strong>Flat Rate Scheme:</strong> If your VAT-inclusive turnover is under £150,000, you can use HMRC's Flat Rate Scheme — pay a fixed percentage of turnover and keep any difference.</div></div>
+    <a href="https://www.gov.uk/vat-rates" target="_blank" class="gov-link">🔗 VAT rates →</a>
+  </div>
+</div>
+
+<!-- CALCULATOR -->
+<div id="tab-calc" class="tab-content">
+  <div class="sh">
+    <div class="sh-label">Estimate · 2024/25</div>
+    <h2 class="sh-title">Salary vs dividends calculator</h2>
+    <p class="sh-sub">Compare a salary-only vs optimal salary+dividend strategy for a director.</p>
+  </div>
+  <div class="disc-inline">⚠️ <strong>Estimate only.</strong> Personal tax situation varies. Consult an accountant before deciding on your structure.</div>
+  <div class="card">
+    <div class="calc-grid">
+      <div class="field"><label class="field-label">Company Profit (before salary)</label><div class="field-wrap"><span class="field-pre">£</span><input type="number" class="fi has-pre" id="c-profit" value="80000" oninput="calc()"></div></div>
+      <div class="field"><label class="field-label">Director Salary</label><div class="field-wrap"><span class="field-pre">£</span><input type="number" class="fi has-pre" id="c-salary" value="12570" oninput="calc()"></div></div>
+    </div>
+    <p style="font-size:13px;color:var(--light);line-height:1.65;margin-top:2px">Most directors pay themselves the NI secondary threshold (£9,100) or personal allowance (£12,570) to save company NI while maximising personal allowance.</p>
+  </div>
+  <div class="result-card" id="calc-result">
+    <div class="result-section-head">Company</div>
+    <div class="result-row"><span class="result-label">Profit before salary</span><span class="result-val" id="r-profit">—</span></div>
+    <div class="result-row"><span class="result-label">Director salary</span><span class="result-val red" id="r-salary-cost">—</span></div>
+    <div class="result-row"><span class="result-label">Employer NI (13.8% above £9,100)</span><span class="result-val red" id="r-erni">—</span></div>
+    <div class="result-row"><span class="result-label">Taxable company profit</span><span class="result-val" id="r-taxable-profit">—</span></div>
+    <div class="result-row"><span class="result-label">Corporation Tax</span><span class="result-val red" id="r-ct">—</span></div>
+    <div class="result-row"><span class="result-label">Available for dividends</span><span class="result-val green" id="r-div-pool">—</span></div>
+    <div class="result-section-head">Director (personal)</div>
+    <div class="result-row"><span class="result-label">Gross salary</span><span class="result-val" id="r-sal">—</span></div>
+    <div class="result-row"><span class="result-label">Income Tax on salary</span><span class="result-val red" id="r-sal-tax">—</span></div>
+    <div class="result-row"><span class="result-label">Employee NI on salary</span><span class="result-val red" id="r-sal-ni">—</span></div>
+    <div class="result-row"><span class="result-label">Dividends taken</span><span class="result-val" id="r-divs">—</span></div>
+    <div class="result-row"><span class="result-label">Dividend Tax</span><span class="result-val red" id="r-div-tax">—</span></div>
+    <div class="result-section-head">Summary</div>
+    <div class="result-row"><span class="result-label" style="color:rgba(255,255,255,.7);font-weight:600">Total personal take-home</span><span class="result-val green" id="r-takehome" style="font-size:22px;font-family:'Fraunces',serif">—</span></div>
+    <div class="result-row"><span class="result-label">Total tax paid (company + personal)</span><span class="result-val red" id="r-total-tax">—</span></div>
+    <div class="result-row"><span class="result-label">Effective overall rate</span><span class="result-val" id="r-eff-rate">—</span></div>
+  </div>
+  <div class="calc-note">⚠️ Illustrative only. Does not account for other income, pension contributions, or company expenses. Speak to an accountant before making decisions.</div>
+</div>
+
+<!-- GUIDES -->
+<div id="tab-guides" class="tab-content">
+  <div class="sh">
+    <div class="sh-label">Filing Guides</div>
+    <h2 class="sh-title">What you need to file &amp; when</h2>
+    <p class="sh-sub">Overview of the key filing obligations for limited companies.</p>
+  </div>
+  <div class="disc-inline">⚠️ <strong>General information from HMRC gov.uk and Companies House.</strong> Filing obligations depend on your specific circumstances. Always verify with your accountant.</div>
+
+  <div class="accord-card"><div class="accord-head" onclick="toggleAccord(this)"><div class="accord-icon">🏛</div><div style="flex:1"><div class="accord-title">Corporation Tax Return (CT600)</div><div class="accord-sub">Filed annually · Due 12 months after accounting period</div></div><div class="accord-chev">▼</div></div><div class="accord-body">
+    <p>The CT600 is your company's Corporation Tax return. You must file it within <strong>12 months of your accounting period end</strong>, even if you have no tax to pay. Pay Corporation Tax due within <strong>9 months and 1 day</strong> of your period end.</p>
+    <div class="callout callout-trap"><div class="callout-icon">🚨</div><div class="callout-body"><strong>Pay before you file.</strong> The payment deadline (9 months + 1 day) is earlier than the filing deadline (12 months).</div></div>
+    <a href="https://www.gov.uk/file-your-company-accounts-and-tax-return" target="_blank" class="gov-link">🔗 File Corporation Tax return →</a>
+  </div></div>
+
+  <div class="accord-card"><div class="accord-head" onclick="toggleAccord(this)"><div class="accord-icon">📋</div><div style="flex:1"><div class="accord-title">Confirmation Statement (Annual Return)</div><div class="accord-sub">Companies House · Due annually · £34 filing fee</div></div><div class="accord-chev">▼</div></div><div class="accord-body">
+    <p>Every limited company must file a Confirmation Statement with Companies House once per year. It confirms or updates your registered address, SIC code, shareholders, and directors. Filing fee is <strong>£34</strong> online.</p>
+    <div class="callout callout-warn"><div class="callout-icon">⚠️</div><div class="callout-body"><strong>Missing this can result in compulsory strike off</strong> of your company. Set a calendar reminder.</div></div>
+    <a href="https://www.gov.uk/confirmation-statement" target="_blank" class="gov-link">🔗 Confirmation Statement →</a>
+  </div></div>
+
+  <div class="accord-card"><div class="accord-head" onclick="toggleAccord(this)"><div class="accord-icon">📁</div><div style="flex:1"><div class="accord-title">Annual Accounts (Companies House)</div><div class="accord-sub">Due 9 months after year end · Publicly visible</div></div><div class="accord-chev">▼</div></div><div class="accord-body">
+    <p>Annual accounts must be filed at Companies House within <strong>9 months of your accounting period end</strong>. They're publicly visible. Small companies can file abridged accounts. Micro-entities have a simplified option.</p>
+    <p>Accounts must include a balance sheet and, for larger companies, a profit and loss account and directors' report.</p>
+    <a href="https://www.gov.uk/annual-accounts" target="_blank" class="gov-link">🔗 Company accounts →</a>
+  </div></div>
+
+  <div class="accord-card"><div class="accord-head" onclick="toggleAccord(this)"><div class="accord-icon">💼</div><div style="flex:1"><div class="accord-title">Director's Self Assessment</div><div class="accord-sub">Personal tax return · Due 31 January</div></div><div class="accord-chev">▼</div></div><div class="accord-body">
+    <p>As a company director you must also file a personal Self Assessment return annually, reporting your salary, dividends, and any other income. Deadline is <strong>31 January</strong> for online filing.</p>
+    <div class="callout callout-trap"><div class="callout-icon">🚨</div><div class="callout-body"><strong>Dividends aren't taxed through PAYE.</strong> You declare and pay dividend tax via Self Assessment only.</div></div>
+    <a href="https://www.gov.uk/self-assessment-tax-returns" target="_blank" class="gov-link">🔗 Self Assessment →</a>
+  </div></div>
+
+  <div class="accord-card"><div class="accord-head" onclick="toggleAccord(this)"><div class="accord-icon">🧾</div><div style="flex:1"><div class="accord-title">VAT Return (if registered)</div><div class="accord-sub">Quarterly via Making Tax Digital</div></div><div class="accord-chev">▼</div></div><div class="accord-body">
+    <p>If VAT registered, you must file quarterly returns and maintain digital records under <strong>Making Tax Digital</strong>. Returns are due <strong>1 month and 7 days</strong> after each VAT period ends.</p>
+    <div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-body">Set up a Direct Debit to HMRC for VAT payments — avoids missing the deadline.</div></div>
+    <a href="https://www.gov.uk/vat-returns" target="_blank" class="gov-link">🔗 VAT returns →</a>
+  </div></div>
+
+  <div class="accord-card"><div class="accord-head" onclick="toggleAccord(this)"><div class="accord-icon">👥</div><div style="flex:1"><div class="accord-title">PAYE &amp; Payroll (if you pay salary)</div><div class="accord-sub">Real Time Information — every pay period</div></div><div class="accord-chev">▼</div></div><div class="accord-body">
+    <p>If you pay yourself or employees a salary, you must operate PAYE and submit Real Time Information (RTI) returns to HMRC on or before each payday. Even paying just the director requires PAYE registration.</p>
+    <p>Employer NI contributions are due monthly — <strong>19th of the following month</strong> by bank transfer, or <strong>22nd</strong> electronically.</p>
+    <a href="https://www.gov.uk/paye-for-employers" target="_blank" class="gov-link">🔗 PAYE for employers →</a>
+  </div></div>
+</div>
+
+<!-- DEADLINES -->
+<div id="tab-deadlines" class="tab-content">
+  <div class="sh">
+    <div class="sh-label">Key HMRC Dates</div>
+    <h2 class="sh-title">Limited company filing deadlines</h2>
+    <p class="sh-sub">Key dates for HMRC and Companies House. Note: your CT and accounts deadlines depend on your accounting period end date.</p>
+  </div>
+  <div id="dl-list"></div>
+  <div style="background:var(--c2);border:1px solid var(--c4);border-radius:var(--r-lg);padding:16px 18px;margin-top:6px">
+    <div style="font-size:12px;font-weight:700;color:var(--c7);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">📌 Your CT and accounts deadlines</div>
+    <p style="font-size:14px;color:var(--sub);line-height:1.7">Corporation Tax payment is due <strong style="color:var(--ink)">9 months + 1 day</strong> after your accounting period end. Your CT600 return and Companies House accounts are due <strong style="color:var(--ink)">12 months</strong> and <strong style="color:var(--ink)">9 months</strong> after period end respectively. These vary by company — check your specific dates with your accountant or at <a href="https://www.gov.uk/file-your-company-accounts-and-tax-return" target="_blank" style="color:var(--c7)">gov.uk →</a></p>
+  </div>
+</div>
+
+<!-- PENSIONS -->
+<div id="tab-pensions" class="tab-content">
+  <div class="sh">
+    <div class="sh-label">Pensions</div>
+    <h2 class="sh-title">Director pension contributions</h2>
+    <p class="sh-sub">Company pension contributions are one of the most tax-efficient ways to extract money from a limited company.</p>
+  </div>
+  <div class="disc-inline">⚠️ <strong>General information only.</strong> Sourced from <a href="https://www.gov.uk" target="_blank">gov.uk</a> and <a href="https://www.moneyhelper.org.uk" target="_blank">MoneyHelper</a>. Consult a regulated financial adviser for personal advice.</div>
+
+  <div class="pension-step"><div class="pension-step-head" onclick="togglePension(this)"><div class="pension-step-num">1</div><div style="flex:1"><div class="pension-step-title">Employer contributions are the most tax-efficient</div><div class="pension-step-sub">Corporation Tax deduction AND no NI</div></div><div class="pension-step-chev">▼</div></div><div class="pension-step-body"><p>When your <strong>company</strong> makes a pension contribution on your behalf, it is deducted from company profits before Corporation Tax — saving 19–25% CT. The contribution also has no Income Tax or NI implication for you personally.</p><div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-body"><strong>Example:</strong> A £10,000 employer pension contribution costs only £7,500–£8,100 after CT relief. The same £10,000 taken as a dividend costs £10,000 in CT plus dividend tax on top.</div></div><a href="https://www.gov.uk/tax-on-your-private-pension/pension-tax-relief" target="_blank" class="gov-link">🔗 Pension tax relief →</a></div></div>
+
+  <div class="pension-step"><div class="pension-step-head" onclick="togglePension(this)"><div class="pension-step-num">2</div><div style="flex:1"><div class="pension-step-title">Annual Allowance — the limit</div><div class="pension-step-sub">£60,000 per year or 100% of earnings, whichever is lower</div></div><div class="pension-step-chev">▼</div></div><div class="pension-step-body"><p>The Annual Allowance is <strong>£60,000 (2024/25)</strong>. This covers all contributions — employer and employee combined. If you're a sole director with a small salary, note that employee contributions are capped at 100% of your earnings — but employer contributions are not limited this way.</p><div class="callout callout-info"><div class="callout-icon">ℹ️</div><div class="callout-body"><strong>Carry forward:</strong> Unused Annual Allowance from the past 3 years can be carried forward if you were a pension scheme member.</div></div><a href="https://www.gov.uk/tax-on-your-private-pension/annual-allowance" target="_blank" class="gov-link">🔗 Annual Allowance →</a></div></div>
+
+  <div class="pension-step"><div class="pension-step-head" onclick="togglePension(this)"><div class="pension-step-num">3</div><div style="flex:1"><div class="pension-step-title">Find and consolidate old pots</div><div class="pension-step-sub">Free Pension Tracing Service — over 200,000 schemes</div></div><div class="pension-step-chev">▼</div></div><div class="pension-step-body"><p>Use the government's free Pension Tracing Service to find contact details for any previous workplace or personal pension. Search at gov.uk/find-pension-contact-details.</p><a href="https://www.gov.uk/find-pension-contact-details" target="_blank" class="gov-link">🔗 Pension Tracing Service →</a></div></div>
+
+  <div class="pension-step"><div class="pension-step-head" onclick="togglePension(this)"><div class="pension-step-num">4</div><div style="flex:1"><div class="pension-step-title">State Pension — check your record</div><div class="pension-step-sub">35 qualifying NI years needed for the full £221.20/week</div></div><div class="pension-step-chev">▼</div></div><div class="pension-step-body"><p>As a director taking a salary above the Lower Earnings Limit (£6,396/year in 2024/25), you qualify for NI credits toward your State Pension. Check your NI record and forecast at gov.uk/check-state-pension.</p><a href="https://www.gov.uk/check-state-pension" target="_blank" class="gov-link">🔗 Check your State Pension →</a></div></div>
+</div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div><div class="footer-logo">TaxClear</div><div class="footer-tag">Plain-English UK tax guidance sourced from HMRC gov.uk.</div></div>
+      <div class="footer-links">
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="sole-trader.html" class="footer-link">Sole Trader</a>
+        <a href="employee.html" class="footer-link">Employee</a>
+      </div>
+    </div>
+    <div class="footer-disc"><strong>Disclaimer:</strong> TaxClear provides general information sourced from <a href="https://www.gov.uk" target="_blank">gov.uk</a>. This is not personal tax advice. Consult a qualified adviser or <a href="https://www.gov.uk/contact-hmrc" target="_blank">contact HMRC</a>. All rates are 2024/25.</div>
+  </div>
+</footer>
+
+<script>
+const TABS=['rates','calc','guides','deadlines','pensions'];
+function switchTab(id,btn){TABS.forEach(t=>{document.getElementById('tab-'+t).classList.toggle('active',t===id);});document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));document.querySelector('.tab-wrap').scrollIntoView({behavior:'smooth',block:'start'});}
+function goTab(id){switchTab(id);closeMenu();document.querySelectorAll('.mob-nav-btn').forEach(b=>b.classList.toggle('active',b.id==='mn-'+id));}
+function openMenu(){document.getElementById('mob-menu').classList.add('open');document.body.style.overflow='hidden';}
+function closeMenu(){document.getElementById('mob-menu').classList.remove('open');document.body.style.overflow='';}
+
+function toggleAccord(h){const b=h.nextElementSibling,c=h.querySelector('.accord-chev'),o=b.classList.contains('open');document.querySelectorAll('.accord-body.open').forEach(x=>x.classList.remove('open'));document.querySelectorAll('.accord-chev.open').forEach(x=>x.classList.remove('open'));if(!o){b.classList.add('open');c.classList.add('open');}}
+function togglePension(h){const b=h.nextElementSibling,c=h.querySelector('.pension-step-chev'),o=b.classList.contains('open');document.querySelectorAll('.pension-step-body.open').forEach(x=>x.classList.remove('open'));document.querySelectorAll('.pension-step-chev.open').forEach(x=>x.classList.remove('open'));if(!o){b.classList.add('open');c.classList.add('open');}}
+
+function fmt(n){return'£'+Math.round(Math.abs(n)).toLocaleString('en-GB');}
+function calcCT(profit){if(profit<=0)return 0;if(profit<=50000)return profit*.19;if(profit>=250000)return profit*.25;const mr=profit*.25,spr=profit*.19;const frac=(250000-profit)/200000;return mr-frac*(mr-spr);}
+function calcDivTax(divs,salaryAbovePA){let tax=0;const personalAllowanceLeft=Math.max(0,12570-salaryAbovePA);const divInPA=Math.min(divs,personalAllowanceLeft);const divAfterPA=divs-divInPA;const dvAllowance=Math.min(500,divAfterPA);const taxableDivs=divAfterPA-dvAllowance;const basicBandLeft=Math.max(0,37700-Math.max(0,salaryAbovePA-12570));const inBasic=Math.min(taxableDivs,basicBandLeft);const inHigher=Math.max(0,taxableDivs-basicBandLeft);tax=inBasic*.0875+inHigher*.3375;return tax;}
+function calc(){
+  const profit=parseFloat(document.getElementById('c-profit').value)||0;
+  const salary=parseFloat(document.getElementById('c-salary').value)||0;
+  const erNI=salary>9100?Math.round((salary-9100)*.138):0;
+  const taxableProfit=Math.max(0,profit-salary-erNI);
+  const ct=calcCT(taxableProfit);
+  const divPool=taxableProfit-ct;
+  const divs=divPool;
+  const salaryAbovePA=Math.max(0,salary-12570);
+  const salTax=Math.min(salaryAbovePA,37700)*.20+Math.max(salaryAbovePA-37700,0)*.40;
+  const salNI=salary>12570?Math.min(salary-12570,37700)*.08:0;
+  const divTax=calcDivTax(divs,salary);
+  const personalTakehome=salary-salTax-salNI+divs-divTax;
+  const totalTax=ct+salTax+salNI+erNI+divTax;
+  const effRate=profit>0?(totalTax/profit*100).toFixed(1):0;
+  const set=(id,val)=>{const el=document.getElementById(id);if(el)el.textContent=val;};
+  set('r-profit',fmt(profit));
+  set('r-salary-cost','−'+fmt(salary));
+  set('r-erni',erNI>0?'−'+fmt(erNI):'£0');
+  set('r-taxable-profit',fmt(taxableProfit));
+  set('r-ct','−'+fmt(ct));
+  set('r-div-pool',fmt(divPool));
+  set('r-sal',fmt(salary));
+  set('r-sal-tax',salTax>0?'−'+fmt(salTax):'£0');
+  set('r-sal-ni',salNI>0?'−'+fmt(salNI):'£0');
+  set('r-divs',fmt(divs));
+  set('r-div-tax',divTax>0?'−'+fmt(divTax):'£0');
+  set('r-takehome',fmt(personalTakehome));
+  set('r-total-tax','−'+fmt(totalTax));
+  set('r-eff-rate',effRate+'%');
+}
+
+function buildDeadlines(){
+  const now=new Date(),yr=now.getFullYear();
+  const dl=[
+    {t:'Director Self Assessment filing',d:new Date(yr+1+'-01-31'),desc:'File your personal tax return online — reporting salary, dividends, and other income.',url:'https://www.gov.uk/self-assessment-tax-returns'},
+    {t:'Pay personal Self Assessment bill',d:new Date(yr+1+'-01-31'),desc:'Dividend tax and any income tax owed due 31 January.',url:'https://www.gov.uk/pay-self-assessment-tax-bill'},
+    {t:'PAYE / Employer NI payment',d:null,desc:'Due 19th of each month (22nd electronically) for the previous month\'s payroll.',url:'https://www.gov.uk/pay-paye-tax'},
+    {t:'P60 to employees',d:new Date(yr+'-05-31'),desc:'Must be issued by 31 May for the previous tax year.',url:'https://www.gov.uk/paye-forms-p45-p60-p11d/p60'},
+    {t:'P11D — benefits in kind',d:new Date(yr+'-07-06'),desc:'Submit P11D and pay any Class 1A NI by 22 July.',url:'https://www.gov.uk/paye-forms-p45-p60-p11d/p11d'},
+    {t:'Confirmation Statement',d:null,desc:'Due annually within 14 days of your confirmation date. £34 online fee.',url:'https://www.gov.uk/confirmation-statement'},
+    {t:'VAT return (quarterly)',d:null,desc:'Due 1 month and 7 days after each VAT period end via Making Tax Digital.',url:'https://www.gov.uk/vat-returns'},
+  ].map(x=>{if(!x.d)return x;const days=Math.ceil((x.d-now)/86400000);return{...x,days,urgent:days>0&&days<=60,overdue:days<0};}).sort((a,b)=>!a.d?1:!b.d?-1:a.d-b.d);
+  document.getElementById('dl-list').innerHTML=dl.map(x=>{
+    const bc=!x.d?'dl-badge-rec':x.overdue?'dl-badge-overdue':x.urgent?'dl-badge-urgent':'dl-badge-ok';
+    const bt=!x.d?'Recurring':x.overdue?'Overdue':x.days===0?'Today':x.days+'d';
+    const cc=x.overdue?'overdue':x.urgent?'urgent':'';
+    const ds=x.d?x.d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}):'';
+    return `<a href="${x.url}" target="_blank" rel="noopener" class="dl-card ${cc}"><div class="dl-header"><div class="dl-title">${x.t}</div><div class="dl-badge ${bc}">${bt}</div></div><div class="dl-desc">${x.desc}</div>${ds?`<div class="dl-date">${ds}</div>`:''}</a>`;
+  }).join('');
+}
+
+calc();
+buildDeadlines();
+window.switchTab=switchTab;window.goTab=goTab;window.openMenu=openMenu;window.closeMenu=closeMenu;
+window.calc=calc;window.toggleAccord=toggleAccord;window.togglePension=togglePension;
+</script>
+</body>
+</html>

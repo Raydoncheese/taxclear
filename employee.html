@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaxClear — Employee Tax Guide</title>
+<meta name="description" content="UK employee tax guide. Tax codes, payslips, take-home calculator, salary sacrifice, P60/P45/P11D, and pension tax relief. Sourced from HMRC gov.uk.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;1,9..144,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --c0:#fff;--c1:#f8faf9;--c2:#f0f4f2;--c3:#e4ebe6;--c4:#c8d8cc;--c5:#8aab92;
+  --c6:#4a7a58;--c7:#1e5c32;--c8:#0f3320;--c9:#081a10;
+  --ink:#111714;--mid:#3c5044;--sub:#6b8572;--light:#9db8a4;
+  --amber:#c87820;--amber-bg:#fef8ed;--amber-bd:#f0d898;
+  --red:#b83030;--red-bg:#fef2f2;--red-bd:#f0c8c8;
+  --blue:#2850a0;--blue-bg:#f0f4ff;--blue-bd:#c0ccf0;
+  --r:12px;--r-lg:18px;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.04);
+  --font:'Plus Jakarta Sans',system-ui,sans-serif;
+  --font-head:'Fraunces',Georgia,serif;
+}
+html{scroll-behavior:smooth;font-size:17px}
+body{font-family:var(--font);color:var(--ink);background:var(--c0);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+
+.disc-bar{background:var(--ink);padding:9px 5%;text-align:center}
+.disc-bar p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.6}
+.disc-bar a{color:#68d48a;text-decoration:none}
+
+nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--c3)}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 5%;height:58px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.nav-logo{font-family:var(--font-head);font-size:18px;font-weight:800;color:var(--ink);letter-spacing:-.02em;text-decoration:none;white-space:nowrap}
+.nav-persona{display:flex;gap:3px;align-items:center;overflow-x:auto;scrollbar-width:none;padding:4px 0}
+.nav-persona::-webkit-scrollbar{display:none}
+.nav-p-btn{font-size:13px;font-weight:500;color:var(--sub);text-decoration:none;padding:6px 12px;border-radius:8px;white-space:nowrap;transition:all .15s}
+.nav-p-btn:hover{color:var(--ink);background:var(--c2)}
+.nav-p-btn.active{color:var(--c7);background:var(--c2);font-weight:700}
+.nav-home{font-size:13px;color:var(--sub);text-decoration:none;display:flex;align-items:center;gap:4px;white-space:nowrap;transition:color .15s}
+.nav-home:hover{color:var(--ink)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
+.hamburger span{width:20px;height:2px;background:var(--ink);border-radius:2px;display:block}
+
+.hero{background:var(--c9);padding:52px 5% 60px;position:relative;overflow:hidden}
+.hero-glow{position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:600px;height:280px;background:radial-gradient(ellipse,rgba(30,92,50,.4) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:700px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.hero-breadcrumb{display:inline-flex;align-items:center;gap:6px;margin-bottom:20px;font-size:13px;color:rgba(255,255,255,.35)}
+.hero-breadcrumb a{color:rgba(255,255,255,.4);text-decoration:none}
+.hero-breadcrumb a:hover{color:#68d48a}
+.hero h1{font-family:var(--font-head);font-size:clamp(30px,5vw,52px);font-weight:800;color:#fff;letter-spacing:-.02em;line-height:1.08;margin-bottom:14px}
+.hero h1 em{font-style:italic;color:#68d48a}
+.hero p{font-size:clamp(14px,2vw,16px);color:rgba(255,255,255,.4);line-height:1.7;max-width:480px;margin:0 auto}
+
+.tab-wrap{background:var(--c0);border-bottom:1px solid var(--c3);position:sticky;top:58px;z-index:100}
+.tab-nav{max-width:960px;margin:0 auto;padding:0 5%;display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+.tab-nav::-webkit-scrollbar{display:none}
+.tab-btn{display:flex;align-items:center;gap:6px;padding:14px 16px;font-size:13.5px;font-weight:500;color:var(--sub);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;font-family:var(--font);white-space:nowrap;transition:all .15s;margin-bottom:-1px}
+.tab-btn:hover{color:var(--ink)}
+.tab-btn.active{color:var(--c7);border-bottom-color:var(--c7);font-weight:700}
+.tab-btn-icon{font-size:15px}
+
+.main{max-width:960px;margin:0 auto;padding:40px 5% 88px}
+.tab-content{display:none}
+.tab-content.active{display:block;animation:fadeUp .25s ease}
+
+.sh{margin-bottom:28px}
+.sh-label{font-size:12px;font-weight:700;color:var(--c7);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.sh-title{font-family:var(--font-head);font-size:clamp(22px,3vw,30px);font-weight:800;color:var(--ink);letter-spacing:-.02em;margin-bottom:10px;line-height:1.1}
+.sh-sub{font-size:15px;color:var(--sub);line-height:1.75;max-width:560px}
+
+.disc-inline{background:var(--c2);border:1px solid var(--c3);border-left:3px solid var(--c7);border-radius:0 var(--r) var(--r) 0;padding:12px 16px;margin-bottom:24px;font-size:14px;color:var(--mid);line-height:1.65}
+.disc-inline strong{font-weight:600;color:var(--ink)}
+.disc-inline a{color:var(--c7)}
+
+.card{background:var(--c0);border:1px solid var(--c3);border-radius:var(--r-lg);padding:22px;box-shadow:var(--shadow);transition:border-color .2s}
+.card:hover{border-color:var(--c4)}
+.card-sm{padding:16px 18px}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:24px}
+.divider{height:1px;background:var(--c3);margin:28px 0}
+
+.callout{display:flex;gap:10px;border-radius:var(--r);padding:13px 15px;margin:12px 0;font-size:14px;line-height:1.65}
+.callout-icon{font-size:15px;flex-shrink:0;margin-top:1px}
+.callout-body{color:var(--mid)}
+.callout-body strong{font-weight:600;color:var(--ink)}
+.callout-tip{background:var(--c2);border:1px solid var(--c4)}
+.callout-tip .callout-body{color:var(--c7)}
+.callout-warn{background:var(--amber-bg);border:1px solid var(--amber-bd)}
+.callout-warn .callout-body{color:#7a4800}
+.callout-info{background:var(--blue-bg);border:1px solid var(--blue-bd)}
+.callout-info .callout-body{color:var(--blue)}
+
+.gov-link{display:inline-flex;align-items:center;gap:5px;color:var(--c7);text-decoration:none;font-size:13px;font-weight:600;margin-top:10px;transition:gap .15s}
+.gov-link:hover{gap:8px}
+
+.rate-row{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-radius:9px;font-size:14px;margin-bottom:6px}
+.rate-row span:first-child{color:var(--sub)}
+.rate-row span:last-child{font-weight:700}
+
+.ni-bar-wrap{margin:14px 0}
+.ni-bar-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.ni-bar-label{font-size:13px;color:var(--sub);min-width:155px;font-weight:400;line-height:1.4}
+.ni-bar-track{flex:1;height:10px;background:var(--c2);border-radius:5px;overflow:hidden}
+.ni-bar-fill{height:100%;border-radius:5px;background:var(--c6)}
+.ni-bar-val{font-size:13px;font-weight:600;color:var(--ink);min-width:56px;text-align:right}
+
+/* EMP CARDS */
+.emp-card{background:var(--c0);border:1px solid var(--c3);border-radius:var(--r-lg);margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow)}
+.emp-head{padding:16px 20px;display:flex;align-items:flex-start;gap:14px;cursor:pointer;transition:background .15s}
+.emp-head:hover{background:var(--c1)}
+.emp-icon{width:40px;height:40px;border-radius:11px;background:var(--c2);border:1px solid var(--c3);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.emp-title{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:3px;letter-spacing:-.01em;line-height:1.3}
+.emp-sub{font-size:13px;color:var(--sub);line-height:1.4}
+.emp-chev{color:var(--light);font-size:10px;margin-left:auto;margin-top:4px;flex-shrink:0;transition:transform .2s}
+.emp-chev.open{transform:rotate(180deg)}
+.emp-body{border-top:1px solid var(--c3);padding:18px 20px;display:none}
+.emp-body.open{display:block}
+.emp-body p{font-size:14.5px;color:var(--sub);line-height:1.8;margin-bottom:12px}
+.emp-body p:last-child{margin-bottom:0}
+.emp-body strong{color:var(--ink);font-weight:600}
+.emp-body h4{font-size:12px;font-weight:700;color:var(--c7);letter-spacing:.06em;text-transform:uppercase;margin:16px 0 8px}
+
+/* CODE TABLE */
+.code-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+.code-table th{font-size:12px;font-weight:700;color:var(--light);letter-spacing:.05em;text-transform:uppercase;padding:7px 12px;background:var(--c1);border-bottom:1px solid var(--c3);text-align:left}
+.code-table td{padding:10px 12px;border-bottom:1px solid var(--c3);vertical-align:top;color:var(--sub);line-height:1.6}
+.code-table tr:last-child td{border-bottom:none}
+.code-mono{font-family:monospace;font-weight:700;color:var(--ink);font-size:15px;background:var(--c2);border-radius:5px;padding:2px 7px}
+
+/* PAYSLIP */
+.payslip{background:var(--c0);border:1.5px solid var(--c3);border-radius:var(--r-lg);overflow:hidden;margin:12px 0}
+.payslip-header{background:var(--c9);padding:14px 18px;display:flex;justify-content:space-between;align-items:center}
+.payslip-co{font-size:13px;font-weight:600;color:rgba(255,255,255,.7);line-height:1}
+.payslip-title{font-size:12px;color:rgba(255,255,255,.35);letter-spacing:.06em;text-transform:uppercase}
+.payslip-rows{padding:4px 0}
+.payslip-row{display:flex;justify-content:space-between;align-items:center;padding:10px 18px;border-bottom:1px solid var(--c3)}
+.payslip-row:last-child{border-bottom:none}
+.payslip-key{font-size:14px;color:var(--sub)}
+.payslip-val{font-size:14px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.payslip-val.neg{color:var(--red)}
+.payslip-val.total{font-size:17px;color:var(--c7)}
+.payslip-divider{height:2px;background:var(--c3);margin:2px 0}
+
+/* SACRIFICE */
+.sacrifice-compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.sacrifice-col{border-radius:var(--r);padding:14px;border:1px solid var(--c3);background:var(--c1)}
+.sacrifice-col-title{font-size:12px;font-weight:700;color:var(--sub);letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
+.sacrifice-row{display:flex;justify-content:space-between;padding:6px 0;font-size:13.5px;border-bottom:1px solid var(--c3)}
+.sacrifice-row:last-child{border-bottom:none;padding-top:10px;margin-top:4px}
+.sacrifice-row span:first-child{color:var(--sub)}
+.sacrifice-row span:last-child{font-weight:600;color:var(--ink)}
+.sacrifice-row.save span:last-child{color:var(--c7)}
+.sacrifice-col.better{border-color:var(--c4);background:var(--c2)}
+.sacrifice-col.better .sacrifice-col-title{color:var(--c7)}
+
+/* CALC */
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field-label{font-size:12px;font-weight:600;color:var(--sub);letter-spacing:.05em;text-transform:uppercase}
+.field-wrap{position:relative}
+.field-pre{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--light);font-weight:600;pointer-events:none;z-index:1}
+.field-suf{position:absolute;right:13px;top:50%;transform:translateY(-50%);font-size:13px;color:var(--light);pointer-events:none}
+.fi{width:100%;border:1.5px solid var(--c3);border-radius:10px;padding:11px 13px;font-size:16px;font-family:var(--font);background:var(--c1);color:var(--ink);outline:none;transition:border-color .2s;-moz-appearance:textfield;appearance:textfield}
+.fi::-webkit-outer-spin-button,.fi::-webkit-inner-spin-button{-webkit-appearance:none}
+.fi:focus{border-color:var(--c7);background:var(--c0)}
+.fi.has-pre{padding-left:30px}
+.fi.has-suf{padding-right:36px}
+select.fi{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%239db8a4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;appearance:none}
+.calc-result-card{background:var(--c9);border-radius:var(--r-lg);padding:28px;margin-top:20px;position:relative;overflow:hidden}
+.calc-result-card::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(104,212,138,.12) 0%,transparent 70%)}
+.calc-result-label{font-size:12px;font-weight:600;color:rgba(255,255,255,.35);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.calc-result-amount{font-family:var(--font-head);font-size:clamp(36px,5vw,52px);font-weight:800;color:#fff;letter-spacing:-.03em;line-height:1}
+.calc-result-period{font-size:14px;color:rgba(255,255,255,.4);margin-top:7px;margin-bottom:24px}
+.period-switch{display:flex;gap:5px;margin-bottom:24px}
+.period-btn{background:rgba(255,255,255,.08);border:none;border-radius:8px;padding:7px 15px;font-size:13px;font-weight:500;color:rgba(255,255,255,.5);cursor:pointer;font-family:var(--font);transition:all .15s}
+.period-btn.active{background:rgba(255,255,255,.18);color:#fff}
+.breakdown-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.breakdown-row:last-child{border-bottom:none}
+.breakdown-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+.breakdown-label{font-size:13.5px;color:rgba(255,255,255,.5);flex:1}
+.breakdown-bar-wrap{flex:2;height:6px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden}
+.breakdown-bar{height:100%;border-radius:3px;transition:width .5s}
+.breakdown-amount{font-size:13.5px;font-weight:600;color:rgba(255,255,255,.85);min-width:68px;text-align:right;font-variant-numeric:tabular-nums}
+.rate-chips{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
+.rate-chip{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:10px 12px;flex:1;min-width:90px}
+.rate-chip-n{font-family:var(--font-head);font-size:19px;font-weight:700;color:#fff;letter-spacing:-.02em}
+.rate-chip-l{font-size:12px;color:rgba(255,255,255,.35);margin-top:3px}
+.calc-note{font-size:13px;color:var(--sub);line-height:1.65;margin-top:14px;padding:12px 14px;background:var(--c1);border-radius:var(--r);border:1px solid var(--c3)}
+.calc-note a{color:var(--c7)}
+
+/* DEADLINES */
+.dl-card{background:var(--c0);border:1px solid var(--c3);border-radius:var(--r-lg);padding:14px 18px;margin-bottom:8px;text-decoration:none;display:block;transition:all .15s;box-shadow:var(--shadow)}
+.dl-card:hover{border-color:var(--c5);transform:translateX(2px)}
+.dl-card.urgent{background:var(--amber-bg);border-color:var(--amber-bd)}
+.dl-card.overdue{background:var(--red-bg);border-color:var(--red-bd)}
+.dl-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:5px}
+.dl-title{font-size:14.5px;font-weight:600;color:var(--ink);flex:1;line-height:1.4}
+.dl-badge{font-size:11px;font-weight:700;border-radius:8px;padding:4px 10px;flex-shrink:0}
+.dl-badge-ok{background:var(--c2);color:var(--c7);border:1px solid var(--c4)}
+.dl-badge-urgent{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bd)}
+.dl-badge-overdue{background:var(--red-bg);color:var(--red);border:1px solid var(--red-bd)}
+.dl-desc{font-size:13.5px;color:var(--sub);line-height:1.6}
+.dl-date{font-size:12px;color:var(--light);margin-top:5px}
+
+/* PENSIONS */
+.pension-step{background:var(--c0);border:1px solid var(--c3);border-radius:var(--r-lg);margin-bottom:8px;overflow:hidden;box-shadow:var(--shadow)}
+.pension-step-head{padding:16px 20px;display:flex;align-items:flex-start;gap:14px;cursor:pointer;transition:background .15s}
+.pension-step-head:hover{background:var(--c1)}
+.pension-step-num{width:32px;height:32px;border-radius:50%;background:var(--ink);color:#fff;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--font-head)}
+.pension-step-title{font-size:14.5px;font-weight:600;color:var(--ink);margin-bottom:3px;letter-spacing:-.01em;line-height:1.35}
+.pension-step-sub{font-size:13.5px;color:var(--sub);line-height:1.5}
+.pension-step-chev{color:var(--light);font-size:10px;margin-left:auto;margin-top:5px;flex-shrink:0;transition:transform .2s}
+.pension-step-chev.open{transform:rotate(180deg)}
+.pension-step-body{border-top:1px solid var(--c3);padding:18px 20px;display:none}
+.pension-step-body.open{display:block}
+.pension-step-body p{font-size:14.5px;color:var(--sub);line-height:1.8;margin-bottom:12px}
+.pension-step-body p:last-child{margin-bottom:0}
+.pension-step-body strong{color:var(--ink);font-weight:600}
+
+/* MOBILE MENU */
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300}
+.mobile-menu.open{display:block}
+.mobile-menu-panel{position:absolute;top:0;right:0;width:260px;height:100%;background:var(--c0);padding:20px 0;overflow-y:auto;box-shadow:-4px 0 24px rgba(0,0,0,.15)}
+.mobile-menu-header{display:flex;justify-content:space-between;align-items:center;padding:0 20px 16px;border-bottom:1px solid var(--c3);margin-bottom:8px}
+.mobile-menu-logo{font-family:var(--font-head);font-size:16px;font-weight:800;color:var(--ink)}
+.mobile-close{background:none;border:none;font-size:20px;cursor:pointer;color:var(--sub);padding:4px}
+.mob-section-head{font-size:11px;font-weight:700;color:var(--light);letter-spacing:.06em;text-transform:uppercase;padding:14px 20px 6px}
+.mob-nav-btn{display:flex;align-items:center;gap:12px;width:100%;padding:12px 20px;background:none;border:none;font-size:14.5px;font-weight:500;color:var(--sub);cursor:pointer;font-family:var(--font);text-align:left;transition:background .15s}
+.mob-nav-btn:hover,.mob-nav-btn.active{background:var(--c2);color:var(--ink);font-weight:600}
+.mob-nav-btn span:first-child{font-size:17px;width:22px;text-align:center}
+.mob-sep{height:1px;background:var(--c3);margin:8px 0}
+.mob-nav-link{display:flex;align-items:center;gap:8px;padding:11px 20px;font-size:14px;color:var(--sub);text-decoration:none;transition:background .15s}
+.mob-nav-link:hover{background:var(--c1);color:var(--ink)}
+
+@media(max-width:640px){
+  .hamburger{display:flex}.nav-persona{display:none}.nav-home{display:none}
+  .calc-grid{grid-template-columns:1fr}
+  .sacrifice-compare{grid-template-columns:1fr}
+  .sh-title{font-size:22px}
+  .main{padding:28px 4% 72px}
+}
+
+footer{background:var(--c9);padding:32px 5%}
+.footer-inner{max-width:960px;margin:0 auto}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;margin-bottom:20px}
+.footer-logo{font-family:var(--font-head);font-size:16px;font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:5px}
+.footer-tag{font-size:13px;color:rgba(255,255,255,.25);line-height:1.55;max-width:220px}
+.footer-links{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.footer-link{font-size:13px;color:rgba(255,255,255,.25);text-decoration:none;transition:color .15s}
+.footer-link:hover{color:rgba(255,255,255,.6)}
+.footer-disc{border-top:1px solid rgba(255,255,255,.06);padding-top:18px;font-size:12.5px;color:rgba(255,255,255,.18);line-height:1.8}
+.footer-disc strong{color:rgba(255,255,255,.3)}
+.footer-disc a{color:#68d48a;text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="disc-bar"><p>Not tax advice. Sourced from <a href="https://www.gov.uk" target="_blank">HMRC gov.uk</a>. Always verify with a qualified adviser.</p></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">TaxClear</a>
+    <div class="nav-persona">
+      <a href="sole-trader.html" class="nav-p-btn">🧾 Sole Trader</a>
+      <a href="employee.html" class="nav-p-btn active">💼 Employee</a>
+      <a href="company.html" class="nav-p-btn">🏢 Limited Company</a>
+    </div>
+    <a href="index.html" class="nav-home">← All guides</a>
+    <button class="hamburger" onclick="openMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mob-menu" onclick="if(event.target===this)closeMenu()">
+  <div class="mobile-menu-panel">
+    <div class="mobile-menu-header"><div class="mobile-menu-logo">TaxClear</div><button class="mobile-close" onclick="closeMenu()">✕</button></div>
+    <div class="mob-section-head">Employee</div>
+    <button class="mob-nav-btn active" id="mn-calc" onclick="goTab('calc')"><span>💰</span><span>Calculator</span></button>
+    <button class="mob-nav-btn" id="mn-tax-pay" onclick="goTab('tax-pay')"><span>💼</span><span>Tax &amp; Pay</span></button>
+    <button class="mob-nav-btn" id="mn-rates" onclick="goTab('rates')"><span>📊</span><span>Tax Rates</span></button>
+    <button class="mob-nav-btn" id="mn-pensions" onclick="goTab('pensions')"><span>🏦</span><span>Pensions</span></button>
+    <button class="mob-nav-btn" id="mn-deadlines" onclick="goTab('deadlines')"><span>📅</span><span>Deadlines</span></button>
+    <div class="mob-sep"></div>
+    <div class="mob-section-head">Switch type</div>
+    <a href="sole-trader.html" class="mob-nav-link"><span>🧾</span>Sole Trader</a>
+    <a href="company.html" class="mob-nav-link"><span>🏢</span>Limited Company</a>
+    <a href="index.html" class="mob-nav-link"><span>🏠</span>Home</a>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-breadcrumb"><a href="index.html">TaxClear</a> <span>›</span> <span>Employee</span></div>
+    <h1>Employee<br><em>tax guide.</em></h1>
+    <p>Tax codes, payslips, take-home calculator, salary sacrifice and pension relief — sourced from HMRC gov.uk.</p>
+  </div>
+</header>
+
+<div class="tab-wrap">
+  <div class="tab-nav">
+    <button class="tab-btn active" data-tab="calc" onclick="switchTab('calc',this)"><span class="tab-btn-icon">💰</span><span>Calculator</span></button>
+    <button class="tab-btn" data-tab="tax-pay" onclick="switchTab('tax-pay',this)"><span class="tab-btn-icon">💼</span><span>Tax &amp; Pay</span></button>
+    <button class="tab-btn" data-tab="rates" onclick="switchTab('rates',this)"><span class="tab-btn-icon">📊</span><span>Tax Rates</span></button>
+    <button class="tab-btn" data-tab="pensions" onclick="switchTab('pensions',this)"><span class="tab-btn-icon">🏦</span><span>Pensions</span></button>
+    <button class="tab-btn" data-tab="deadlines" onclick="switchTab('deadlines',this)"><span class="tab-btn-icon">📅</span><span>Deadlines</span></button>
+  </div>
+</div>
+
+<main class="main">
+
+<!-- CALCULATOR -->
+<div id="tab-calc" class="tab-content active">
+  <div class="sh">
+    <div class="sh-label">Estimate · 2024/25</div>
+    <h2 class="sh-title">Take-home pay calculator</h2>
+    <p class="sh-sub">Estimate your net salary after Income Tax, National Insurance, pension, and student loan.</p>
+  </div>
+  <div class="disc-inline">⚠️ <strong>Estimate only.</strong> Standard 2024/25 HMRC rates. <a href="https://www.gov.uk/estimate-income-tax" target="_blank">Use HMRC's official tool for a precise figure →</a></div>
+  <div class="card">
+    <div class="calc-grid">
+      <div class="field"><label class="field-label">Annual Gross Salary</label><div class="field-wrap"><span class="field-pre">£</span><input type="number" class="fi has-pre" id="c-salary" value="35000" oninput="calc()"></div></div>
+      <div class="field"><label class="field-label">Tax Region</label><select class="fi" id="c-region" onchange="calc()"><option value="england">England / Wales / N. Ireland</option><option value="scotland">Scotland</option></select></div>
+    </div>
+    <div class="calc-grid">
+      <div class="field"><label class="field-label">Pension Contribution</label><div class="field-wrap"><input type="number" class="fi has-suf" id="c-pension" value="5" oninput="calc()"><span class="field-suf">%</span></div></div>
+      <div class="field"><label class="field-label">Pension Type</label><select class="fi" id="c-pension-type" onchange="calc()"><option value="sacrifice">Salary Sacrifice</option><option value="relief">Relief at Source</option></select></div>
+    </div>
+    <div class="calc-grid">
+      <div class="field"><label class="field-label">Student Loan</label><select class="fi" id="c-sl" onchange="calc()"><option value="none">None</option><option value="plan1">Plan 1 (£22,015)</option><option value="plan2">Plan 2 (£27,295)</option><option value="plan4">Plan 4 Scotland (£27,660)</option><option value="plan5">Plan 5 (£25,000)</option></select></div>
+      <div class="field"><label class="field-label">Tax Code</label><input type="text" class="fi" id="c-code" value="1257L" oninput="calc()" style="text-transform:uppercase"></div>
+    </div>
+  </div>
+  <div class="calc-result-card">
+    <div class="period-switch">
+      <button class="period-btn active" onclick="setPeriod('year',this)">Annual</button>
+      <button class="period-btn" onclick="setPeriod('month',this)">Monthly</button>
+      <button class="period-btn" onclick="setPeriod('week',this)">Weekly</button>
+    </div>
+    <div class="calc-result-label">Estimated take-home pay</div>
+    <div class="calc-result-amount" id="r-takehome">£0</div>
+    <div class="calc-result-period" id="r-period">per year</div>
+    <div id="r-breakdown"></div>
+    <div class="rate-chips" id="r-chips"></div>
+  </div>
+  <div class="calc-note">⚠️ Estimate only — no benefits in kind or non-standard adjustments. <a href="https://www.gov.uk/estimate-income-tax" target="_blank">HMRC official calculator →</a></div>
+</div>
+
+<!-- TAX & PAY -->
+<div id="tab-tax-pay" class="tab-content">
+  <div class="sh">
+    <div class="sh-label">Employees</div>
+    <h2 class="sh-title">Tax codes, payslips &amp; salary sacrifice</h2>
+    <p class="sh-sub">Everything on your payslip explained — sourced from HMRC gov.uk.</p>
+  </div>
+  <div class="disc-inline">⚠️ <strong>General information from HMRC gov.uk.</strong> Your specific situation may vary. <a href="https://www.gov.uk/contact-hmrc" target="_blank">Contact HMRC</a> or a qualified adviser for personal guidance.</div>
+
+  <h3 style="font-size:12px;font-weight:700;color:var(--c7);letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px">Tax Codes</h3>
+  <div class="emp-card">
+    <div class="emp-head" onclick="toggleEmp(this)"><div class="emp-icon">🔢</div><div style="flex:1"><div class="emp-title">What your tax code means</div><div class="emp-sub">Decode the letters and numbers on your payslip or P60</div></div><div class="emp-chev">▼</div></div>
+    <div class="emp-body">
+      <p>The <strong>number</strong> in your code multiplied by 10 gives your tax-free allowance. The <strong>letter</strong> indicates the type of allowance. Most employees have <strong>1257L</strong> — meaning £12,570 personal allowance.</p>
+      <table class="code-table"><thead><tr><th>Code</th><th>What it means</th></tr></thead><tbody>
+        <tr><td><span class="code-mono">1257L</span></td><td>Standard. £12,570 personal allowance. Most employees.</td></tr>
+        <tr><td><span class="code-mono">BR</span></td><td>Basic Rate — all income taxed at 20%. Often a second job.</td></tr>
+        <tr><td><span class="code-mono">0T</span></td><td>No personal allowance. Used when HMRC has no info or allowance is used up.</td></tr>
+        <tr><td><span class="code-mono">D0</span></td><td>All income taxed at 40%. Usually a second job.</td></tr>
+        <tr><td><span class="code-mono">W1 / M1</span></td><td>Emergency code. Tax calculated per period — often causes overpayment.</td></tr>
+        <tr><td><span class="code-mono">K</span></td><td>You have untaxed income exceeding your allowance.</td></tr>
+        <tr><td><span class="code-mono">S</span></td><td>Scottish rates apply (e.g. S1257L).</td></tr>
+      </tbody></table>
+      <a href="https://www.gov.uk/tax-codes/what-your-tax-code-means" target="_blank" class="gov-link">🔗 Tax code meanings on gov.uk →</a>
+    </div>
+  </div>
+  <div class="emp-card">
+    <div class="emp-head" onclick="toggleEmp(this)"><div class="emp-icon">⚠️</div><div style="flex:1"><div class="emp-title">Emergency tax codes — what to do</div><div class="emp-sub">New job? You may be put on an emergency code temporarily</div></div><div class="emp-chev">▼</div></div>
+    <div class="emp-body">
+      <p>HMRC uses an emergency code when your employer doesn't have enough information. W1/M1 codes treat each pay period independently — so you don't benefit from unused allowance earlier in the year, often causing overpayment.</p>
+      <div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-body"><strong>How to fix it:</strong> Check and update via your Personal Tax Account at gov.uk/personal-tax-account. Give your new employer a P45 from your previous job.</div></div>
+      <a href="https://www.gov.uk/tax-codes/emergency-tax-codes" target="_blank" class="gov-link">🔗 Emergency tax codes →</a>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <h3 style="font-size:12px;font-weight:700;color:var(--c7);letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px">Your Payslip</h3>
+  <div class="emp-card">
+    <div class="emp-head" onclick="toggleEmp(this)"><div class="emp-icon">📄</div><div style="flex:1"><div class="emp-title">What each section means</div><div class="emp-sub">Gross pay, tax, NI, pension and net pay — all explained</div></div><div class="emp-chev">▼</div></div>
+    <div class="emp-body">
+      <div class="payslip">
+        <div class="payslip-header"><div class="payslip-co">Example Employer Ltd</div><div class="payslip-title">Monthly Payslip</div></div>
+        <div class="payslip-rows">
+          <div class="payslip-row"><span class="payslip-key">Gross pay</span><span class="payslip-val">£3,000.00</span></div>
+          <div class="payslip-divider"></div>
+          <div class="payslip-row"><span class="payslip-key">Income Tax (PAYE)</span><span class="payslip-val neg">−£291.40</span></div>
+          <div class="payslip-row"><span class="payslip-key">National Insurance</span><span class="payslip-val neg">−£163.50</span></div>
+          <div class="payslip-row"><span class="payslip-key">Pension (5% employee)</span><span class="payslip-val neg">−£90.00</span></div>
+          <div class="payslip-divider"></div>
+          <div class="payslip-row"><span class="payslip-key" style="font-weight:600;color:var(--ink)">Net pay (take-home)</span><span class="payslip-val total">£2,455.10</span></div>
+        </div>
+      </div>
+      <p style="margin-top:12px"><strong>Gross pay</strong> — your full salary before any deductions. <strong>Income Tax</strong> — calculated using your tax code. <strong>NI</strong> — 8% on earnings between £12,570 and £50,270 in 2024/25. <strong>Pension</strong> — auto-enrolment minimum is 5% employee contribution.</p>
+      <a href="https://www.gov.uk/payslips" target="_blank" class="gov-link">🔗 Understanding your payslip →</a>
+    </div>
+  </div>
+  <div class="emp-card">
+    <div class="emp-head" onclick="toggleEmp(this)"><div class="emp-icon">📋</div><div style="flex:1"><div class="emp-title">P60, P45, and P11D explained</div><div class="emp-sub">Documents your employer must give you</div></div><div class="emp-chev">▼</div></div>
+    <div class="emp-body">
+      <h4>P60 — End of year certificate</h4>
+      <p>Your employer must give you a P60 by <strong>31 May</strong> after each tax year. It shows total pay and all deductions. You need it for tax refund claims and mortgage applications.</p>
+      <h4>P45 — When you leave a job</h4>
+      <p>Given when you leave employment. Give parts 2 and 3 to your new employer — this prevents an emergency tax code from day one.</p>
+      <h4>P11D — Benefits in kind</h4>
+      <p>If your employer provides a company car, private medical insurance, or interest-free loans, the value is reported on a P11D. HMRC adds this to your taxable income via a tax code adjustment.</p>
+      <a href="https://www.gov.uk/paye-forms-p45-p60-p11d" target="_blank" class="gov-link">🔗 P45, P60 and P11D →</a>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <h3 style="font-size:12px;font-weight:700;color:var(--c7);letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px">Salary Sacrifice &amp; Benefits</h3>
+  <div class="emp-card">
+    <div class="emp-head" onclick="toggleEmp(this)"><div class="emp-icon">💡</div><div style="flex:1"><div class="emp-title">What is salary sacrifice?</div><div class="emp-sub">Give up part of your salary for a benefit — pay less tax and NI</div></div><div class="emp-chev">▼</div></div>
+    <div class="emp-body">
+      <p>Salary sacrifice is an agreement to give up part of your cash salary in exchange for a benefit. Because your gross salary is lower, you pay less Income Tax and less National Insurance.</p>
+      <div class="sacrifice-compare">
+        <div class="sacrifice-col"><div class="sacrifice-col-title">Without sacrifice — £36,000</div>
+          <div class="sacrifice-row"><span>Gross salary</span><span>£36,000</span></div>
+          <div class="sacrifice-row"><span>Employee NI</span><span>£1,874</span></div>
+          <div class="sacrifice-row"><span>Pension from net</span><span>£150/mo</span></div>
+        </div>
+        <div class="sacrifice-col better"><div class="sacrifice-col-title">With £1,800/yr sacrifice</div>
+          <div class="sacrifice-row"><span>Adjusted salary</span><span>£34,200</span></div>
+          <div class="sacrifice-row"><span>Employee NI</span><span>£1,730</span></div>
+          <div class="sacrifice-row save"><span>Annual NI saving</span><span>~£144</span></div>
+        </div>
+      </div>
+      <div class="callout callout-warn"><div class="callout-icon">⚠️</div><div class="callout-body"><strong>Limits apply.</strong> Cannot reduce cash earnings below National Minimum Wage. May affect mortgage affordability calculations and statutory maternity pay.</div></div>
+      <a href="https://www.gov.uk/salary-sacrifice-limitations-rules" target="_blank" class="gov-link">🔗 Salary sacrifice rules →</a>
+    </div>
+  </div>
+  <div class="emp-card">
+    <div class="emp-head" onclick="toggleEmp(this)"><div class="emp-icon">💸</div><div style="flex:1"><div class="emp-title">Am I owed a tax refund?</div><div class="emp-sub">How to check and claim if you've overpaid</div></div><div class="emp-chev">▼</div></div>
+    <div class="emp-body">
+      <p>Overpayments are common when you start or finish a job mid-year, are put on an emergency code, or had multiple jobs. HMRC issues a P800 letter at year end if they calculate an overpayment.</p>
+      <div class="callout callout-info"><div class="callout-icon">ℹ️</div><div class="callout-body">You have <strong>4 years</strong> from the end of the tax year to claim. Check your Personal Tax Account at gov.uk/personal-tax-account.</div></div>
+      <a href="https://www.gov.uk/claim-tax-refund" target="_blank" class="gov-link">🔗 Claim a tax refund →</a>
+    </div>
+  </div>
+</div>
+
+<!-- TAX RATES -->
+<div id="tab-rates" class="tab-content">
+  <div class="sh">
+    <div class="sh-label">2024/25</div>
+    <h2 class="sh-title">Income Tax &amp; NI rates</h2>
+    <p class="sh-sub">Rates applied to your employment income via PAYE.</p>
+  </div>
+  <div class="disc-inline">⚠️ <strong>General information only.</strong> 2024/25 HMRC rates. <a href="https://www.gov.uk/income-tax-rates" target="_blank">Verify on gov.uk →</a></div>
+  <div class="card card-sm" style="margin-bottom:14px">
+    <h4 style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:14px;letter-spacing:-.01em">Income Tax bands (England, Wales &amp; N. Ireland)</h4>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div class="rate-row" style="background:var(--c2);border-left:4px solid #3d8a52"><span>Up to £12,570 — Personal Allowance</span><span style="color:#3d8a52">0%</span></div>
+      <div class="rate-row" style="background:#2060a808;border-left:4px solid #2060a8"><span>£12,571 – £50,270 — Basic Rate</span><span style="color:#2060a8">20%</span></div>
+      <div class="rate-row" style="background:#a0502008;border-left:4px solid #a05020"><span>£50,271 – £125,140 — Higher Rate</span><span style="color:#a05020">40%</span></div>
+      <div class="rate-row" style="background:#90303008;border-left:4px solid #903030"><span>Over £125,140 — Additional Rate</span><span style="color:#903030">45%</span></div>
+    </div>
+    <a href="https://www.gov.uk/income-tax-rates" target="_blank" class="gov-link">🔗 Income Tax rates →</a>
+  </div>
+  <div class="card card-sm" style="margin-bottom:14px">
+    <h4 style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:5px;letter-spacing:-.01em">Employee NI (Class 1)</h4>
+    <p style="font-size:14px;color:var(--sub);margin-bottom:14px;line-height:1.65">Deducted directly from your pay by your employer via PAYE.</p>
+    <div class="ni-bar-wrap">
+      <div class="ni-bar-row"><div class="ni-bar-label">Below £12,570</div><div class="ni-bar-track"><div class="ni-bar-fill" style="width:0%;background:var(--c3)"></div></div><div class="ni-bar-val">0%</div></div>
+      <div class="ni-bar-row"><div class="ni-bar-label">£12,570 – £50,270</div><div class="ni-bar-track"><div class="ni-bar-fill" style="width:80%"></div></div><div class="ni-bar-val">8%</div></div>
+      <div class="ni-bar-row"><div class="ni-bar-label">Above £50,270</div><div class="ni-bar-track"><div class="ni-bar-fill" style="width:20%;background:var(--c5)"></div></div><div class="ni-bar-val">2%</div></div>
+    </div>
+    <a href="https://www.gov.uk/national-insurance/how-much-you-pay" target="_blank" class="gov-link">🔗 Employee NI →</a>
+  </div>
+  <div class="callout callout-info"><div class="callout-icon">ℹ️</div><div class="callout-body"><strong>Personal allowance reduces above £100,000.</strong> For every £2 earned over £100,000, your personal allowance reduces by £1. By £125,140 it reaches £0, creating an effective 60% marginal rate on income between £100,000 and £125,140.</div></div>
+</div>
+
+<!-- PENSIONS -->
+<div id="tab-pensions" class="tab-content">
+  <div class="sh">
+    <div class="sh-label">Pensions</div>
+    <h2 class="sh-title">Workplace pension &amp; tax relief</h2>
+    <p class="sh-sub">How auto-enrolment works, the difference between pension types, and how to find old pots.</p>
+  </div>
+  <div class="disc-inline">⚠️ <strong>General information only.</strong> Sourced from <a href="https://www.gov.uk/workplace-pensions" target="_blank">gov.uk</a> and <a href="https://www.moneyhelper.org.uk" target="_blank">MoneyHelper</a>.</div>
+
+  <div class="pension-step"><div class="pension-step-head" onclick="togglePension(this)"><div class="pension-step-num">1</div><div style="flex:1"><div class="pension-step-title">Auto-enrolment — what you need to know</div><div class="pension-step-sub">Your employer must enrol you if you're over 22 and earn over £10,000</div></div><div class="pension-step-chev">▼</div></div><div class="pension-step-body"><p>Auto-enrolment requires a minimum total contribution of <strong>8% of qualifying earnings</strong> — at least <strong>3% from your employer</strong> and <strong>5% from you</strong>. You can opt out, but you'll lose your employer's contribution. You can also contribute more.</p><div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-body"><strong>Qualifying earnings</strong> for 2024/25 are between £6,240 and £50,270. Contributions are calculated on earnings within this band, not your full salary.</div></div><a href="https://www.gov.uk/workplace-pensions" target="_blank" class="gov-link">🔗 Workplace pensions →</a></div></div>
+
+  <div class="pension-step"><div class="pension-step-head" onclick="togglePension(this)"><div class="pension-step-num">2</div><div style="flex:1"><div class="pension-step-title">Salary sacrifice vs relief at source</div><div class="pension-step-sub">Two ways to contribute — one saves you more</div></div><div class="pension-step-chev">▼</div></div><div class="pension-step-body"><p><strong>Salary sacrifice:</strong> Contributions come out before tax is calculated. You save Income Tax AND NI. Your employer may also pass on their NI saving as an extra contribution.</p><p><strong>Relief at source:</strong> You contribute from net pay. Your pension provider claims 20% basic rate tax relief from HMRC automatically. Higher-rate taxpayers claim the extra 20% through Self Assessment.</p><div class="callout callout-info"><div class="callout-icon">ℹ️</div><div class="callout-body"><strong>Annual Allowance 2024/25: £60,000</strong> (or your earnings if lower). Contributions above this may face a tax charge.</div></div><a href="https://www.gov.uk/tax-on-your-private-pension/pension-tax-relief" target="_blank" class="gov-link">🔗 Pension tax relief →</a></div></div>
+
+  <div class="pension-step"><div class="pension-step-head" onclick="togglePension(this)"><div class="pension-step-num">3</div><div style="flex:1"><div class="pension-step-title">Find old pension pots</div><div class="pension-step-sub">Use the government's free Pension Tracing Service</div></div><div class="pension-step-chev">▼</div></div><div class="pension-step-body"><p>The Pension Tracing Service searches over 200,000 pension schemes. Enter a previous employer's name and it tells you who to contact — it doesn't reveal the value, just who to ask.</p><a href="https://www.gov.uk/find-pension-contact-details" target="_blank" class="gov-link">🔗 Pension Tracing Service →</a></div></div>
+
+  <div class="pension-step"><div class="pension-step-head" onclick="togglePension(this)"><div class="pension-step-num">4</div><div style="flex:1"><div class="pension-step-title">Check your State Pension forecast</div><div class="pension-step-sub">You need 35 qualifying NI years for the full amount</div></div><div class="pension-step-chev">▼</div></div><div class="pension-step-body"><p>The full New State Pension is <strong>£221.20/week</strong> (2024/25). Check your forecast and NI record at gov.uk/check-state-pension. Filling NI gaps costs ~£824/year and adds ~£303/year for life.</p><a href="https://www.gov.uk/check-state-pension" target="_blank" class="gov-link">🔗 Check your State Pension →</a></div></div>
+</div>
+
+<!-- DEADLINES -->
+<div id="tab-deadlines" class="tab-content">
+  <div class="sh">
+    <div class="sh-label">Key Dates</div>
+    <h2 class="sh-title">Key dates for employees</h2>
+    <p class="sh-sub">The main HMRC dates you need to know as an employee.</p>
+  </div>
+  <div id="dl-list"></div>
+</div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div><div class="footer-logo">TaxClear</div><div class="footer-tag">Plain-English UK tax guidance sourced from HMRC gov.uk.</div></div>
+      <div class="footer-links">
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="sole-trader.html" class="footer-link">Sole Trader</a>
+        <a href="company.html" class="footer-link">Limited Company</a>
+      </div>
+    </div>
+    <div class="footer-disc"><strong>Disclaimer:</strong> TaxClear provides general information sourced from <a href="https://www.gov.uk" target="_blank">gov.uk</a>. This is not personal tax advice. Consult a qualified adviser or <a href="https://www.gov.uk/contact-hmrc" target="_blank">contact HMRC</a>. All rates are 2024/25.</div>
+  </div>
+</footer>
+
+<script>
+const TABS=['calc','tax-pay','rates','pensions','deadlines'];
+function switchTab(id,btn){TABS.forEach(t=>{document.getElementById('tab-'+t).classList.toggle('active',t===id);});document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));document.querySelector('.tab-wrap').scrollIntoView({behavior:'smooth',block:'start'});}
+function goTab(id){switchTab(id);closeMenu();document.querySelectorAll('.mob-nav-btn').forEach(b=>b.classList.toggle('active',b.id==='mn-'+id));}
+function openMenu(){document.getElementById('mob-menu').classList.add('open');document.body.style.overflow='hidden';}
+function closeMenu(){document.getElementById('mob-menu').classList.remove('open');document.body.style.overflow='';}
+function toggleEmp(h){const b=h.nextElementSibling,c=h.querySelector('.emp-chev'),o=b.classList.contains('open');document.querySelectorAll('.emp-body.open').forEach(x=>x.classList.remove('open'));document.querySelectorAll('.emp-chev.open').forEach(x=>x.classList.remove('open'));if(!o){b.classList.add('open');c.classList.add('open');}}
+
+let period='year';
+function setPeriod(p,btn){period=p;document.querySelectorAll('.period-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');calc();}
+function parseTaxCode(c){const m=((c||'1257L').toUpperCase().trim()).match(/^(\d+)/);if(m)return parseInt(m[1])*10;return 0;}
+function calcTax(taxable,reg){if(reg==='scotland'){let t=0;[[0,2306,.19],[2306,13991,.20],[13991,31092,.21],[31092,62430,.42],[62430,125140,.45],[125140,Infinity,.48]].forEach(([f,to,r])=>{if(taxable>f)t+=(Math.min(taxable,to)-f)*r;});return t;}return Math.min(taxable,37700)*.2+Math.min(Math.max(taxable-37700,0),87440)*.4+Math.max(taxable-125140,0)*.45;}
+function calcNI(sal){let n=0;if(sal>12570)n+=Math.min(sal-12570,37700)*.08;if(sal>50270)n+=(sal-50270)*.02;return n;}
+function slCalc(sal,plan){const th={plan1:22015,plan2:27295,plan4:27660,plan5:25000};if(!th[plan]||sal<=th[plan])return 0;return(sal-th[plan])*.09;}
+function fmt(n){return'£'+Math.abs(n).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function calc(){
+  const sal=parseFloat(document.getElementById('c-salary').value)||0;
+  const reg=document.getElementById('c-region').value;
+  const pp=Math.min(parseFloat(document.getElementById('c-pension').value)||0,100)/100;
+  const pt=document.getElementById('c-pension-type').value;
+  const sl=document.getElementById('c-sl').value;
+  let pa=parseTaxCode(document.getElementById('c-code').value);
+  if(sal>100000)pa=Math.max(0,pa-Math.floor((sal-100000)/2));
+  const pension=sal*pp;
+  const adjSal=pt==='sacrifice'?sal-pension:sal;
+  const tax=calcTax(Math.max(0,adjSal-pa),reg);
+  const ni=calcNI(adjSal);
+  const slR=sl!=='none'?slCalc(sal,sl):0;
+  const th=sal-tax-ni-pension-slR;
+  const d={year:1,month:12,week:52}[period];
+  const pl={year:'per year',month:'per month',week:'per week'}[period];
+  document.getElementById('r-takehome').textContent=fmt(th/d);
+  document.getElementById('r-period').textContent=pl;
+  const rows=[{l:'Take-home',v:th,c:'#68d48a'},{l:'Income Tax',v:tax,c:'#e09000'},{l:'National Insurance',v:ni,c:'#b83030'},{l:`Pension (${(pp*100).toFixed(0)}%)`,v:pension,c:'#4a6ee0'},...(slR>0?[{l:'Student loan',v:slR,c:'#8b5cf6'}]:[])];
+  document.getElementById('r-breakdown').innerHTML=rows.map(r=>`<div class="breakdown-row"><div class="breakdown-dot" style="background:${r.c}"></div><div class="breakdown-label">${r.l}</div><div class="breakdown-bar-wrap"><div class="breakdown-bar" style="width:${sal>0?(r.v/sal*100).toFixed(1):0}%;background:${r.c}"></div></div><div class="breakdown-amount">${fmt(r.v/d)}</div></div>`).join('');
+  const marginal=sal>125140?'45%':sal>50270?'40%':sal>12570?'20%':'0%';
+  document.getElementById('r-chips').innerHTML=`<div class="rate-chip"><div class="rate-chip-n">${sal>0?(tax/sal*100).toFixed(1):0}%</div><div class="rate-chip-l">Effective tax rate</div></div><div class="rate-chip"><div class="rate-chip-n">${marginal}</div><div class="rate-chip-l">Marginal rate</div></div><div class="rate-chip"><div class="rate-chip-n">${sal>0?((tax+ni)/sal*100).toFixed(1):0}%</div><div class="rate-chip-l">Tax + NI</div></div><div class="rate-chip"><div class="rate-chip-n">${sal>0?(th/sal*100).toFixed(0):0}%</div><div class="rate-chip-l">Kept</div></div>`;
+}
+
+function togglePension(h){const b=h.nextElementSibling,c=h.querySelector('.pension-step-chev'),o=b.classList.contains('open');document.querySelectorAll('.pension-step-body.open').forEach(x=>x.classList.remove('open'));document.querySelectorAll('.pension-step-chev.open').forEach(x=>x.classList.remove('open'));if(!o){b.classList.add('open');c.classList.add('open');}}
+
+function buildDeadlines(){
+  const now=new Date(),yr=now.getFullYear();
+  const dl=[
+    {t:'P60 from your employer',d:new Date(yr+'-05-31'),desc:'Your employer must give you a P60 by 31 May showing total pay and tax for the year.',url:'https://www.gov.uk/paye-forms-p45-p60-p11d/p60'},
+    {t:'Check your tax code',d:null,desc:'HMRC usually updates tax codes in March/April for the new tax year. Check via your Personal Tax Account.',url:'https://www.gov.uk/check-income-tax-current-year'},
+    {t:'Claim a tax refund (if owed)',d:null,desc:'4 years from the end of the tax year to claim an overpayment. Check via Personal Tax Account.',url:'https://www.gov.uk/claim-tax-refund'},
+    {t:'Tax year end',d:new Date(yr+'-04-05'),desc:'UK tax year runs 6 April to 5 April. If you change jobs, give your P45 to your new employer.',url:'https://www.gov.uk/income-tax'},
+  ].map(x=>{if(!x.d)return x;const days=Math.ceil((x.d-now)/86400000);return{...x,days,urgent:days>0&&days<=30,overdue:days<0};}).sort((a,b)=>!a.d?1:!b.d?-1:a.d-b.d);
+  document.getElementById('dl-list').innerHTML=dl.map(x=>{
+    const bc=!x.d?'dl-badge-rec':x.overdue?'dl-badge-overdue':x.urgent?'dl-badge-urgent':'dl-badge-ok';
+    const bt=!x.d?'Ongoing':x.overdue?'Overdue':x.days===0?'Today':x.days+'d';
+    const cc=x.overdue?'overdue':x.urgent?'urgent':'';
+    const ds=x.d?x.d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}):'';
+    return `<a href="${x.url}" target="_blank" rel="noopener" class="dl-card ${cc}"><div class="dl-header"><div class="dl-title">${x.t}</div><div class="dl-badge ${bc}">${bt}</div></div><div class="dl-desc">${x.desc}</div>${ds?`<div class="dl-date">${ds}</div>`:''}</a>`;
+  }).join('');
+}
+
+calc();
+buildDeadlines();
+window.switchTab=switchTab;window.goTab=goTab;window.openMenu=openMenu;window.closeMenu=closeMenu;
+window.setPeriod=setPeriod;window.calc=calc;window.toggleEmp=toggleEmp;window.togglePension=togglePension;
+</script>
+</body>
+</html>
