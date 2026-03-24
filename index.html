@@ -1172,13 +1172,14 @@ function buildRateDiagrams() {
     </div>
   `).join('');
 
-  // Stacked bar — use proportional widths based on rough range sizes
+  // Stacked bar — hide label when segment too narrow to fit it
   const total = 125140;
   const stackBands = bands.filter(b=>b.to!==null);
   const stackHtml = stackBands.map(b=>{
     const w = Math.max(((b.to-b.from)/total)*100, 3).toFixed(1);
+    const tooNarrow = ((b.to-b.from)/total)*100 < 5;
     return `<div class="tax-seg ${b.seg||''}" style="width:${w}%;background:${b.color}">
-      <span class="tax-seg-label">${b.rate}%</span>
+      ${tooNarrow ? '' : `<span class="tax-seg-label">${b.rate}%</span>`}
     </div>`;
   }).join('');
   document.getElementById('band-stack').innerHTML = stackHtml + `<div class="tax-seg" style="flex:1;background:#4a6050;opacity:.4"><span class="tax-seg-label">${bands[bands.length-1].rate}%</span></div>`;
@@ -1195,7 +1196,7 @@ function buildRateDiagrams() {
     </div>
   `).join('');
 
-  // Example diagram £55k
+  // Example diagram £55k — label outside bar when bar is narrow
   const salary = 55000;
   const pa = 12570;
   const taxable = salary - pa;
@@ -1204,6 +1205,8 @@ function buildRateDiagrams() {
   const t1 = b1 * 0.20;
   const t2 = b2 * 0.40;
   const total_tax = t1 + t2;
+  const b2pct = (b2/salary*100).toFixed(1);
+  const b2narrow = (b2/salary*100) < 15;
 
   document.getElementById('band-example').innerHTML = `
     <div style="display:flex;flex-direction:column;gap:10px">
@@ -1223,8 +1226,12 @@ function buildRateDiagrams() {
       </div>
       <div style="display:flex;align-items:center;gap:14px">
         <div style="width:170px;font-size:14px;color:var(--sub);line-height:1.4">Higher Rate (40%)</div>
-        <div style="flex:1;height:32px;border-radius:7px;overflow:hidden;position:relative">
-          <div style="width:${(b2/55000*100).toFixed(1)}%;height:100%;background:#a05020;display:flex;align-items:center;padding-left:10px"><span style="font-size:12px;color:#fff;font-weight:600">£${b2.toLocaleString()} → pays £${t2.toLocaleString()}</span></div>
+        <div style="flex:1;position:relative;height:32px">
+          <div style="position:absolute;left:0;top:0;bottom:0;width:${b2pct}%;background:#a05020;border-radius:7px;min-width:8px"></div>
+          ${b2narrow
+            ? `<div style="position:absolute;left:calc(${b2pct}% + 10px);top:50%;transform:translateY(-50%);font-size:12px;color:#a05020;font-weight:600;white-space:nowrap">£${b2.toLocaleString()} → pays £${t2.toLocaleString()}</div>`
+            : `<div style="position:absolute;left:0;top:0;bottom:0;width:${b2pct}%;display:flex;align-items:center;padding-left:10px;overflow:hidden"><span style="font-size:12px;color:#fff;font-weight:600;white-space:nowrap">£${b2.toLocaleString()} → pays £${t2.toLocaleString()}</span></div>`
+          }
         </div>
         <div style="font-size:14px;font-weight:700;color:#a05020;min-width:52px;text-align:right">40%</div>
       </div>
