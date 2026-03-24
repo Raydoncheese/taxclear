@@ -1528,4 +1528,26 @@ function submitEmail() {
 }
 try{if(localStorage.getItem('tc-email')){document.getElementById('email-wrap').style.display='none';document.getElementById('email-ok').classList.add('show');}}catch(e){}
 
-// ── SCROLL REVEALS ─────────────────────────────────�
+// Scroll reveals
+const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+// Expose globally
+window.switchTab=switchTab;
+window.setRegion=setRegion;
+window.setPeriod=setPeriod;
+window.calc=calc;
+window.filterExp=filterExp;
+window.toggleExp=toggleExp;
+window.toggleEmp=toggleEmp;
+window.openGuide=openGuide;
+window.closeGuide=closeGuide;
+window.toggleStep=toggleStep;
+window.checkStep=checkStep;
+window.toggleSS=toggleSS;
+window.togglePension=togglePension;
+window.submitEmail=submitEmail;
+
+</script>
+</body>
+</html>
