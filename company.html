@@ -573,27 +573,32 @@ buildDeadlines();
 window.switchTab=switchTab;window.goTab=goTab;window.openMenu=openMenu;window.closeMenu=closeMenu;
 // ── NEWS ──────────────────────────────────────────────────────────────────
 let newsLoaded=false;
-function showNewsSkeleton(){document.getElementById('news-skeleton').innerHTML=[1,2,3,4].map(()=>`<div style="margin-bottom:16px"><div class="news-skeleton" style="height:14px;width:30%;margin-bottom:10px"></div><div class="news-skeleton" style="height:20px;width:85%;margin-bottom:8px"></div><div class="news-skeleton" style="height:14px;width:100%;margin-bottom:5px"></div><div class="news-skeleton" style="height:14px;width:90%;margin-bottom:5px"></div><div class="news-skeleton" style="height:14px;width:75%"></div></div>`).join('');}
+const NEWS_KEYWORDS=['corporation tax','dividend','companies house','making tax digital','employer','vat','r&d','research and development','confirmation statement','annual accounts','hmrc','company tax','ct600'];
+function showNewsSkeleton(){document.getElementById('news-skeleton').innerHTML=[1,2,3,4].map(()=>`<div style="margin-bottom:20px"><div class="news-skeleton" style="height:12px;width:28%;margin-bottom:10px"></div><div class="news-skeleton" style="height:19px;width:88%;margin-bottom:8px"></div><div class="news-skeleton" style="height:13px;width:100%;margin-bottom:5px"></div><div class="news-skeleton" style="height:13px;width:80%"></div></div>`).join('');}
+function fmtDate(s){try{const d=new Date(s);return d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});}catch{return s||'';}}
+function stripHtml(s){const d=document.createElement('div');d.innerHTML=s||'';return d.textContent||'';}
 async function loadNews(){
   if(newsLoaded)return;
   const el=document.getElementById('news-content');
   showNewsSkeleton();
-  const PERSONA='limited company director';
-  const TOPICS='Corporation Tax rates, dividend tax, Making Tax Digital, Companies House filings, R&D tax credits, employer NI, HMRC digital services, VAT, confirmation statement';
+  const FEED='https://www.gov.uk/search/news-and-communications.atom?organisations[]=hm-revenue-customs&count=40';
+  const PROXY='https://api.allorigins.win/raw?url='+encodeURIComponent(FEED);
   try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,tools:[{type:'web_search_20250305',name:'web_search'}],system:`You are a UK tax news researcher for TaxClear. Find the 4 most recent and relevant UK tax news items for ${PERSONA}s. Search only: gov.uk, hmrc.gov.uk, obr.uk, companieshouse.gov.uk. Topics: ${TOPICS}. Respond ONLY with a valid JSON array, no markdown, no backticks. Structure: [{"headline":"...","summary":"2-3 plain English sentences","source_name":"HMRC gov.uk","url":"https://...","why_matters":"One sentence on why this matters to a ${PERSONA}","recency":"e.g. March 2025"}]`,messages:[{role:'user',content:`Find the latest UK tax and Companies House news relevant to ${PERSONA}s. Return JSON array only.`}]})});
-    const data=await res.json();
-    const text=(data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('');
-    const clean=text.replace(/```json|```/g,'').trim();
-    const start=clean.indexOf('['),end=clean.lastIndexOf(']');
-    const items=JSON.parse(start>=0?clean.slice(start,end+1):clean);
-    el.innerHTML=items.map(item=>`<div class="news-card"><div class="news-meta"><span class="news-source-badge">${item.source_name||'gov.uk'}</span>${item.recency?`<span class="news-date">📅 ${item.recency}</span>`:''}</div><div class="news-headline">${item.headline}</div><div class="news-summary">${item.summary}</div><div class="news-why"><strong>Why it matters:</strong> ${item.why_matters}</div>${item.url?`<a href="${item.url}" target="_blank" rel="noopener" class="gov-link">🔗 Read on ${item.source_name||'gov.uk'} →</a>`:''}</div>`).join('')+`<div class="news-footer"><div class="news-footer-note">Sourced from <a href="https://www.gov.uk/government/organisations/hm-revenue-customs" target="_blank">HMRC gov.uk</a> and official sources only. Summarised by AI — always verify at source.</div><button class="news-refresh" onclick="newsLoaded=false;loadNews()">↺ Refresh</button></div>`;
+    const res=await fetch(PROXY,{signal:AbortSignal.timeout(12000)});
+    if(!res.ok)throw new Error('fetch failed');
+    const txt=await res.text();
+    const xml=new DOMParser().parseFromString(txt,'text/xml');
+    const entries=[...xml.querySelectorAll('entry')];
+    if(!entries.length)throw new Error('no entries');
+    const score=e=>{const t=(e.querySelector('title')?.textContent||'').toLowerCase();const s=(e.querySelector('summary,content')?.textContent||'').toLowerCase();return NEWS_KEYWORDS.reduce((n,k)=>n+(t.includes(k)?3:0)+(s.includes(k)?1:0),0);};
+    const sorted=[...entries].sort((a,b)=>score(b)-score(a));
+    const items=(sorted.slice(0,4).some(e=>score(e)>0)?sorted:entries).slice(0,4).map(e=>({headline:e.querySelector('title')?.textContent||'',summary:stripHtml(e.querySelector('summary,content')?.textContent||'').slice(0,220).trim()+'…',url:e.querySelector('link')?.getAttribute('href')||'',date:fmtDate(e.querySelector('updated,published')?.textContent||'')}));
+    el.innerHTML=items.map(item=>`<div class="news-card"><div class="news-meta"><span class="news-source-badge">HMRC gov.uk</span>${item.date?`<span class="news-date">📅 ${item.date}</span>`:''}</div><div class="news-headline">${item.headline}</div><div class="news-summary">${item.summary}</div>${item.url?`<a href="${item.url}" target="_blank" rel="noopener" class="gov-link">🔗 Read on gov.uk →</a>`:''}</div>`).join('')+`<div class="news-footer"><div class="news-footer-note">Live feed from <a href="https://www.gov.uk/government/organisations/hm-revenue-customs" target="_blank">HMRC gov.uk</a>. Always verify at source.</div><button class="news-refresh" onclick="newsLoaded=false;loadNews()">↺ Refresh</button></div>`;
     newsLoaded=true;
   }catch(e){
-    el.innerHTML=`<div class="news-error"><div class="news-error-icon">📡</div><div class="news-error-msg">Couldn't load news right now. Check the latest directly at HMRC gov.uk.</div><a href="https://www.gov.uk/government/organisations/hm-revenue-customs/about/news" target="_blank" class="gov-link" style="margin-top:12px;justify-content:center">🔗 HMRC news on gov.uk →</a><br><button class="news-refresh" onclick="newsLoaded=false;loadNews()" style="margin-top:10px">↺ Try again</button></div>`;
+    el.innerHTML=`<div class="news-error"><div class="news-error-icon">📡</div><div class="news-error-msg">Couldn't load the HMRC news feed right now.</div><a href="https://www.gov.uk/government/organisations/hm-revenue-customs/about/news" target="_blank" class="gov-link" style="margin-top:14px;justify-content:center">🔗 HMRC latest news on gov.uk →</a><br><button class="news-refresh" onclick="newsLoaded=false;loadNews()" style="margin-top:12px">↺ Try again</button></div>`;
   }
 }
-
 window.loadNews=loadNews;
 window.calc=calc;window.toggleAccord=toggleAccord;window.togglePension=togglePension;
 </script>
